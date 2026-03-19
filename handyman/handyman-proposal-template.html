@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Handy Homes | Handyman Proposal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #dbe5f0;
+      --brand: #1e96fc;
+      --brand-dark: #1e3a8a;
+      --surface: #ffffff;
+      --surface-soft: #f8fbff;
+      --surface-blue: #eff7ff;
+      --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+      --radius: 28px;
+      --radius-md: 22px;
+      --radius-sm: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Manrope, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef5fb 0%, #f7fbff 100%);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: Sora, sans-serif;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(100% - 2rem, var(--max)); margin: 0 auto; }
+    .proposal-shell { padding: 2rem 0 4rem; }
+    .proposal-frame {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.84);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .frame-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.74);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .brand-logo {
+      display: block;
+      width: auto;
+      height: 3rem;
+      max-width: 220px;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+
+    .trust-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .trust-chips span {
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #4b6179;
+      font-size: 0.9rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .frame-main {
+      display: grid;
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+
+    .hero {
+      padding: 1.8rem;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #1e96fc 100%);
+      color: #fff;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.8rem;
+      color: #dbeafe;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .eyebrow strong {
+      font-weight: 800;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+    }
+
+    .hero-copy {
+      margin: 0.85rem 0 0;
+      max-width: 46rem;
+      font-size: 1.18rem;
+      color: rgba(240, 249, 255, 0.92);
+    }
+
+    .snapshot {
+      margin-top: 1.2rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      padding: 0.8rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .snapshot-card {
+      padding: 0.95rem;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .snapshot-label {
+      margin: 0 0 0.3rem;
+      color: #dbeafe;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .snapshot-value {
+      color: #fff;
+      font-weight: 800;
+      display: block;
+    }
+
+    .proposal-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .card {
+      min-width: 0;
+      padding: 1.35rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+    }
+
+    .label {
+      margin: 0 0 0.4rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0284c7;
+      font-weight: 800;
+    }
+
+    .section-intro {
+      margin: 0.75rem 0 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .work-summary {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .area-card {
+      padding: 1rem 1.05rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid #e3edf7;
+      background: var(--surface-soft);
+    }
+
+    .area-card h3 {
+      font-size: 1.2rem;
+      color: #163a63;
+    }
+
+    .area-type {
+      margin: 0.15rem 0 0;
+      color: #526b88;
+      font-size: 0.96rem;
+      font-weight: 700;
+    }
+
+    .task-list {
+      list-style: none;
+      margin: 0.95rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .task-list li {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      padding: 0.85rem 0.95rem;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid #dbe7f3;
+      color: #1f3a5c;
+      font-size: 1.04rem;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .task-list li::before {
+      content: "";
+      width: 0.5rem;
+      height: 0.5rem;
+      flex: 0 0 0.5rem;
+      margin-top: 0.55rem;
+      border-radius: 999px;
+      background: #38bdf8;
+    }
+
+    .notes-card,
+    .add-ons-card {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid #dbe7f3;
+      background: #f8fbff;
+    }
+
+    .notes-card p,
+    .recommendations-list li,
+    .add-ons-list li {
+      margin: 0;
+      color: #526b88;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      white-space: pre-line;
+    }
+
+    .recommendations-list,
+    .add-ons-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .recommendations-list li,
+    .add-ons-list li {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      padding: 0.85rem 0.95rem;
+      border-radius: 16px;
+      border: 1px solid #dbe7f3;
+      background: #fff;
+    }
+
+    .recommendations-list li::before,
+    .add-ons-list li::before {
+      content: "✓";
+      color: #15803d;
+      font-weight: 900;
+      margin-top: 0.05rem;
+    }
+
+    .investment-card {
+      position: sticky;
+      top: 1rem;
+      background: linear-gradient(180deg, #ffffff 0%, #f5faff 100%);
+      border: 2px solid #9fd0ff;
+      box-shadow: 0 14px 30px rgba(30,150,252,0.09);
+    }
+
+    .investment-total {
+      display: block;
+      margin-top: 0.8rem;
+      font-size: clamp(2.35rem, 4vw, 3.4rem);
+      line-height: 1.02;
+      font-weight: 900;
+      color: #163a63;
+      letter-spacing: -0.03em;
+    }
+
+    .investment-subnote {
+      margin: 0.7rem 0 0;
+      color: #526b88;
+      font-size: 1.04rem;
+      line-height: 1.65;
+    }
+
+    .investment-divider {
+      height: 1px;
+      margin: 1rem 0;
+      background: linear-gradient(90deg, rgba(151, 193, 255, 0) 0%, rgba(151, 193, 255, 1) 50%, rgba(151, 193, 255, 0) 100%);
+    }
+
+    .meta-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .meta-list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.9rem 1rem;
+      border-radius: 18px;
+      border: 1px solid #dbe7f3;
+      background: rgba(255,255,255,0.88);
+      color: #1f3a5c;
+      font-size: 1.02rem;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .meta-list li::before {
+      content: "✓";
+      color: #24a148;
+      font-weight: 900;
+      font-size: 1.12rem;
+      line-height: 1;
+      margin-top: 0.1rem;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1rem;
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid #dbe7f3;
+      background: #fff;
+      color: #1d4fa3;
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .cta-row {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      width: 100%;
+      padding: 0 1.1rem;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .btn-solid {
+      background: linear-gradient(135deg, #0f3d91 0%, #1e64d6 42%, #1e96fc 100%);
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(30, 100, 214, 0.22);
+    }
+
+    .btn-outline {
+      background: #fff;
+      border-color: #b7d7ff;
+      color: #1d4fa3;
+    }
+
+    .empty-state {
+      padding: 1rem 1.05rem;
+      border-radius: var(--radius-sm);
+      border: 1px dashed #cbd5e1;
+      background: #fff;
+      color: #526b88;
+      font-size: 1.02rem;
+    }
+
+    .footer {
+      padding: 1.6rem 0;
+      color: #dce8f5;
+      background: #112c40;
+      margin-top: 2rem;
+    }
+
+    .footer p { margin: 0; }
+
+    [hidden] { display: none !important; }
+
+    @media (max-width: 980px) {
+      .proposal-layout,
+      .snapshot {
+        grid-template-columns: 1fr;
+      }
+
+      .investment-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container { width: min(100% - 1.25rem, var(--max)); }
+      .proposal-shell { padding: 1rem 0 2.8rem; }
+      .frame-header,
+      .frame-main { padding: 1rem; }
+      .hero,
+      .card { padding: 1rem; }
+      .trust-chips { display: none; }
+      .hero-copy,
+      .section-intro,
+      .notes-card p,
+      .recommendations-list li,
+      .add-ons-list li,
+      .meta-list li,
+      .task-list li {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="proposal-shell" data-proposal-root>
+    <div class="container">
+      <div class="proposal-frame">
+        <header class="frame-header">
+          <div class="brand">
+            <img class="brand-logo" data-field-src="siteLogoUrl" data-field-alt="siteLogoAlt" alt="Handy Homes" hidden />
+            <div class="brand-title">Handy Homes</div>
+          </div>
+          <div class="trust-chips">
+            <span>Fully insured and vetted team</span>
+            <span>W2 Employees</span>
+            <span>Satisfaction Guarantee</span>
+            <span>Locally Owned &amp; Operated</span>
+          </div>
+        </header>
+
+        <div class="frame-main">
+          <section class="hero">
+            <p class="eyebrow">Prepared for <strong data-field="customerDisplayName"></strong></p>
+            <h1>Your Handyman Project Proposal</h1>
+            <p class="hero-copy">
+              We organized your project by area so it is easy to review what is included, while keeping the total simple and customer-friendly.
+            </p>
+            <div class="snapshot">
+              <article class="snapshot-card">
+                <p class="snapshot-label">Address</p>
+                <strong class="snapshot-value" data-field="address"></strong>
+              </article>
+              <article class="snapshot-card">
+                <p class="snapshot-label">Prepared On</p>
+                <strong class="snapshot-value" data-field="preparedOn"></strong>
+              </article>
+              <article class="snapshot-card">
+                <p class="snapshot-label">Status</p>
+                <strong class="snapshot-value" data-field="proposalStatus"></strong>
+              </article>
+              <article class="snapshot-card">
+                <p class="snapshot-label">Quote ID</p>
+                <strong class="snapshot-value" data-field="quoteId"></strong>
+              </article>
+            </div>
+          </section>
+
+          <section class="proposal-layout">
+            <div class="work-summary">
+              <article class="card">
+                <p class="label">Work Summary</p>
+                <h2>Organized by area</h2>
+                <p class="section-intro">Each area below shows the work included in this project, written in plain customer-friendly language.</p>
+                <div data-list="areas"></div>
+                <div class="empty-state" data-empty-areas hidden>No scoped work has been added to this proposal yet.</div>
+              </article>
+
+              <article class="notes-card" data-section="serviceNotes" hidden>
+                <p class="label">Service Notes</p>
+                <p data-field="serviceNotes"></p>
+              </article>
+
+              <article class="notes-card" data-section="recommendations" hidden>
+                <p class="label">Recommendations</p>
+                <ul class="recommendations-list" data-list="recommendations"></ul>
+              </article>
+
+              <article class="add-ons-card" data-section="optionalAddOns" hidden>
+                <p class="label">Optional Add-Ons</p>
+                <ul class="add-ons-list" data-list="optionalAddOns"></ul>
+              </article>
+            </div>
+
+            <aside class="card investment-card">
+              <p class="label">Total Investment</p>
+              <h2>One simple project total</h2>
+              <span class="investment-total" data-field="totalProjectPrice"></span>
+              <p class="investment-subnote" data-field="includesLaborAndMaterialsLabel"></p>
+              <div class="investment-divider"></div>
+              <ul class="meta-list">
+                <li>Area-based scope organized clearly for easy review</li>
+                <li>No hidden work summary details removed from the final project scope</li>
+                <li>Customer-safe presentation powered by Salesforce quote data</li>
+              </ul>
+              <div class="status-chip" data-field="membershipStatusLabel" hidden></div>
+              <div class="cta-row">
+                <a class="btn btn-solid" href="https://hello.handyhomes.com">Approve This Proposal</a>
+                <a class="btn btn-outline" href="https://hello.handyhomes.com">Ask a Question</a>
+              </div>
+            </aside>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Handy Homes</p>
+      <p>Customer-facing proposal view only. Estimate creation and pricing happen upstream in Salesforce or another internal estimating app.</p>
+    </div>
+  </footer>
+
+  <script id="proposal-data" type="application/json">
+    {
+      "siteSettings": {
+        "logoUrl": "https://cdn.prod.website-files.com/65a24f4a53a920f4f8e703a7/65a253211bf69dac46c8de8f_Handy-Homes-Logo-01.avif",
+        "logoAlt": "Handy Homes"
+      },
+      "proposal": {
+        "quoteId": "HH-HM-2041",
+        "shareToken": "signed-share-token-from-salesforce",
+        "customer": {
+          "displayName": "Smith Residence",
+          "address": "6 Bernard Drive, Holmdel, NJ"
+        },
+        "membershipStatus": "non-member",
+        "proposalStatus": "Estimate Ready",
+        "preparedOn": "2026-03-18",
+        "totalProjectPrice": 495,
+        "includesLaborAndMaterials": true,
+        "serviceNotes": "The scope below is organized by area for easy review. Final pricing has already been calculated upstream by Salesforce and includes labor and approved materials.",
+        "recommendations": [
+          "Repair and patch hallway drywall before painting or finish touch-ups.",
+          "Address the first-floor bedroom closet adjustment now to prevent recurring door alignment issues."
+        ],
+        "optionalAddOns": [
+          "While we are onsite, we can also tighten nearby door hardware and touch up minor wall dings in adjacent spaces."
+        ],
+        "areas": [
+          {
+            "areaType": "Hallway",
+            "areaName": "Main Hallway",
+            "tasks": [
+              {
+                "taskName": "Drywall Repair",
+                "customerDescription": "Repair and patch damaged drywall in the hallway."
+              }
+            ]
+          },
+          {
+            "areaType": "Bedroom",
+            "areaName": "First Floor Bedroom",
+            "tasks": [
+              {
+                "taskName": "Closet Repair",
+                "customerDescription": "Repair and adjust the bedroom closet so it opens and closes properly."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  </script>
+
+  <!--
+    Salesforce integration contract for this customer-facing view:
+    - This file is presentation-only. It must not create, edit, or price estimates.
+    - Salesforce or another internal app builds the estimate and resolves the share token.
+    - This page should receive a normalized payload shaped like:
+      ProposalViewPayload {
+        quoteId: string
+        shareToken: string
+        customer: {
+          displayName: string
+          address?: string
+        }
+        membershipStatus?: string
+        proposalStatus?: string
+        preparedOn?: string
+        totalProjectPrice: number
+        includesLaborAndMaterials?: boolean
+        serviceNotes?: string
+        recommendations?: string[]
+        optionalAddOns?: string[]
+        areas: ProposalArea[]
+      }
+
+      ProposalArea {
+        areaType: string
+        areaName?: string
+        tasks: ProposalTask[]
+      }
+
+      ProposalTask {
+        taskName: string
+        customerDescription?: string
+      }
+
+    Rendering rules:
+    - Prefer task.customerDescription over task.taskName.
+    - Prefer area.areaName over area.areaType for the customer heading.
+    - Hide areas with no tasks.
+    - Hide optional sections when data is absent.
+    - Never expose labor hours, rates, material pricing, or internal operational fields in this renderer.
+  -->
+
+  <script>
+    function formatCurrency(amount) {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0
+      }).format(Number(amount) || 0);
+    }
+
+    function formatDate(value) {
+      const date = value ? new Date(value) : new Date();
+      if (Number.isNaN(date.getTime())) return '';
+      return date.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      });
+    }
+
+    function cleanTaskName(value) {
+      return String(value || '')
+        .replace(/[_-]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .replace(/\b\w/g, (match) => match.toUpperCase());
+    }
+
+    function getAreaHeading(area) {
+      return String(area?.areaName || area?.areaType || '').trim();
+    }
+
+    function getTaskDescription(task) {
+      const preferred = String(task?.customerDescription || '').trim();
+      if (preferred) return preferred;
+      return cleanTaskName(task?.taskName);
+    }
+
+    function setupProposalView() {
+      const dataNode = document.getElementById('proposal-data');
+      if (!dataNode) return;
+
+      let parsed;
+      try {
+        parsed = JSON.parse(dataNode.textContent);
+      } catch (error) {
+        console.error('Invalid proposal payload', error);
+        return;
+      }
+
+      const siteSettings = parsed.siteSettings || {};
+      const proposal = parsed.proposal || {};
+      const customer = proposal.customer || {};
+
+      const fieldMap = {
+        customerDisplayName: customer.displayName || 'Customer',
+        address: customer.address || 'Address available upon request',
+        proposalStatus: proposal.proposalStatus || 'Estimate Ready',
+        preparedOn: formatDate(proposal.preparedOn),
+        quoteId: proposal.quoteId || 'Proposal',
+        totalProjectPrice: formatCurrency(proposal.totalProjectPrice),
+        includesLaborAndMaterialsLabel: proposal.includesLaborAndMaterials ? 'Includes labor and materials' : '',
+        serviceNotes: proposal.serviceNotes || ''
+      };
+
+      Object.entries(fieldMap).forEach(([key, value]) => {
+        document.querySelectorAll(`[data-field="${key}"]`).forEach((node) => {
+          node.textContent = String(value);
+        });
+      });
+
+      document.querySelectorAll('[data-field-src="siteLogoUrl"]').forEach((node) => {
+        if (!(node instanceof HTMLImageElement)) return;
+        if (siteSettings.logoUrl) {
+          node.src = siteSettings.logoUrl;
+          node.hidden = false;
+        }
+      });
+
+      document.querySelectorAll('[data-field-alt="siteLogoAlt"]').forEach((node) => {
+        if (!(node instanceof HTMLImageElement)) return;
+        if (siteSettings.logoAlt) {
+          node.alt = siteSettings.logoAlt;
+        }
+      });
+
+      const membershipNode = document.querySelector('[data-field="membershipStatusLabel"]');
+      if (membershipNode && proposal.membershipStatus) {
+        membershipNode.hidden = false;
+        membershipNode.textContent = proposal.membershipStatus === 'member'
+          ? 'Member pricing already applied'
+          : 'Customer-safe total from Salesforce';
+      }
+
+      const areasNode = document.querySelector('[data-list="areas"]');
+      const emptyAreasNode = document.querySelector('[data-empty-areas]');
+      const areas = Array.isArray(proposal.areas) ? proposal.areas : [];
+      const renderableAreas = areas
+        .map((area) => ({
+          ...area,
+          heading: getAreaHeading(area),
+          tasks: Array.isArray(area.tasks)
+            ? area.tasks
+                .map((task) => ({
+                  ...task,
+                  description: getTaskDescription(task)
+                }))
+                .filter((task) => task.description)
+            : []
+        }))
+        .filter((area) => area.heading && area.tasks.length);
+
+      if (areasNode) {
+        if (renderableAreas.length) {
+          areasNode.innerHTML = renderableAreas.map((area) => `
+            <article class="area-card">
+              <h3>${area.heading}</h3>
+              ${area.areaName && area.areaType && area.areaName !== area.areaType ? `<p class="area-type">${area.areaType}</p>` : ''}
+              <ul class="task-list">
+                ${area.tasks.map((task) => `<li>${task.description}</li>`).join('')}
+              </ul>
+            </article>
+          `).join('');
+          if (emptyAreasNode) emptyAreasNode.hidden = true;
+        } else {
+          areasNode.innerHTML = '';
+          if (emptyAreasNode) emptyAreasNode.hidden = false;
+        }
+      }
+
+      const optionalSections = [
+        {
+          key: 'serviceNotes',
+          section: document.querySelector('[data-section="serviceNotes"]'),
+          hasContent: Boolean(String(proposal.serviceNotes || '').trim())
+        },
+        {
+          key: 'recommendations',
+          section: document.querySelector('[data-section="recommendations"]'),
+          hasContent: Array.isArray(proposal.recommendations) && proposal.recommendations.length,
+          listNode: document.querySelector('[data-list="recommendations"]'),
+          values: proposal.recommendations || []
+        },
+        {
+          key: 'optionalAddOns',
+          section: document.querySelector('[data-section="optionalAddOns"]'),
+          hasContent: Array.isArray(proposal.optionalAddOns) && proposal.optionalAddOns.length,
+          listNode: document.querySelector('[data-list="optionalAddOns"]'),
+          values: proposal.optionalAddOns || []
+        }
+      ];
+
+      optionalSections.forEach((entry) => {
+        if (!entry.section) return;
+        entry.section.hidden = !entry.hasContent;
+        if (entry.listNode && entry.hasContent) {
+          entry.listNode.innerHTML = entry.values
+            .map((item) => `<li>${String(item)}</li>`)
+            .join('');
+        }
+      });
+    }
+
+    setupProposalView();
+  </script>
+</body>
+</html>

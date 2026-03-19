@@ -2,7 +2,13 @@
 
 Shared home-service quote templates for Handy Homes.
 
-Branches are organized by quote family:
-- exterior-home-care-quote-template
-- handyman-quote
-- painting-quote
+Folders:
+- exterior-home-care/
+- handyman/
+- gutter-cleaning/
+- painting/
+
+Branches:
+- codex/exterior-home-care-quote-template
+- codex/handyman-quote
+- codex/painting-quote
