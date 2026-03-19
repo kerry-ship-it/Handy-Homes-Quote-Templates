@@ -475,6 +475,77 @@
       min-width: 0;
     }
 
+    .review-summary {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      margin-top: 1rem;
+      padding: 0.95rem 1rem;
+      border-radius: 18px;
+      border: 1px solid #dbe7f3;
+      background: rgba(255,255,255,0.88);
+    }
+
+    .review-stars {
+      color: #f59e0b;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      margin-top: 0.15rem;
+      white-space: nowrap;
+    }
+
+    .review-summary strong {
+      display: block;
+      color: #163a63;
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .review-summary p {
+      margin: 0.25rem 0 0;
+      color: #526b88;
+      font-size: 0.96rem;
+      line-height: 1.6;
+    }
+
+    .review-strip {
+      margin-top: 0.85rem;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .review-card {
+      padding: 0.95rem 1rem;
+      border-radius: 18px;
+      border: 1px solid #dbe7f3;
+      background: #fff;
+    }
+
+    .review-card-stars {
+      color: #f59e0b;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+
+    .review-card p {
+      margin: 0.55rem 0 0;
+      color: #526b88;
+      font-size: 0.96rem;
+      line-height: 1.65;
+      white-space: pre-line;
+    }
+
+    .review-card strong {
+      display: block;
+      margin-top: 0.75rem;
+      color: #163a63;
+      font-size: 0.92rem;
+      font-weight: 900;
+    }
+
     .selected-options {
       margin-top: 1rem;
       padding: 0.85rem 0.95rem;
@@ -521,6 +592,12 @@
       color: #526b88;
       font-size: 0.98rem;
       font-weight: 700;
+    }
+
+    .review-grid {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.7rem;
     }
 
     .add-ons-list li::before {
@@ -793,10 +870,18 @@
               </div>
               <div class="investment-divider"></div>
               <ul class="meta-list">
-                <li>Area-based scope organized clearly for easy review</li>
-                <li>No hidden work summary details removed from the final project scope</li>
-                <li>Customer-safe presentation powered by Salesforce quote data</li>
+                <li>Satisfaction guarantee</li>
+                <li>Fully insured with $2M liability and workers' comp</li>
+                <li>Skilled, vetted professionals</li>
               </ul>
+              <div class="review-summary">
+                <div class="review-stars" aria-hidden="true">★★★★★</div>
+                <div>
+                  <strong data-field="reviewSummary">4.9 average rating from local homeowners</strong>
+                  <p>Professional crews, clear communication, and quality work homeowners feel good recommending.</p>
+                </div>
+              </div>
+              <div class="review-grid" data-list="review-excerpts"></div>
               <div class="status-chip" data-field="membershipStatusLabel" hidden></div>
               <div class="cta-row">
                 <a class="btn btn-solid" href="https://hello.handyhomes.com">Approve This Proposal</a>
@@ -832,6 +917,8 @@
         "membershipStatus": "non-member",
         "proposalStatus": "Estimate Ready",
         "preparedOn": "2026-03-18",
+        "quoteType": "handyman",
+        "reviewSummary": "4.9 average rating from local homeowners",
         "totalProjectPrice": 495,
         "includesLaborAndMaterials": true,
         "projectSummary": "This project is organized by area so you can quickly see what is being repaired, the materials needed, and any follow-up items worth considering.",
@@ -891,6 +978,62 @@
             ]
           }
         ]
+      },
+      "reviewExcerpts": [
+        {
+          "quote": "The crew was professional, helpful, and explained everything clearly.",
+          "author": "Lorena C"
+        },
+        {
+          "quote": "Amazing job and such a pleasure to work with.",
+          "author": "Teresa M"
+        },
+        {
+          "quote": "From top to bottom they made the house sparkle.",
+          "author": "Kim D"
+        }
+      ],
+      "customerReviews": [
+        {
+          "quote": "The crew was professional, helpful, and explained everything clearly.",
+          "author": "Lorena C",
+          "rating": 5,
+          "categories": ["handyman"],
+          "quoteTypes": ["handyman"],
+          "approvedForProposal": true
+        },
+        {
+          "quote": "Amazing job and such a pleasure to work with.",
+          "author": "Teresa M",
+          "rating": 5,
+          "categories": ["handyman"],
+          "quoteTypes": ["handyman"],
+          "approvedForProposal": true
+        },
+        {
+          "quote": "From top to bottom they made the house sparkle.",
+          "author": "Kim D",
+          "rating": 5,
+          "categories": ["handyman"],
+          "quoteTypes": ["handyman"],
+          "approvedForProposal": true
+        }
+      ],
+      "testimonialsByQuoteType": {
+        "handyman": [
+          {
+            "quote": "The crew was professional, helpful, and explained everything clearly.",
+            "author": "Lorena C"
+          },
+          {
+            "quote": "Amazing job and such a pleasure to work with.",
+            "author": "Teresa M"
+          },
+          {
+            "quote": "From top to bottom they made the house sparkle.",
+            "author": "Kim D"
+          }
+        ]
       }
     }
   </script>
@@ -910,11 +1053,13 @@
         membershipStatus?: string
         proposalStatus?: string
         preparedOn?: string
+        quoteType?: string
         totalProjectPrice: number
         includesLaborAndMaterials?: boolean
         projectSummary?: string
         serviceNotes?: string
         materialsTitle?: string
+        reviewSummary?: string
         materials?: string[]
         options?: Array<{
           id: string
@@ -929,6 +1074,21 @@
           imageUrl: string
           imageAlt?: string
           caption?: string
+        }>
+        reviewExcerpts?: Array<{
+          quote: string
+          author?: string
+          authorName?: string
+        }>
+        customerReviews?: Array<{
+          quote: string
+          author?: string
+          authorName?: string
+          rating?: number
+          categories?: string[]
+          quoteTypes?: string[]
+          serviceSlugs?: string[]
+          approvedForProposal?: boolean
         }>
         areas: ProposalArea[]
       }
@@ -979,6 +1139,10 @@
         .replace(/\b\w/g, (match) => match.toUpperCase());
     }
 
+    function normalizeKey(value) {
+      return String(value || '').trim().toLowerCase();
+    }
+
     function getAreaHeading(area) {
       return String(area?.areaName || area?.areaType || '').trim();
     }
@@ -998,6 +1162,23 @@
       };
     }
 
+    function resolveReviews(config, quoteType) {
+      const reviews = Array.isArray(config.customerReviews) ? config.customerReviews : [];
+      const normalizedQuoteType = normalizeKey(quoteType);
+      const approvedReviews = reviews.filter((review) => {
+        const approved = review.approvedForProposal !== false;
+        const categories = Array.isArray(review.categories) ? review.categories.map(normalizeKey) : [];
+        const quoteTypes = Array.isArray(review.quoteTypes) ? review.quoteTypes.map(normalizeKey) : [];
+        return approved && categories.includes('handyman') && quoteTypes.includes(normalizedQuoteType);
+      });
+
+      if (approvedReviews.length) {
+        return approvedReviews;
+      }
+
+      return Array.isArray(config.reviewExcerpts) ? config.reviewExcerpts : [];
+    }
+
     function setupProposalView() {
       const dataNode = document.getElementById('proposal-data');
       if (!dataNode) return;
@@ -1013,6 +1194,7 @@
       const siteSettings = parsed.siteSettings || {};
       const proposal = parsed.proposal || {};
       const customer = proposal.customer || {};
+      const quoteType = proposal.quoteType || 'handyman';
 
       const fieldMap = {
         customerDisplayName: customer.displayName || 'Customer',
@@ -1024,7 +1206,8 @@
         includesLaborAndMaterialsLabel: proposal.includesLaborAndMaterials ? 'Includes labor and materials' : '',
         projectSummary: proposal.projectSummary || '',
         serviceNotes: proposal.serviceNotes || '',
-        materialsTitle: proposal.materialsTitle || 'Project Materials'
+        materialsTitle: proposal.materialsTitle || 'Project Materials',
+        reviewSummary: proposal.reviewSummary || '4.9 average rating from local homeowners'
       };
 
       Object.entries(fieldMap).forEach(([key, value]) => {
@@ -1208,6 +1391,20 @@
             </a>
           `).join('');
         }
+      }
+
+      const reviewList = document.querySelector('[data-list="review-excerpts"]');
+      const selectedReviews = resolveReviews(proposal, quoteType);
+      if (reviewList) {
+        reviewList.innerHTML = selectedReviews
+          .map((item) => `
+            <article class="review-card">
+              <div class="review-card-stars" aria-hidden="true">★★★★★</div>
+              <p>"${String(item.quote || '').trim()}"</p>
+              <strong>${String(item.author || item.authorName || 'Handy Homes homeowner').trim()}</strong>
+            </article>
+          `)
+          .join('');
       }
 
       if (optionsList) {
