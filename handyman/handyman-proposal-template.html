@@ -218,15 +218,28 @@
       gap: 1rem;
     }
 
+    .areas-grid {
+      display: grid;
+      gap: 1.1rem;
+      margin-top: 1rem;
+    }
+
     .area-card {
-      padding: 1rem 1.05rem;
+      padding: 1.1rem 1.05rem 1.05rem;
       border-radius: var(--radius-sm);
       border: 1px solid #e3edf7;
       background: var(--surface-soft);
     }
 
+    .area-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.85rem;
+    }
+
     .area-card h3 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: #163a63;
     }
 
@@ -236,11 +249,15 @@
       color: #163a63;
     }
 
-    .area-type {
-      margin: 0.15rem 0 0;
-      color: #526b88;
-      font-size: 0.96rem;
-      font-weight: 700;
+    .area-pill {
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: #e7f2ff;
+      border: 1px solid #c6e0ff;
+      color: #1d4fa3;
+      font-size: 0.82rem;
+      font-weight: 800;
+      white-space: nowrap;
     }
 
     .task-list {
@@ -252,27 +269,66 @@
     }
 
     .task-list li {
-      display: flex;
-      gap: 0.7rem;
-      align-items: flex-start;
       padding: 0.85rem 0.95rem;
       border-radius: 16px;
       background: #fff;
       border: 1px solid #dbe7f3;
-      color: #1f3a5c;
-      font-size: 1.04rem;
-      font-weight: 700;
       line-height: 1.55;
     }
 
-    .task-list li::before {
-      content: "";
-      width: 0.5rem;
-      height: 0.5rem;
-      flex: 0 0 0.5rem;
-      margin-top: 0.55rem;
-      border-radius: 999px;
-      background: #38bdf8;
+    .task-title {
+      color: #1f3a5c;
+      font-size: 1.04rem;
+      font-weight: 800;
+    }
+
+    .task-description {
+      margin-top: 0.2rem;
+      color: #70839a;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .recommendations-list li {
+      gap: 0.85rem;
+      padding: 0.9rem;
+    }
+
+    .recommendation-thumb {
+      display: block;
+      width: 5.25rem;
+      aspect-ratio: 4 / 3;
+      flex: 0 0 auto;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #dbe7f3;
+      background: #e2e8f0;
+    }
+
+    .recommendation-thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .recommendation-content {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .recommendation-title {
+      color: #1f3a5c;
+      font-size: 1.02rem;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .recommendation-description {
+      margin-top: 0.25rem;
+      color: #70839a;
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     .notes-card,
@@ -318,7 +374,6 @@
       background: #fff;
     }
 
-    .recommendations-list li::before,
     .add-ons-list li::before {
       content: "✓";
       color: #15803d;
@@ -479,6 +534,13 @@
       .hero,
       .card { padding: 1rem; }
       .trust-chips { display: none; }
+      .recommendation-item {
+        flex-direction: column;
+      }
+      .recommendation-thumb {
+        width: 100%;
+        max-width: 15rem;
+      }
       .hero-copy,
       .section-intro,
       .notes-card p,
@@ -541,11 +603,16 @@
           <section class="proposal-layout">
             <div class="work-summary">
               <article class="card">
-                <p class="label">Work Summary</p>
-                <h2>Organized by area</h2>
-                <p class="section-intro">Each area below shows the work included in this project, written in plain customer-friendly language.</p>
-                <div data-list="areas"></div>
+                <p class="label">Project Summary</p>
+                <p class="section-intro project-summary" data-field="projectSummary"></p>
+                <div class="areas-grid" data-list="areas"></div>
                 <div class="empty-state" data-empty-areas hidden>No scoped work has been added to this proposal yet.</div>
+              </article>
+
+              <article class="materials-card" data-section="materials" hidden>
+                <p class="label">Materials</p>
+                <h3 data-field="materialsTitle"></h3>
+                <ul class="materials-list" data-list="materials"></ul>
               </article>
 
               <article class="notes-card" data-section="serviceNotes" hidden>
@@ -561,12 +628,6 @@
               <article class="add-ons-card" data-section="optionalAddOns" hidden>
                 <p class="label">Optional Add-Ons</p>
                 <ul class="add-ons-list" data-list="optionalAddOns"></ul>
-              </article>
-
-              <article class="materials-card" data-section="materials" hidden>
-                <p class="label">Materials</p>
-                <h3 data-field="materialsTitle"></h3>
-                <ul class="materials-list" data-list="materials"></ul>
               </article>
             </div>
 
@@ -618,7 +679,8 @@
         "preparedOn": "2026-03-18",
         "totalProjectPrice": 495,
         "includesLaborAndMaterials": true,
-        "serviceNotes": "The scope below is organized by area for easy review. Final pricing has already been calculated upstream by Salesforce and includes labor and approved materials.",
+        "projectSummary": "This project is organized by area so you can quickly see what is being repaired, the materials needed, and any follow-up items worth considering.",
+        "serviceNotes": "Final pricing has already been calculated upstream by Salesforce and includes labor and approved materials.",
         "materialsTitle": "Project Materials",
         "materials": [
           "Customer supplies: Paint",
@@ -627,8 +689,17 @@
           "Epoxy: $14"
         ],
         "recommendations": [
-          "Repair and patch hallway drywall before painting or finish touch-ups.",
-          "Address the first-floor bedroom closet adjustment now to prevent recurring door alignment issues."
+          {
+            "title": "Repair and patch hallway drywall before painting or finish touch-ups.",
+            "description": "This keeps the finish clean and avoids rework later.",
+            "imageUrl": "https://placehold.co/320x240/png?text=Hallway",
+            "imageAlt": "Hallway repair thumbnail"
+          },
+          {
+            "title": "Address the first-floor bedroom closet adjustment now.",
+            "imageUrl": "https://placehold.co/320x240/png?text=Bedroom",
+            "imageAlt": "Bedroom closet thumbnail"
+          }
         ],
         "optionalAddOns": [
           "While we are onsite, we can also tighten nearby door hardware and touch up minor wall dings in adjacent spaces."
@@ -649,8 +720,7 @@
             "areaName": "First Floor Bedroom",
             "tasks": [
               {
-                "taskName": "Closet Repair",
-                "customerDescription": "Repair and adjust the bedroom closet so it opens and closes properly."
+                "taskName": "Closet Repair"
               }
             ]
           }
@@ -676,10 +746,16 @@
         preparedOn?: string
         totalProjectPrice: number
         includesLaborAndMaterials?: boolean
+        projectSummary?: string
         serviceNotes?: string
         materialsTitle?: string
         materials?: string[]
-        recommendations?: string[]
+        recommendations?: Array<string | {
+          title: string
+          description?: string
+          imageUrl?: string
+          imageAlt?: string
+        }>
         optionalAddOns?: string[]
         areas: ProposalArea[]
       }
@@ -740,6 +816,19 @@
       return cleanTaskName(task?.taskName);
     }
 
+    function normalizeRecommendation(recommendation) {
+      if (typeof recommendation === 'string') {
+        return { title: recommendation };
+      }
+
+      return {
+        title: String(recommendation?.title || recommendation?.taskName || recommendation?.name || '').trim(),
+        description: String(recommendation?.description || recommendation?.customerDescription || '').trim(),
+        imageUrl: String(recommendation?.imageUrl || recommendation?.thumbnailUrl || '').trim(),
+        imageAlt: String(recommendation?.imageAlt || recommendation?.alt || recommendation?.title || 'Recommendation thumbnail').trim()
+      };
+    }
+
     function setupProposalView() {
       const dataNode = document.getElementById('proposal-data');
       if (!dataNode) return;
@@ -764,6 +853,7 @@
         quoteId: proposal.quoteId || 'Proposal',
         totalProjectPrice: formatCurrency(proposal.totalProjectPrice),
         includesLaborAndMaterialsLabel: proposal.includesLaborAndMaterials ? 'Includes labor and materials' : '',
+        projectSummary: proposal.projectSummary || '',
         serviceNotes: proposal.serviceNotes || '',
         materialsTitle: proposal.materialsTitle || 'Project Materials'
       };
@@ -808,9 +898,10 @@
             ? area.tasks
                 .map((task) => ({
                   ...task,
+                  title: String(task?.taskName || task?.title || '').trim(),
                   description: getTaskDescription(task)
                 }))
-                .filter((task) => task.description)
+                .filter((task) => task.title || task.description)
             : []
         }))
         .filter((area) => area.heading && area.tasks.length);
@@ -819,10 +910,17 @@
         if (renderableAreas.length) {
           areasNode.innerHTML = renderableAreas.map((area) => `
             <article class="area-card">
-              <h3>${area.heading}</h3>
-              ${area.areaName && area.areaType && area.areaName !== area.areaType ? `<p class="area-type">${area.areaType}</p>` : ''}
+              <div class="area-head">
+                <h3>${area.heading}</h3>
+                ${area.areaType ? `<span class="area-pill">${area.areaType}</span>` : ''}
+              </div>
               <ul class="task-list">
-                ${area.tasks.map((task) => `<li>${task.description}</li>`).join('')}
+                ${area.tasks.map((task) => `
+                  <li class="task-item">
+                    <div class="task-title">${task.title || task.description}</div>
+                    ${task.description && task.description !== task.title ? `<div class="task-description">${task.description}</div>` : ''}
+                  </li>
+                `).join('')}
               </ul>
             </article>
           `).join('');
@@ -838,13 +936,6 @@
           key: 'serviceNotes',
           section: document.querySelector('[data-section="serviceNotes"]'),
           hasContent: Boolean(String(proposal.serviceNotes || '').trim())
-        },
-        {
-          key: 'recommendations',
-          section: document.querySelector('[data-section="recommendations"]'),
-          hasContent: Array.isArray(proposal.recommendations) && proposal.recommendations.length,
-          listNode: document.querySelector('[data-list="recommendations"]'),
-          values: proposal.recommendations || []
         },
         {
           key: 'optionalAddOns',
@@ -871,6 +962,33 @@
             .join('');
         }
       });
+
+      const recommendationsSection = document.querySelector('[data-section="recommendations"]');
+      const recommendationsList = document.querySelector('[data-list="recommendations"]');
+      const recommendations = Array.isArray(proposal.recommendations) ? proposal.recommendations : [];
+      const renderedRecommendations = recommendations
+        .map((item) => normalizeRecommendation(item))
+        .filter((item) => item.title);
+
+      if (recommendationsSection) {
+        const hasRecommendations = renderedRecommendations.length > 0;
+        recommendationsSection.hidden = !hasRecommendations;
+        if (recommendationsList && hasRecommendations) {
+          recommendationsList.innerHTML = renderedRecommendations.map((item) => `
+            <li class="recommendation-item">
+              ${item.imageUrl ? `
+                <a class="recommendation-thumb" href="${item.imageUrl}" target="_blank" rel="noreferrer">
+                  <img src="${item.imageUrl}" alt="${item.imageAlt}" />
+                </a>
+              ` : ''}
+              <div class="recommendation-content">
+                <div class="recommendation-title">${item.title}</div>
+                ${item.description ? `<div class="recommendation-description">${item.description}</div>` : ''}
+              </div>
+            </li>
+          `).join('');
+        }
+      }
     }
 
     setupProposalView();
