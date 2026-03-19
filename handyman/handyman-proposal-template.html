@@ -294,24 +294,6 @@
       padding: 0.9rem;
     }
 
-    .option-thumb {
-      display: block;
-      width: 5.25rem;
-      aspect-ratio: 4 / 3;
-      flex: 0 0 auto;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid #dbe7f3;
-      background: #e2e8f0;
-    }
-
-    .option-thumb img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
     .option-content {
       min-width: 0;
       flex: 1 1 auto;
@@ -375,9 +357,68 @@
       line-height: 1.6;
     }
 
+    .photo-gallery {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid #dbe7f3;
+      background: #f8fbff;
+    }
+
+    .photo-gallery h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #163a63;
+    }
+
+    .photo-gallery-note {
+      margin: 0.4rem 0 0;
+      color: #526b88;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .photo-grid {
+      margin-top: 0.9rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .photo-card {
+      display: grid;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      border-radius: 18px;
+      border: 1px solid #dbe7f3;
+      background: #fff;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .photo-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid #dbe7f3;
+    }
+
+    .photo-card strong {
+      color: #1f3a5c;
+      font-size: 0.98rem;
+    }
+
+    .photo-card span {
+      color: #70839a;
+      font-size: 0.92rem;
+    }
+
     .notes-card,
     .materials-card,
-    .options-card {
+    .options-card,
+    .photo-gallery {
       margin-top: 1rem;
       padding: 1rem;
       border-radius: var(--radius-sm);
@@ -387,7 +428,8 @@
 
     .notes-card p,
     .options-list li,
-    .materials-list li {
+    .materials-list li,
+    .photo-gallery-note {
       margin: 0;
       color: #526b88;
       font-size: 1.02rem;
@@ -424,19 +466,6 @@
 
     .options-list li::before {
       content: none;
-    }
-
-    .option-select {
-      margin-left: auto;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .option-select input {
-      width: 1rem;
-      height: 1rem;
-      accent-color: #1e96fc;
     }
 
     .option-meta {
@@ -651,18 +680,17 @@
         flex-direction: column;
         align-items: stretch;
       }
-      .option-thumb {
-        width: 100%;
-        max-width: 15rem;
-      }
       .option-actions {
         justify-items: start;
+      }
+      .photo-grid {
+        grid-template-columns: 1fr;
       }
       .hero-copy,
       .section-intro,
       .notes-card p,
+      .photo-gallery-note,
       .options-list li,
-      .add-ons-list li,
       .meta-list li,
       .task-list li {
         font-size: 1rem;
@@ -742,6 +770,13 @@
                 <p class="options-note">Optional work you can add now. Select any item and the total will update automatically.</p>
                 <ul class="options-list" data-list="options"></ul>
               </article>
+
+              <article class="photo-gallery" data-section="projectPhotos" hidden>
+                <p class="label">Project Photos</p>
+                <h3>Open a thumbnail to view the project</h3>
+                <p class="photo-gallery-note">These thumbnails match the optional work above and open larger when clicked.</p>
+                <div class="photo-grid" data-list="projectPhotos"></div>
+              </article>
             </div>
 
             <aside class="card investment-card">
@@ -805,24 +840,34 @@
         "materials": [
           "Customer supplies: Paint",
           "Handy Homes supplies: 1 gal primer",
-          "Job supplies (plywood, shims, fasteners, drywall anchors, caulk, drywall compound, primer): $75",
-          "Epoxy: $14"
+          "Job supplies (plywood, shims, fasteners, drywall anchors, caulk, drywall compound, primer)",
+          "Epoxy"
         ],
         "options": [
           {
             "id": "hallway-drywall-touch-up",
             "title": "Repair and patch hallway drywall before painting or finish touch-ups.",
             "description": "This keeps the finish clean and avoids rework later.",
-            "price": 75,
-            "imageUrl": "https://placehold.co/320x240/png?text=Hallway",
-            "imageAlt": "Hallway repair thumbnail"
+            "price": 75
           },
           {
             "id": "bedroom-closet-adjustment",
             "title": "Address the first-floor bedroom closet adjustment now.",
-            "price": 95,
-            "imageUrl": "https://placehold.co/320x240/png?text=Bedroom",
-            "imageAlt": "Bedroom closet thumbnail"
+            "price": 95
+          }
+        ],
+        "projectPhotos": [
+          {
+            "title": "Hallway drywall repair",
+            "imageUrl": "https://placehold.co/640x480/png?text=Hallway",
+            "imageAlt": "Hallway repair photo",
+            "caption": "Open to view the hallway repair image."
+          },
+          {
+            "title": "Bedroom closet adjustment",
+            "imageUrl": "https://placehold.co/640x480/png?text=Bedroom",
+            "imageAlt": "Bedroom closet photo",
+            "caption": "Open to view the bedroom closet image."
           }
         ],
         "areas": [
@@ -878,6 +923,12 @@
           imageUrl?: string
           imageAlt?: string
           price?: number
+        }>
+        projectPhotos?: Array<{
+          title: string
+          imageUrl: string
+          imageAlt?: string
+          caption?: string
         }>
         areas: ProposalArea[]
       }
@@ -943,8 +994,6 @@
         id: String(option?.id || `option-${index}`).trim(),
         title: String(option?.title || option?.taskName || option?.name || '').trim(),
         description: String(option?.description || option?.customerDescription || '').trim(),
-        imageUrl: String(option?.imageUrl || option?.thumbnailUrl || '').trim(),
-        imageAlt: String(option?.imageAlt || option?.alt || option?.title || 'Option thumbnail').trim(),
         price: Number(option?.price || 0) || 0
       };
     }
@@ -1080,10 +1129,21 @@
       const optionsList = document.querySelector('[data-list="options"]');
       const selectedOptionsNode = document.querySelector('[data-selected-options]');
       const selectedOptionsList = document.querySelector('[data-list="selectedOptions"]');
+      const projectPhotosSection = document.querySelector('[data-section="projectPhotos"]');
+      const projectPhotosList = document.querySelector('[data-list="projectPhotos"]');
       const options = Array.isArray(proposal.options) ? proposal.options : [];
+      const projectPhotos = Array.isArray(proposal.projectPhotos) ? proposal.projectPhotos : [];
       const renderableOptions = options
         .map((option, index) => normalizeOption(option, index))
         .filter((option) => option.title);
+      const renderableProjectPhotos = projectPhotos
+        .map((photo, index) => ({
+          title: String(photo?.title || `Project photo ${index + 1}`).trim(),
+          imageUrl: String(photo?.imageUrl || '').trim(),
+          imageAlt: String(photo?.imageAlt || photo?.title || 'Project photo').trim(),
+          caption: String(photo?.caption || '').trim()
+        }))
+        .filter((photo) => photo.title && photo.imageUrl);
       const selectedOptionIds = new Set();
       const optionMap = new Map(renderableOptions.map((option) => [option.id, option]));
       const baseTotal = Number(proposal.totalProjectPrice) || 0;
@@ -1119,11 +1179,6 @@
         if (optionsList && hasOptions) {
           optionsList.innerHTML = renderableOptions.map((option) => `
             <li class="option-item" data-option-id="${option.id}">
-              ${option.imageUrl ? `
-                <a class="option-thumb" href="${option.imageUrl}" target="_blank" rel="noreferrer">
-                  <img src="${option.imageUrl}" alt="${option.imageAlt}" />
-                </a>
-              ` : ''}
               <div class="option-content">
                 <div class="option-head">
                   <div class="option-meta">
@@ -1137,6 +1192,20 @@
                 <button class="option-add" type="button" data-option-toggle="${option.id}" aria-pressed="false">Add to quote</button>
               </div>
             </li>
+          `).join('');
+        }
+      }
+
+      if (projectPhotosSection) {
+        const hasProjectPhotos = renderableProjectPhotos.length > 0;
+        projectPhotosSection.hidden = !hasProjectPhotos;
+        if (projectPhotosList && hasProjectPhotos) {
+          projectPhotosList.innerHTML = renderableProjectPhotos.map((photo) => `
+            <a class="photo-card" href="${photo.imageUrl}" target="_blank" rel="noreferrer">
+              <img src="${photo.imageUrl}" alt="${photo.imageAlt}" />
+              <strong>${photo.title}</strong>
+              ${photo.caption ? `<span>${photo.caption}</span>` : ''}
+            </a>
           `).join('');
         }
       }
