@@ -289,12 +289,12 @@
       font-weight: 600;
     }
 
-    .recommendations-list li {
+    .options-list li {
       gap: 0.85rem;
       padding: 0.9rem;
     }
 
-    .recommendation-thumb {
+    .option-thumb {
       display: block;
       width: 5.25rem;
       aspect-ratio: 4 / 3;
@@ -305,35 +305,79 @@
       background: #e2e8f0;
     }
 
-    .recommendation-thumb img {
+    .option-thumb img {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .recommendation-content {
+    .option-content {
       min-width: 0;
       flex: 1 1 auto;
     }
 
-    .recommendation-title {
+    .option-title {
       color: #1f3a5c;
       font-size: 1.02rem;
       font-weight: 800;
       line-height: 1.45;
     }
 
-    .recommendation-description {
+    .option-description {
       margin-top: 0.25rem;
       color: #70839a;
       font-size: 0.95rem;
       line-height: 1.6;
     }
 
+    .option-price {
+      color: #163a63;
+      font-size: 1rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .option-add {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 0.95rem;
+      border-radius: 14px;
+      border: 1px solid #b7d7ff;
+      background: #fff;
+      color: #1d4fa3;
+      font-size: 0.92rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .option-add.is-selected {
+      background: linear-gradient(135deg, #0f3d91 0%, #1e64d6 42%, #1e96fc 100%);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 12px 28px rgba(30, 100, 214, 0.22);
+    }
+
+    .options-card {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid #dbe7f3;
+      background: #f8fbff;
+    }
+
+    .options-note {
+      margin: 0.65rem 0 0;
+      color: #526b88;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
     .notes-card,
-    .add-ons-card,
-    .materials-card {
+    .materials-card,
+    .options-card {
       margin-top: 1rem;
       padding: 1rem;
       border-radius: var(--radius-sm);
@@ -342,8 +386,7 @@
     }
 
     .notes-card p,
-    .recommendations-list li,
-    .add-ons-list li,
+    .options-list li,
     .materials-list li {
       margin: 0;
       color: #526b88;
@@ -352,8 +395,7 @@
       white-space: pre-line;
     }
 
-    .recommendations-list,
-    .add-ons-list,
+    .options-list,
     .materials-list {
       list-style: none;
       padding: 0;
@@ -362,8 +404,7 @@
       gap: 0.7rem;
     }
 
-    .recommendations-list li,
-    .add-ons-list li,
+    .options-list li,
     .materials-list li {
       display: flex;
       gap: 0.7rem;
@@ -374,18 +415,90 @@
       background: #fff;
     }
 
-    .add-ons-list li::before {
-      content: "✓";
-      color: #15803d;
-      font-weight: 900;
-      margin-top: 0.05rem;
-    }
-
     .materials-list li::before {
       content: "•";
       color: #1e96fc;
       font-weight: 900;
       margin-top: 0.02rem;
+    }
+
+    .options-list li::before {
+      content: none;
+    }
+
+    .option-select {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .option-select input {
+      width: 1rem;
+      height: 1rem;
+      accent-color: #1e96fc;
+    }
+
+    .option-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 0;
+    }
+
+    .selected-options {
+      margin-top: 1rem;
+      padding: 0.85rem 0.95rem;
+      border-radius: 18px;
+      border: 1px solid #dbe7f3;
+      background: rgba(255,255,255,0.88);
+    }
+
+    .selected-options h3 {
+      margin: 0 0 0.7rem;
+      font-size: 1rem;
+      color: #163a63;
+    }
+
+    .selected-options ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .selected-options li {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      color: #526b88;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .selected-options li span:last-child {
+      color: #163a63;
+      white-space: nowrap;
+    }
+
+    .base-total {
+      display: grid;
+      gap: 0.3rem;
+      margin-top: 0.8rem;
+    }
+
+    .base-total .label-line {
+      color: #526b88;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .add-ons-list li::before {
+      content: "✓";
+      color: #15803d;
+      font-weight: 900;
+      margin-top: 0.05rem;
     }
 
     .investment-card {
@@ -534,17 +647,21 @@
       .hero,
       .card { padding: 1rem; }
       .trust-chips { display: none; }
-      .recommendation-item {
+      .option-item {
         flex-direction: column;
+        align-items: stretch;
       }
-      .recommendation-thumb {
+      .option-thumb {
         width: 100%;
         max-width: 15rem;
+      }
+      .option-actions {
+        justify-items: start;
       }
       .hero-copy,
       .section-intro,
       .notes-card p,
-      .recommendations-list li,
+      .options-list li,
       .add-ons-list li,
       .meta-list li,
       .task-list li {
@@ -620,22 +737,25 @@
                 <p data-field="serviceNotes"></p>
               </article>
 
-              <article class="notes-card" data-section="recommendations" hidden>
-                <p class="label">Recommendations</p>
-                <ul class="recommendations-list" data-list="recommendations"></ul>
-              </article>
-
-              <article class="add-ons-card" data-section="optionalAddOns" hidden>
-                <p class="label">Optional Add-Ons</p>
-                <ul class="add-ons-list" data-list="optionalAddOns"></ul>
+              <article class="options-card" data-section="options" hidden>
+                <p class="label">Options</p>
+                <p class="options-note">Optional work you can add now. Select any item and the total will update automatically.</p>
+                <ul class="options-list" data-list="options"></ul>
               </article>
             </div>
 
             <aside class="card investment-card">
               <p class="label">Total Investment</p>
               <h2>One simple project total</h2>
-              <span class="investment-total" data-field="totalProjectPrice"></span>
+              <div class="base-total">
+                <span class="label-line">Base project total</span>
+                <span class="investment-total" data-field="totalProjectPrice"></span>
+              </div>
               <p class="investment-subnote" data-field="includesLaborAndMaterialsLabel"></p>
+              <div class="selected-options" data-selected-options hidden>
+                <h3>Added options</h3>
+                <ul data-list="selectedOptions"></ul>
+              </div>
               <div class="investment-divider"></div>
               <ul class="meta-list">
                 <li>Area-based scope organized clearly for easy review</li>
@@ -688,21 +808,22 @@
           "Job supplies (plywood, shims, fasteners, drywall anchors, caulk, drywall compound, primer): $75",
           "Epoxy: $14"
         ],
-        "recommendations": [
+        "options": [
           {
+            "id": "hallway-drywall-touch-up",
             "title": "Repair and patch hallway drywall before painting or finish touch-ups.",
             "description": "This keeps the finish clean and avoids rework later.",
+            "price": 75,
             "imageUrl": "https://placehold.co/320x240/png?text=Hallway",
             "imageAlt": "Hallway repair thumbnail"
           },
           {
+            "id": "bedroom-closet-adjustment",
             "title": "Address the first-floor bedroom closet adjustment now.",
+            "price": 95,
             "imageUrl": "https://placehold.co/320x240/png?text=Bedroom",
             "imageAlt": "Bedroom closet thumbnail"
           }
-        ],
-        "optionalAddOns": [
-          "While we are onsite, we can also tighten nearby door hardware and touch up minor wall dings in adjacent spaces."
         ],
         "areas": [
           {
@@ -750,13 +871,14 @@
         serviceNotes?: string
         materialsTitle?: string
         materials?: string[]
-        recommendations?: Array<string | {
+        options?: Array<{
+          id: string
           title: string
           description?: string
           imageUrl?: string
           imageAlt?: string
+          price?: number
         }>
-        optionalAddOns?: string[]
         areas: ProposalArea[]
       }
 
@@ -816,16 +938,14 @@
       return cleanTaskName(task?.taskName);
     }
 
-    function normalizeRecommendation(recommendation) {
-      if (typeof recommendation === 'string') {
-        return { title: recommendation };
-      }
-
+    function normalizeOption(option, index) {
       return {
-        title: String(recommendation?.title || recommendation?.taskName || recommendation?.name || '').trim(),
-        description: String(recommendation?.description || recommendation?.customerDescription || '').trim(),
-        imageUrl: String(recommendation?.imageUrl || recommendation?.thumbnailUrl || '').trim(),
-        imageAlt: String(recommendation?.imageAlt || recommendation?.alt || recommendation?.title || 'Recommendation thumbnail').trim()
+        id: String(option?.id || `option-${index}`).trim(),
+        title: String(option?.title || option?.taskName || option?.name || '').trim(),
+        description: String(option?.description || option?.customerDescription || '').trim(),
+        imageUrl: String(option?.imageUrl || option?.thumbnailUrl || '').trim(),
+        imageAlt: String(option?.imageAlt || option?.alt || option?.title || 'Option thumbnail').trim(),
+        price: Number(option?.price || 0) || 0
       };
     }
 
@@ -938,13 +1058,6 @@
           hasContent: Boolean(String(proposal.serviceNotes || '').trim())
         },
         {
-          key: 'optionalAddOns',
-          section: document.querySelector('[data-section="optionalAddOns"]'),
-          hasContent: Array.isArray(proposal.optionalAddOns) && proposal.optionalAddOns.length,
-          listNode: document.querySelector('[data-list="optionalAddOns"]'),
-          values: proposal.optionalAddOns || []
-        },
-        {
           key: 'materials',
           section: document.querySelector('[data-section="materials"]'),
           hasContent: Array.isArray(proposal.materials) && proposal.materials.length,
@@ -963,32 +1076,93 @@
         }
       });
 
-      const recommendationsSection = document.querySelector('[data-section="recommendations"]');
-      const recommendationsList = document.querySelector('[data-list="recommendations"]');
-      const recommendations = Array.isArray(proposal.recommendations) ? proposal.recommendations : [];
-      const renderedRecommendations = recommendations
-        .map((item) => normalizeRecommendation(item))
-        .filter((item) => item.title);
+      const optionsSection = document.querySelector('[data-section="options"]');
+      const optionsList = document.querySelector('[data-list="options"]');
+      const selectedOptionsNode = document.querySelector('[data-selected-options]');
+      const selectedOptionsList = document.querySelector('[data-list="selectedOptions"]');
+      const options = Array.isArray(proposal.options) ? proposal.options : [];
+      const renderableOptions = options
+        .map((option, index) => normalizeOption(option, index))
+        .filter((option) => option.title);
+      const selectedOptionIds = new Set();
+      const optionMap = new Map(renderableOptions.map((option) => [option.id, option]));
+      const baseTotal = Number(proposal.totalProjectPrice) || 0;
 
-      if (recommendationsSection) {
-        const hasRecommendations = renderedRecommendations.length > 0;
-        recommendationsSection.hidden = !hasRecommendations;
-        if (recommendationsList && hasRecommendations) {
-          recommendationsList.innerHTML = renderedRecommendations.map((item) => `
-            <li class="recommendation-item">
-              ${item.imageUrl ? `
-                <a class="recommendation-thumb" href="${item.imageUrl}" target="_blank" rel="noreferrer">
-                  <img src="${item.imageUrl}" alt="${item.imageAlt}" />
+      const updateTotals = () => {
+        const selectedOptions = renderableOptions.filter((option) => selectedOptionIds.has(option.id));
+        const optionsTotal = selectedOptions.reduce((sum, option) => sum + option.price, 0);
+        const total = baseTotal + optionsTotal;
+
+        document.querySelectorAll('[data-field="totalProjectPrice"]').forEach((node) => {
+          node.textContent = formatCurrency(total);
+        });
+
+        if (selectedOptionsNode && selectedOptionsList) {
+          if (selectedOptions.length) {
+            selectedOptionsNode.hidden = false;
+            selectedOptionsList.innerHTML = selectedOptions.map((option) => `
+              <li>
+                <span>${option.title}</span>
+                <span>+${formatCurrency(option.price)}</span>
+              </li>
+            `).join('');
+          } else {
+            selectedOptionsNode.hidden = true;
+            selectedOptionsList.innerHTML = '';
+          }
+        }
+      };
+
+      if (optionsSection) {
+        const hasOptions = renderableOptions.length > 0;
+        optionsSection.hidden = !hasOptions;
+        if (optionsList && hasOptions) {
+          optionsList.innerHTML = renderableOptions.map((option) => `
+            <li class="option-item" data-option-id="${option.id}">
+              ${option.imageUrl ? `
+                <a class="option-thumb" href="${option.imageUrl}" target="_blank" rel="noreferrer">
+                  <img src="${option.imageUrl}" alt="${option.imageAlt}" />
                 </a>
               ` : ''}
-              <div class="recommendation-content">
-                <div class="recommendation-title">${item.title}</div>
-                ${item.description ? `<div class="recommendation-description">${item.description}</div>` : ''}
+              <div class="option-content">
+                <div class="option-head">
+                  <div class="option-meta">
+                    <div class="option-title">${option.title}</div>
+                    ${option.description ? `<div class="option-description">${option.description}</div>` : ''}
+                  </div>
+                  <div class="option-price">${formatCurrency(option.price)}</div>
+                </div>
+              </div>
+              <div class="option-actions">
+                <button class="option-add" type="button" data-option-toggle="${option.id}" aria-pressed="false">Add to quote</button>
               </div>
             </li>
           `).join('');
         }
       }
+
+      if (optionsList) {
+        optionsList.querySelectorAll('[data-option-toggle]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const optionId = button.getAttribute('data-option-toggle');
+            if (!optionId || !optionMap.has(optionId)) return;
+            if (selectedOptionIds.has(optionId)) {
+              selectedOptionIds.delete(optionId);
+              button.classList.remove('is-selected');
+              button.setAttribute('aria-pressed', 'false');
+              button.textContent = 'Add to quote';
+            } else {
+              selectedOptionIds.add(optionId);
+              button.classList.add('is-selected');
+              button.setAttribute('aria-pressed', 'true');
+              button.textContent = 'Added';
+            }
+            updateTotals();
+          });
+        });
+      }
+
+      updateTotals();
     }
 
     setupProposalView();
