@@ -3,7 +3,7 @@
 Shared home-service quote templates for Handy Homes.
 
 Folders:
-- exterior-home-care/
+- exterior-home-care/ (contains `EHC Quote Template.html`)
 - handyman/
 - gutter-cleaning/
 - painting/
