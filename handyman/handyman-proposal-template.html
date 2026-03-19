@@ -69,17 +69,31 @@
       gap: 0.85rem;
     }
 
-    .brand-logo {
-      display: block;
-      width: auto;
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
       height: 3rem;
-      max-width: 220px;
-      object-fit: contain;
+      border-radius: 0.9rem;
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e96fc 100%);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      flex: 0 0 auto;
     }
 
     .brand-title {
       font-size: 1.3rem;
       font-weight: 800;
+    }
+
+    .brand-subtitle {
+      margin-top: 0.15rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
     }
 
     .trust-chips {
@@ -216,6 +230,12 @@
       color: #163a63;
     }
 
+    .materials-card h3 {
+      margin: 0.2rem 0 0.85rem;
+      font-size: 1.15rem;
+      color: #163a63;
+    }
+
     .area-type {
       margin: 0.15rem 0 0;
       color: #526b88;
@@ -256,7 +276,8 @@
     }
 
     .notes-card,
-    .add-ons-card {
+    .add-ons-card,
+    .materials-card {
       margin-top: 1rem;
       padding: 1rem;
       border-radius: var(--radius-sm);
@@ -266,7 +287,8 @@
 
     .notes-card p,
     .recommendations-list li,
-    .add-ons-list li {
+    .add-ons-list li,
+    .materials-list li {
       margin: 0;
       color: #526b88;
       font-size: 1.02rem;
@@ -275,7 +297,8 @@
     }
 
     .recommendations-list,
-    .add-ons-list {
+    .add-ons-list,
+    .materials-list {
       list-style: none;
       padding: 0;
       margin: 0;
@@ -284,7 +307,8 @@
     }
 
     .recommendations-list li,
-    .add-ons-list li {
+    .add-ons-list li,
+    .materials-list li {
       display: flex;
       gap: 0.7rem;
       align-items: flex-start;
@@ -300,6 +324,13 @@
       color: #15803d;
       font-weight: 900;
       margin-top: 0.05rem;
+    }
+
+    .materials-list li::before {
+      content: "•";
+      color: #1e96fc;
+      font-weight: 900;
+      margin-top: 0.02rem;
     }
 
     .investment-card {
@@ -466,8 +497,11 @@
       <div class="proposal-frame">
         <header class="frame-header">
           <div class="brand">
-            <img class="brand-logo" data-field-src="siteLogoUrl" data-field-alt="siteLogoAlt" alt="Handy Homes" hidden />
-            <div class="brand-title">Handy Homes</div>
+            <span class="brand-mark">HH</span>
+            <div>
+              <div class="brand-title">Handy Homes</div>
+              <div class="brand-subtitle">Handyman Proposal</div>
+            </div>
           </div>
           <div class="trust-chips">
             <span>Fully insured and vetted team</span>
@@ -528,6 +562,12 @@
                 <p class="label">Optional Add-Ons</p>
                 <ul class="add-ons-list" data-list="optionalAddOns"></ul>
               </article>
+
+              <article class="materials-card" data-section="materials" hidden>
+                <p class="label">Materials</p>
+                <h3 data-field="materialsTitle"></h3>
+                <ul class="materials-list" data-list="materials"></ul>
+              </article>
             </div>
 
             <aside class="card investment-card">
@@ -579,6 +619,13 @@
         "totalProjectPrice": 495,
         "includesLaborAndMaterials": true,
         "serviceNotes": "The scope below is organized by area for easy review. Final pricing has already been calculated upstream by Salesforce and includes labor and approved materials.",
+        "materialsTitle": "Project Materials",
+        "materials": [
+          "Customer supplies: Paint",
+          "Handy Homes supplies: 1 gal primer",
+          "Job supplies (plywood, shims, fasteners, drywall anchors, caulk, drywall compound, primer): $75",
+          "Epoxy: $14"
+        ],
         "recommendations": [
           "Repair and patch hallway drywall before painting or finish touch-ups.",
           "Address the first-floor bedroom closet adjustment now to prevent recurring door alignment issues."
@@ -630,6 +677,8 @@
         totalProjectPrice: number
         includesLaborAndMaterials?: boolean
         serviceNotes?: string
+        materialsTitle?: string
+        materials?: string[]
         recommendations?: string[]
         optionalAddOns?: string[]
         areas: ProposalArea[]
@@ -715,7 +764,8 @@
         quoteId: proposal.quoteId || 'Proposal',
         totalProjectPrice: formatCurrency(proposal.totalProjectPrice),
         includesLaborAndMaterialsLabel: proposal.includesLaborAndMaterials ? 'Includes labor and materials' : '',
-        serviceNotes: proposal.serviceNotes || ''
+        serviceNotes: proposal.serviceNotes || '',
+        materialsTitle: proposal.materialsTitle || 'Project Materials'
       };
 
       Object.entries(fieldMap).forEach(([key, value]) => {
@@ -802,6 +852,13 @@
           hasContent: Array.isArray(proposal.optionalAddOns) && proposal.optionalAddOns.length,
           listNode: document.querySelector('[data-list="optionalAddOns"]'),
           values: proposal.optionalAddOns || []
+        },
+        {
+          key: 'materials',
+          section: document.querySelector('[data-section="materials"]'),
+          hasContent: Array.isArray(proposal.materials) && proposal.materials.length,
+          listNode: document.querySelector('[data-list="materials"]'),
+          values: proposal.materials || []
         }
       ];
 
