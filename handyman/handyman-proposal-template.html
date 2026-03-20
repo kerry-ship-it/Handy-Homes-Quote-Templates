@@ -91,6 +91,17 @@
       font-weight: 800;
     }
 
+    .brand-contact {
+      margin-top: 0.18rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .brand-contact a {
+      color: inherit;
+    }
+
     .brand-subtitle {
       margin-top: 0.15rem;
       color: var(--muted);
@@ -247,15 +258,19 @@
 
     .materials-card {
       margin-top: 1rem;
-      padding: 0.95rem 1rem;
+      padding: 0.58rem 0.72rem;
       border-radius: var(--radius-sm);
       border: 1px solid #dbe7f3;
       background: #f8fbff;
     }
 
+    .materials-card .label {
+      margin-bottom: 4px;
+    }
+
     .materials-card h3 {
-      margin: 0.2rem 0 0.85rem;
-      font-size: 1.15rem;
+      margin: 0 0 6px;
+      font-size: 0.94rem;
       color: #163a63;
     }
 
@@ -338,24 +353,24 @@
 
     .options-list li {
       display: grid;
-      gap: 0.95rem;
-      padding: 1rem;
-      border-radius: 22px;
+      gap: 0.62rem;
+      padding: 0.78rem 0.85rem;
+      border-radius: 20px;
       background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
       border: 1px solid #dbe7f3;
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
     }
 
     .option-content {
       min-width: 0;
       display: grid;
-      gap: 0.8rem;
+      gap: 0.58rem;
       align-content: start;
     }
 
     .option-top {
       display: grid;
-      gap: 0.35rem;
+      gap: 0.22rem;
     }
 
     .option-title {
@@ -395,7 +410,7 @@
       justify-content: space-between;
       gap: 0.9rem;
       min-width: 0;
-      padding-top: 0.15rem;
+      padding-top: 0.08rem;
       border-top: 1px solid #e6eef8;
     }
 
@@ -449,17 +464,25 @@
 
     .options-card {
       margin-top: 1rem;
-      padding: 1.1rem;
+      padding: 0.62rem 0.72rem;
       border-radius: var(--radius-sm);
       border: 1px solid #dbe7f3;
       background: #f8fbff;
     }
 
+    .options-card .label {
+      margin-bottom: 4px;
+    }
+
     .options-note {
-      margin: 0.65rem 0 0;
+      margin: 0;
       color: #526b88;
-      font-size: 0.92rem;
-      line-height: 1.5;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    .options-list {
+      margin-top: 0.4rem;
     }
 
     .testimonial-row {
@@ -554,17 +577,19 @@
       font-size: 0.92rem;
     }
 
-    .materials-card,
-    .options-card,
     .testimonial-card,
     .options-list li,
     .materials-list li,
     .photo-gallery-note {
       margin: 0;
       color: #526b88;
-      font-size: 0.98rem;
-      line-height: 1.6;
-      white-space: pre-line;
+      font-size: 1.02rem;
+      line-height: 1.52;
+    }
+
+    .materials-card,
+    .options-card {
+      color: #526b88;
     }
 
     .options-list,
@@ -573,7 +598,7 @@
       padding: 0;
       margin: 0;
       display: grid;
-      gap: 0.7rem;
+      gap: 0.36rem;
     }
 
     .materials-list li {
@@ -584,13 +609,15 @@
 
     .materials-list {
       list-style: disc;
-      padding-left: 1.15rem;
-      gap: 0.55rem;
+      padding-left: 0.95rem;
+      gap: 0.1rem;
+      margin-top: 0;
     }
 
     .materials-list li {
-      font-size: 1.04rem;
-      line-height: 1.6;
+      font-size: 1.1rem;
+      line-height: 1.22;
+      padding: 0.05rem 0;
     }
 
     .btn-green {
@@ -748,19 +775,19 @@
     }
 
     .review-grid {
-      margin-top: 1rem;
+      margin-top: 0;
       display: grid;
       gap: 0.7rem;
     }
 
     .right-rail {
       display: grid;
-      gap: 1.25rem;
+      gap: 1rem;
       align-content: start;
     }
 
     .next-steps {
-      margin-top: 1rem;
+      margin-top: 0;
       padding: 0.95rem 1rem;
       border-radius: 18px;
       border: 1px solid #dbe7f3;
@@ -802,6 +829,7 @@
       border: 1px solid #b7d7ff;
       background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
       box-shadow: 0 12px 28px rgba(30, 100, 214, 0.1);
+      margin-top: 0;
     }
 
     .membership-highlight .label {
@@ -859,6 +887,8 @@
 
     .investment-card {
       position: static;
+      display: grid;
+      gap: 0.85rem;
       background: linear-gradient(180deg, #ffffff 0%, #f5faff 100%);
       border: 2px solid #9fd0ff;
       box-shadow: 0 14px 30px rgba(30,150,252,0.09);
@@ -875,14 +905,14 @@
     }
 
     .investment-subnote {
-      margin: 0.7rem 0 0;
+      margin: 0;
       color: #526b88;
       font-size: 1.04rem;
       line-height: 1.65;
     }
 
     .investment-review {
-      margin-top: 1rem;
+      margin-top: 0;
       padding: 0.95rem 1rem;
       border-radius: 18px;
       border: 1px solid #dbe7f3;
@@ -897,9 +927,7 @@
     }
 
     .investment-divider {
-      height: 1px;
-      margin: 1rem 0;
-      background: linear-gradient(90deg, rgba(151, 193, 255, 0) 0%, rgba(151, 193, 255, 1) 50%, rgba(151, 193, 255, 0) 100%);
+      display: none;
     }
 
     .meta-list {
@@ -934,7 +962,7 @@
     }
 
     .cta-row {
-      margin-top: 1rem;
+      margin-top: 0;
       display: grid;
       gap: 0.8rem;
     }
@@ -1058,6 +1086,7 @@
             </span>
             <div>
               <div class="brand-title">Handy Homes</div>
+              <div class="brand-contact"><a href="tel:18668372050">(866) 837-2050</a></div>
             </div>
           </div>
           <div class="trust-chips">
@@ -1170,7 +1199,7 @@
                   </ul>
                 </div>
                 <div class="cta-row">
-                  <a class="btn btn-solid" href="https://hello.handyhomes.com">Approve This Proposal</a>
+                  <a class="btn btn-green" href="https://hello.handyhomes.com">Approve This Proposal</a>
                   <a class="btn btn-outline" href="https://hello.handyhomes.com">Ask a Question</a>
                 </div>
               </aside>
@@ -1179,7 +1208,7 @@
                 <h3>Want your whole home maintained by pros?</h3>
                 <p data-field="membershipOfferDescription"></p>
                 <ul data-list="membership-included-items"></ul>
-                <a class="btn btn-green" href="https://hello.handyhomes.com" style="margin-top:0.65rem;">Learn more</a>
+                <a class="btn btn-solid" href="https://hello.handyhomes.com" style="margin-top:0.65rem;">Learn more</a>
               </div>
             </div>
           </section>
@@ -1246,12 +1275,12 @@
             "price": 75,
             "thumbnails": [
               {
-                "imageUrl": "https://placehold.co/160x160/png?text=Hallway+1",
-                "imageAlt": "Hallway drywall repair thumbnail"
+                "imageUrl": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=320&q=80",
+                "imageAlt": "Demo hallway interior wall thumbnail"
               },
               {
-                "imageUrl": "https://placehold.co/160x160/png?text=Hallway+2",
-                "imageAlt": "Hallway finish repair thumbnail"
+                "imageUrl": "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=320&q=80",
+                "imageAlt": "Demo repair and finish detail thumbnail"
               }
             ]
           },
@@ -1261,8 +1290,8 @@
             "price": 95,
             "thumbnails": [
               {
-                "imageUrl": "https://placehold.co/160x160/png?text=Closet+1",
-                "imageAlt": "Bedroom closet adjustment thumbnail"
+                "imageUrl": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=320&q=80",
+                "imageAlt": "Demo bedroom closet adjustment thumbnail"
               }
             ]
           }
@@ -1271,16 +1300,16 @@
           {
             "title": "Hallway drywall repair",
             "areaName": "Main Hallway",
-            "imageUrl": "https://placehold.co/640x480/png?text=Hallway",
-            "imageAlt": "Hallway repair photo",
-            "caption": "Open to view the hallway repair image."
+            "imageUrl": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1280&q=80",
+            "imageAlt": "Demo hallway repair photo",
+            "caption": "Demo photo only. Salesforce will supply project photos here later."
           },
           {
             "title": "Bedroom closet adjustment",
             "areaName": "First Floor Bedroom",
-            "imageUrl": "https://placehold.co/640x480/png?text=Bedroom",
-            "imageAlt": "Bedroom closet photo",
-            "caption": "Open to view the bedroom closet image."
+            "imageUrl": "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1280&q=80",
+            "imageAlt": "Demo bedroom closet photo",
+            "caption": "Demo photo only. Salesforce will supply project photos here later."
           }
         ],
         "areas": [
@@ -1776,7 +1805,7 @@
         `).join('');
       }
       if (reviewList) {
-        reviewList.innerHTML = selectedReviews
+        const reviewMarkup = selectedReviews
           .map((item) => `
             <article class="review-card">
               <div class="review-card-stars" aria-hidden="true">★★★★★</div>
@@ -1785,6 +1814,8 @@
             </article>
           `)
           .join('');
+        reviewList.innerHTML = reviewMarkup;
+        reviewList.hidden = !reviewMarkup;
       }
 
       if (optionsList) {

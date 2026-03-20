@@ -93,6 +93,15 @@
       box-shadow: 0 10px 24px rgba(30, 150, 252, 0.24);
     }
     .brand-title { font-size: 1.3rem; font-weight: 800; }
+    .brand-contact {
+      margin-top: 0.18rem;
+      color: #475569;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+    .brand-contact a {
+      color: inherit;
+    }
     .trust-chips {
       display: flex;
       flex-wrap: wrap;
@@ -749,6 +758,25 @@
       line-height: 1.6;
     }
     .review-card strong { display: block; margin-top: 0.8rem; }
+    .one-time-inline-reviews {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.85rem;
+    }
+    .one-time-inline-reviews .review-summary {
+      margin-top: 0;
+      padding: 0.9rem 1rem;
+      border-radius: 18px;
+      background: #f8fbff;
+      border: 1px solid #dbe7f3;
+    }
+    .one-time-inline-reviews .review-strip {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .one-time-inline-reviews .review-card {
+      background: #fff;
+    }
     .before-after-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .before-after-visuals {
       display: grid;
@@ -1097,6 +1125,9 @@
         height: 2.5rem;
         max-width: 180px;
       }
+      .brand-contact {
+        font-size: 0.88rem;
+      }
       .service-line, .before-after-row, .review-summary {
         grid-template-columns: 1fr;
       }
@@ -1127,6 +1158,7 @@
             <img class="brand-logo-image" data-field-src="siteLogoUrl" data-field-alt="siteLogoAlt" alt="Handy Homes" hidden />
             <div>
               <div class="brand-title">Handy Homes</div>
+              <div class="brand-contact"><a href="tel:18668372050">(866) 837-2050</a></div>
             </div>
           </div>
           <div class="trust-chips">
@@ -1200,6 +1232,16 @@
                 </ul>
               </div>
               <a class="btn btn-outline schedule-cta" href="https://hello.handyhomes.com" data-primary-cta>Book One-Time Service</a>
+              <div class="one-time-inline-reviews">
+                <div class="review-summary">
+                  <div class="review-stars" aria-hidden="true">★★★★★</div>
+                  <div>
+                    <strong data-field="reviewSummary">4.9 average rating from local homeowners</strong>
+                    <p>Homeowners consistently mention clear communication, dependable crews, and results they want to book again.</p>
+                  </div>
+                </div>
+                <div class="review-strip" data-list="review-excerpts-inline"></div>
+              </div>
             </article>
 
             <article class="card upgrade-card">
@@ -1554,8 +1596,8 @@
           "label": "House Soft Wash",
           "before": "Before soft washing: visible organic buildup and staining across the rear siding.",
           "after": "After soft washing: cleaner siding, brighter curb appeal, and a refreshed finish.",
-          "beforeImage": "/images/proposals/before-after/house-soft-wash/after.jpg",
-          "afterImage": "/images/proposals/before-after/house-soft-wash/before.jpg",
+          "beforeImage": "https://cdn.sanity.io/images/70gn5qln/production/05c07a5e70ca1f331c745da822e7b1502d98fdb8-1024x768.webp",
+          "afterImage": "https://cdn.sanity.io/images/70gn5qln/production/e5b5884f05299072cb6f00a6c0c0f72f3143405e-675x900.webp",
           "beforeAlt": "House soft wash before cleaning",
           "afterAlt": "House soft wash after cleaning",
           "cmsNote": "Attach the rear-elevation dirty siding photo as BEFORE and the cleaned rear-elevation photo as AFTER on the Sanity service record keyed by salesforceProductId SFDC-PRODUCT-HOUSE-SOFT-WASH."
@@ -1568,8 +1610,8 @@
           "label": "Walkways Cleaning",
           "before": "Before surface cleaning: darkened pavers with weeds and organic staining along the front path.",
           "after": "After surface cleaning: brighter walkways with cleaner joints, restored tone, and safer footing.",
-          "beforeImage": "/images/proposals/before-after/walkways-cleaning/before.jpg",
-          "afterImage": "/images/proposals/before-after/walkways-cleaning/after.jpg",
+          "beforeImage": "file:///Users/kerryancheta/Documents/Codex/My%20Apps/Website%20Exterior/images/proposals/before-after/walkways-cleaning/before.jpg",
+          "afterImage": "file:///Users/kerryancheta/Documents/Codex/My%20Apps/Website%20Exterior/images/proposals/before-after/walkways-cleaning/after.jpg",
           "beforeAlt": "Walkways before surface cleaning",
           "afterAlt": "Walkways after surface cleaning",
           "cmsNote": "Attach the weedy/darker walkway photo as BEFORE and the cleaned stone walkway photo as AFTER on the Sanity service record keyed by salesforceProductId SFDC-PRODUCT-WALKWAYS-CLEANING."
@@ -1594,7 +1636,7 @@
       reviews with `categories[]`, `quoteTypes[]`, `serviceSlugs[]`, `approvedForProposal`, `rating`, `authorName`, and `quote`.
     - CMS photo mapping for the attached examples in this proposal:
       - `house-soft-wash`: use the dirty rear-elevation siding photo as BEFORE and the cleaned rear-elevation siding photo as AFTER
-      - `walkways-cleaning`: use the weeded/darker stone walkway as BEFORE and the cleaned stone walkway as AFTER
+      - `walkways-cleaning`: no matching before/after pair was found in Sanity yet, so this demo currently uses the local walkway assets until CMS media is added
       - John can store those on the matching Sanity service records and keep the Salesforce linkage on `salesforceProductId`
     - Preferred mapping order:
       1. explicit per-quote override
@@ -1829,16 +1871,21 @@
 
       const reviewList = document.querySelector('[data-list="review-excerpts"]');
       const selectedReviews = resolveReviews(config, quoteType);
+      const reviewMarkup = selectedReviews
+        .map((item) => `
+          <article class="review-card">
+            <div class="review-card-stars" aria-hidden="true">★★★★★</div>
+            <p>"${item.quote}"</p>
+            <strong>${item.author || item.authorName || 'Handy Homes homeowner'}</strong>
+          </article>
+        `)
+        .join('');
       if (reviewList) {
-        reviewList.innerHTML = selectedReviews
-          .map((item) => `
-            <article class="review-card">
-              <div class="review-card-stars" aria-hidden="true">★★★★★</div>
-              <p>"${item.quote}"</p>
-              <strong>${item.author || item.authorName || 'Handy Homes homeowner'}</strong>
-            </article>
-          `)
-          .join('');
+        reviewList.innerHTML = reviewMarkup;
+      }
+      const inlineReviewList = document.querySelector('[data-list="review-excerpts-inline"]');
+      if (inlineReviewList) {
+        inlineReviewList.innerHTML = reviewMarkup;
       }
 
       const beforeAfterList = document.querySelector('[data-list="before-after-cards"]');
