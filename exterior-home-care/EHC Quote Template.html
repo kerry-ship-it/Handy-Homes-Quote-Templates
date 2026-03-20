@@ -333,6 +333,16 @@
       color: #0f4c81;
       box-shadow: 0 8px 18px rgba(30,150,252,0.12);
     }
+    a.membership-trigger {
+      background: linear-gradient(135deg, #166534 0%, #16a34a 52%, #34d399 100%);
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(22, 163, 74, 0.24);
+      border-color: transparent;
+    }
+    a.membership-trigger:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+    }
     .schedule-cta { margin-top: 1rem; }
     .schedule-cta.is-dimmed {
       opacity: 0.38;
@@ -411,6 +421,82 @@
     .upgrade-hero p { margin: 0.8rem 0 0; color: var(--muted); font-size: 1.12rem; line-height: 1.7; }
     .upgrade-toggle-wrap {
       margin-top: 1rem;
+    }
+    .upgrade-reassurance {
+      margin-top: 0.85rem;
+      padding: 0.95rem 1rem;
+      border-radius: var(--radius-sm);
+      background: #f8fafc;
+      border: 1px solid #dbe7f4;
+      color: #475569;
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+    .upgrade-reassurance strong {
+      color: #0f172a;
+      font-weight: 800;
+    }
+    .plan-explainer {
+      margin-top: 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid #dbe7f4;
+      background: rgba(255,255,255,0.88);
+      overflow: hidden;
+    }
+    .plan-explainer summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.95rem 1rem;
+      cursor: pointer;
+      font-weight: 800;
+      color: #0f4c81;
+    }
+    .plan-explainer summary::-webkit-details-marker {
+      display: none;
+    }
+    .plan-explainer summary::after {
+      content: "+";
+      color: #16a34a;
+      font-size: 1.2rem;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+    .plan-explainer[open] summary::after {
+      content: "−";
+    }
+    .plan-explainer-body {
+      padding: 0 1rem 1rem;
+      color: #526b88;
+      font-size: 0.98rem;
+      line-height: 1.65;
+      display: grid;
+      gap: 0.65rem;
+    }
+    .plan-explainer-body p {
+      margin: 0;
+    }
+    .plan-explainer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-weight: 800;
+    }
+    .plan-explainer-links button {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      color: #0f4c81;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 0.16em;
     }
     .upgrade-list {
       list-style: none;
@@ -1054,7 +1140,7 @@
         <div class="frame-main">
           <section class="hero-card">
             <p class="eyebrow eyebrow-prepared"><span>Prepared for</span> <strong data-field="customerLastNameResidence"></strong></p>
-            <h1>You Can Handle This Project Today…<br />Or Turn It Into Year-Round Home Care</h1>
+            <h1>Fix It Today — Or Never Worry About It Again</h1>
             <p class="hero-copy">
               Here’s your exterior cleaning quote — and a smarter way to maintain your entire home with one team.
             </p>
@@ -1113,7 +1199,7 @@
                   <li>Manage seasonal maintenance yourself</li>
                 </ul>
               </div>
-              <a class="btn btn-outline schedule-cta" href="https://hello.handyhomes.com" data-primary-cta>Start One-Time Service</a>
+              <a class="btn btn-outline schedule-cta" href="https://hello.handyhomes.com" data-primary-cta>Book One-Time Service</a>
             </article>
 
             <article class="card upgrade-card">
@@ -1144,17 +1230,30 @@
                   <span class="toggle-check" aria-hidden="true">✓</span>
                 </button>
               </div>
+              <div class="upgrade-reassurance">
+                <div><strong>The extra <span data-field="upgradeMonthlyExtraSlashLabel"></span></strong> adds ongoing home care, a dedicated handyman, preventive maintenance, and annual recurring service planning.</div>
+                <div>Not sure yet? We’ll walk the home with you first. If you decide it’s not the right fit, you can still move forward with today’s one-time service at <strong data-field="oneTimeTotal"></strong>.</div>
+              </div>
+              <details class="plan-explainer">
+                <summary>What does the extra <span data-field="upgradeMonthlyExtraSlashLabel"></span> include?</summary>
+                <div class="plan-explainer-body">
+                  <p>The monthly plan turns today’s exterior project into ongoing home care, so you get a dedicated handyman, preventive maintenance, and a plan that keeps key systems and seasonal needs from piling up.</p>
+                  <p>Your free Walk-Thru is where we tailor the plan to your home and answer questions before you commit to the long-term fit.</p>
+                  <p>If annual care is not the right fit after that, you can still keep the one-time service at <strong data-field="oneTimeTotal"></strong>.</p>
+                  <div class="plan-explainer-links">
+                    <button type="button" data-open-maintenance-modal>See what home maintenance includes</button>
+                  </div>
+                </div>
+              </details>
               <ul class="upgrade-list" data-list="top-membership-services"></ul>
-              <button class="btn btn-soft membership-trigger" type="button" data-open-maintenance-modal>
-                Tap to see what home maintenance includes
-              </button>
               <div class="next-steps">
                 <p>What happens next:</p>
                 <ol>
                   <li>We schedule your services listed above</li>
-                  <li>Schedule your free Walk-Thru</li>
-                  <li>Your handyman creates your home plan</li>
-                  <li>We handle your home year-round</li>
+                  <li>We schedule your free Walk-Thru</li>
+                  <li>Your handyman helps build the right home care plan for your property</li>
+                  <li>If you decide annual care is not the right fit, you can still proceed with the one-time service at <span data-field="oneTimeTotal"></span></li>
+                  <li>If it is the right fit, we handle your home year-round</li>
                 </ol>
               </div>
               <div class="app-list">
@@ -1260,7 +1359,7 @@
                 <h3>One-Time Service</h3>
                 <span class="checkout-price-main" data-field="oneTimeTotal"></span>
                 <div class="checkout-service-lines" data-list="checkout-one-time-services"></div>
-                <a class="btn btn-outline" href="https://hello.handyhomes.com">Schedule One-Time Service</a>
+                <a class="btn btn-outline" href="https://hello.handyhomes.com">Book One-Time Service</a>
               </article>
               <article class="checkout-item checkout-featured">
                 <span class="badge">Recommended</span>
@@ -1268,6 +1367,7 @@
                 <span class="checkout-price-main"><span data-field="oneTimeTotal"></span> today</span>
                 <span class="checkout-price-sub">+ <span data-field="upgradeMonthlyExtraSlashLabel"></span> ongoing</span>
                 <p class="checkout-copy">Complete today’s project now, then keep this handled every year and add ongoing care for the rest of the home.</p>
+                <p class="checkout-copy">Upgrade first, then confirm the right long-term plan during your Walk-Thru. If annual care is not the right fit, you can still keep the one-time service.</p>
                 <ul class="checkout-feature-list">
                   <li>Exterior cleaning project included now</li>
                   <li>Annual recurring care for key exterior services</li>
