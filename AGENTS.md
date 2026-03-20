@@ -17,6 +17,11 @@ Before closing any quote-template styling task:
 
 - Open the affected quote in a real browser.
 - Check desktop and mobile widths.
+- Always verify a phone-sized viewport, not just tablet or desktop.
+- Pay special attention to left/right padding and centering on mobile.
+- Verify `document.documentElement.scrollWidth` matches the mobile viewport width after layout changes.
+- If a grid or flex child is widening the page, add `min-width: 0` to the affected layout children before tuning padding.
+- On mobile, question whether an outer frame is helping or hurting. If it creates extra gutters or overflow, remove or flatten it instead of over-compressing the inner cards.
 - Inspect the spacing around every section you changed.
 - Verify no empty blocks are still taking up space.
 - Keep stacked right-rail modules on a consistent spacing rhythm unless the design intentionally calls for a larger separation.

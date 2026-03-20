@@ -201,6 +201,11 @@
       gap: 1rem;
       align-items: start;
     }
+    .frame-main > *,
+    .proposal-layout > *,
+    .testimonial-row > * {
+      min-width: 0;
+    }
 
     .card {
       min-width: 0;
@@ -1025,13 +1030,54 @@
     }
 
     @media (max-width: 620px) {
-      .container { width: min(100% - 0.75rem, var(--max)); }
-      .proposal-shell { padding: 0.6rem 0 2.4rem; }
-      .frame-header,
-      .frame-main { padding: 0.8rem; }
+      .container {
+        width: 100%;
+        max-width: none;
+        padding-inline: 0;
+      }
+      .proposal-shell { padding: 0 0 2.4rem; }
+      .proposal-frame {
+        border: 0;
+        background: transparent;
+        backdrop-filter: none;
+        box-shadow: none;
+        border-radius: 0;
+        overflow: visible;
+      }
+      .frame-header {
+        margin: 0.5rem 0.6rem 0;
+        padding: 0.7rem 0.8rem;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(255,255,255,0.88);
+      }
+      .frame-main {
+        padding: 0.5rem 0.6rem 0;
+        gap: 0.65rem;
+      }
       .hero,
-      .card { padding: 0.85rem; }
+      .card {
+        padding: 0.8rem;
+        border-radius: 22px;
+      }
       .trust-chips { display: none; }
+      .hero h1 {
+        font-size: clamp(1.55rem, 7vw, 2.1rem);
+        line-height: 1.08;
+      }
+      .hero-copy {
+        font-size: 0.98rem;
+        line-height: 1.42;
+      }
+      .snapshot {
+        padding: 0.45rem;
+      }
+      .snapshot-card {
+        padding: 0.7rem;
+      }
+      .snapshot-value {
+        font-size: 1rem;
+      }
       .option-actions {
         align-items: flex-start;
         flex-direction: column;
