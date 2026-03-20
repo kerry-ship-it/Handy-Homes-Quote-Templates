@@ -37,6 +37,7 @@
       color: var(--ink);
       font-family: Manrope, sans-serif;
       line-height: 1.55;
+      overflow-x: hidden;
     }
     h1, h2, h3 {
       margin: 0;
@@ -73,6 +74,13 @@
       align-items: center;
       gap: 0.75rem;
     }
+    .brand-logo-image {
+      display: block;
+      width: auto;
+      height: 3rem;
+      max-width: 220px;
+      object-fit: contain;
+    }
     .brand-mark {
       width: 44px;
       height: 44px;
@@ -84,8 +92,7 @@
       font-weight: 800;
       box-shadow: 0 10px 24px rgba(30, 150, 252, 0.24);
     }
-    .brand-title { font-size: 1.05rem; font-weight: 800; }
-    .brand-subtitle { color: var(--muted); font-size: 0.9rem; }
+    .brand-title { font-size: 1.3rem; font-weight: 800; }
     .trust-chips {
       display: flex;
       flex-wrap: wrap;
@@ -97,11 +104,12 @@
       background: #fff;
       border: 1px solid var(--line);
       color: #475569;
-      font-size: 0.76rem;
+      font-size: 0.88rem;
       font-weight: 700;
     }
     .frame-main { padding: 1.5rem; display: grid; gap: 1rem; }
     .hero-card {
+      position: relative;
       padding: 1.75rem;
       border-radius: var(--radius-md);
       background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #1e96fc 100%);
@@ -110,9 +118,18 @@
     .eyebrow {
       margin: 0 0 0.8rem;
       color: #dbeafe;
-      font-size: 0.82rem;
+      font-size: 0.94rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      font-weight: 800;
+    }
+    .eyebrow-prepared {
+      font-size: 1.18rem;
+      letter-spacing: 0;
+      text-transform: none;
+      font-weight: 500;
+    }
+    .eyebrow-prepared strong {
       font-weight: 800;
     }
     .hero-copy {
@@ -142,7 +159,7 @@
     .snapshot-label {
       margin: 0 0 0.35rem;
       color: #dbeafe;
-      font-size: 0.72rem;
+      font-size: 0.88rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
@@ -196,7 +213,7 @@
     }
     .label {
       margin: 0 0 0.35rem;
-      font-size: 0.75rem;
+      font-size: 0.88rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #0284c7;
@@ -205,7 +222,7 @@
     .price-summary { text-align: right; }
     .price-summary span {
       display: block;
-      font-size: 0.72rem;
+      font-size: 0.84rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--muted);
@@ -234,8 +251,24 @@
       display: block;
       margin-top: 0.3rem;
       color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
     }
     .service-line strong { font-size: 1.15rem; font-weight: 900; }
+    .service-notes {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid #dbe7f3;
+      background: #f8fbff;
+    }
+    .service-notes p {
+      margin: 0;
+      color: #526b88;
+      font-size: 1.08rem;
+      line-height: 1.65;
+      white-space: pre-line;
+    }
     .not-included {
       margin-top: 1rem;
       padding: 1rem;
@@ -255,6 +288,8 @@
       display: flex;
       gap: 0.6rem;
       color: #7f1d1d;
+      font-size: 1.08rem;
+      line-height: 1.55;
     }
     .not-included li::before {
       content: "×";
@@ -293,9 +328,10 @@
       box-shadow: 0 12px 28px rgba(30, 100, 214, 0.22);
     }
     .btn-soft {
-      background: #eef6ff;
-      border-color: rgba(30,150,252,0.2);
-      color: #0369a1;
+      background: linear-gradient(180deg, #f7fbff 0%, #eaf4ff 100%);
+      border-color: rgba(30,150,252,0.35);
+      color: #0f4c81;
+      box-shadow: 0 8px 18px rgba(30,150,252,0.12);
     }
     .schedule-cta { margin-top: 1rem; }
     .schedule-cta.is-dimmed {
@@ -312,18 +348,39 @@
       display: inline-flex;
       padding: 0.4rem 0.65rem;
       border-radius: 999px;
-      font-size: 0.76rem;
+      font-size: 0.88rem;
       font-weight: 800;
       margin-bottom: 0.65rem;
       background: #0284c7;
       color: #fff;
     }
     .upgrade-card .card-head {
-      align-items: flex-start;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
+      gap: 0.55rem 0.75rem;
+    }
+    .upgrade-card .card-head-copy {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      display: block;
+      width: 100%;
+    }
+    .upgrade-card .card-head .label {
+      margin: 0;
+    }
+    .upgrade-card .card-head h2 {
+      display: block;
+      width: 100%;
+      max-width: none;
+      margin-top: 0.18rem;
     }
     .upgrade-card .badge {
-      margin-bottom: 0;
-      margin-left: auto;
+      grid-column: 2;
+      grid-row: 1;
+      margin: 0;
+      justify-self: end;
+      align-self: start;
       flex: 0 0 auto;
     }
     .upgrade-hero {
@@ -333,7 +390,7 @@
       background: #fff;
       box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
     }
-    .upgrade-eyebrow { color: var(--muted); font-size: 0.9rem; }
+    .upgrade-eyebrow { color: var(--muted); font-size: 1.12rem; line-height: 1.6; }
     .upgrade-price {
       display: flex;
       align-items: end;
@@ -351,7 +408,7 @@
       font-size: 1.15rem;
       font-weight: 700;
     }
-    .upgrade-hero p { margin: 0.8rem 0 0; color: var(--muted); }
+    .upgrade-hero p { margin: 0.8rem 0 0; color: var(--muted); font-size: 1.12rem; line-height: 1.7; }
     .upgrade-toggle-wrap {
       margin-top: 1rem;
     }
@@ -371,6 +428,9 @@
       background: #fff;
       box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
       color: #334155;
+      font-size: 1.08rem;
+      line-height: 1.55;
+      font-weight: 700;
     }
     .upgrade-list li::before {
       content: "✓";
@@ -395,35 +455,52 @@
       gap: 1rem;
       padding: 1rem 1.1rem;
       border-radius: var(--radius-sm);
-      border: 1px solid rgba(30,150,252,0.2);
-      background: #fff;
+      border: 2px solid rgba(30,150,252,0.28);
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
       font: inherit;
       font-weight: 800;
       color: var(--ink);
       cursor: pointer;
+      box-shadow: 0 10px 22px rgba(30,150,252,0.08);
     }
     .toggle-copy {
       display: grid;
-      gap: 0.2rem;
+      gap: 0.25rem;
       text-align: left;
     }
+    .toggle-title {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .toggle-helper {
+      font-size: 0.98rem;
+      line-height: 1.5;
+      font-weight: 700;
+      color: #526b88;
+    }
     .toggle-check {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 1.85rem;
+      height: 1.85rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 999px;
-      background: #e2e8f0;
+      border-radius: 0.55rem;
+      border: 2px solid #b7d7ff;
+      background: #fff;
       color: transparent;
       transition: 0.2s ease;
+      flex: 0 0 1.85rem;
+      font-size: 1rem;
+      font-weight: 900;
     }
     .toggle.is-selected {
-      border-color: rgba(30,150,252,0.4);
-      box-shadow: 0 12px 24px rgba(30,150,252,0.12);
+      border-color: rgba(30,150,252,0.6);
+      box-shadow: 0 14px 28px rgba(30,150,252,0.16);
     }
     .toggle.is-selected .toggle-check {
       background: #0284c7;
+      border-color: #0284c7;
       color: #fff;
     }
     .upgrade-note {
@@ -449,7 +526,7 @@
     .next-steps p,
     .app-list p {
       margin: 0 0 0.5rem;
-      font-size: 0.8rem;
+      font-size: 0.96rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-weight: 800;
@@ -470,6 +547,8 @@
       display: flex;
       gap: 0.7rem;
       align-items: flex-start;
+      font-size: 1.08rem;
+      line-height: 1.55;
     }
     .one-time-followup li::before {
       content: "";
@@ -480,7 +559,7 @@
       border-radius: 999px;
       background:
         #fff5f5
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23c2410c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 14V2'/%3E%3Cpath d='M9 18.12 10 14H4.17a2 2 0 0 1-2-2.41l.76-4A2 2 0 0 1 4.9 6H8V2h9a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-2.76a2 2 0 0 0-1.94 1.52L12 22'/%3E%3C/svg%3E")
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23c2410c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m10.29 3.86-7.54 13.08A2 2 0 0 0 4.48 20h15.04a2 2 0 0 0 1.73-3.06L13.71 3.86a2 2 0 0 0-3.42 0Z'/%3E%3Cpath d='M12 9v4'/%3E%3Cpath d='M12 17h.01'/%3E%3C/svg%3E")
         center / 14px 14px
         no-repeat;
       border: 1px solid #fed7d7;
@@ -513,7 +592,7 @@
       box-shadow: none;
     }
     .proof-mini h3 {
-      font-size: 0.94rem;
+      font-size: 1rem;
       color: #0f3d91;
     }
     .proof-icon {
@@ -539,7 +618,7 @@
       background: #fff;
       box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
     }
-    .section-intro { color: var(--muted); margin: 0.75rem 0 0; }
+    .section-intro { color: var(--muted); margin: 0.75rem 0 0; font-size: 1rem; line-height: 1.65; }
     .review-summary {
       display: grid;
       grid-template-columns: auto 1fr;
@@ -554,6 +633,15 @@
     .review-stars, .review-card-stars {
       color: #ff9e1b;
       letter-spacing: 0.12em;
+    }
+    .review-summary strong {
+      font-size: 1.05rem;
+    }
+    .review-summary p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
     }
     .review-strip, .before-after-grid {
       display: grid;
@@ -571,6 +659,8 @@
     .review-card p, .before-after-row p {
       margin: 0.45rem 0 0;
       color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.6;
     }
     .review-card strong { display: block; margin-top: 0.8rem; }
     .before-after-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -581,14 +671,14 @@
       margin-bottom: 1rem;
     }
     .before-panel, .after-panel {
-      min-height: 138px;
+      min-height: 220px;
       position: relative;
       overflow: hidden;
       border-radius: var(--radius-sm);
       padding: 0.85rem;
       display: flex;
       align-items: end;
-      font-size: 0.84rem;
+      font-size: 0.92rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -630,7 +720,7 @@
       text-align: left;
     }
     .comparison-table th {
-      font-size: 0.78rem;
+      font-size: 0.88rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       color: var(--muted);
@@ -639,6 +729,10 @@
     .comparison-table tfoot td {
       background: #f8fbff;
       font-weight: 900;
+    }
+    .comparison-table td {
+      font-size: 1.08rem;
+      line-height: 1.55;
     }
     .status {
       display: inline-flex;
@@ -670,7 +764,7 @@
     }
     .checkout-item .label {
       color: #526b88;
-      font-size: 0.8rem;
+      font-size: 0.88rem;
       letter-spacing: 0.08em;
       margin-bottom: 1rem;
     }
@@ -697,7 +791,8 @@
     .checkout-copy {
       margin: 0.65rem 0 0;
       color: #526b88;
-      font-size: 0.96rem;
+      font-size: 1.08rem;
+      line-height: 1.6;
     }
     .checkout-featured {
       border: 2px solid #9fd0ff;
@@ -728,7 +823,9 @@
       border: 1px solid #dbe7f3;
       background: rgba(255,255,255,0.88);
       color: #1f3a5c;
-      font-size: 0.94rem;
+      font-size: 1.08rem;
+      font-weight: 700;
+      line-height: 1.5;
     }
     .checkout-feature-list li::before {
       content: "✓";
@@ -748,7 +845,25 @@
       color: #1d4fa3;
       background: #fff;
     }
-    .small-note { margin-top: 1rem; color: var(--muted); }
+    .checkout-service-lines {
+      margin-top: 0.7rem;
+      display: grid;
+    }
+    .checkout-service-lines .service-line {
+      padding: 0.85rem 0;
+    }
+    .checkout-service-lines .service-name {
+      font-size: 1rem;
+    }
+    .checkout-service-lines .service-detail {
+      font-size: 0.96rem;
+      margin-top: 0.2rem;
+    }
+    .checkout-service-lines strong {
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+    .small-note { margin-top: 1rem; color: var(--muted); font-size: 1rem; line-height: 1.6; }
     .footer {
       padding: 1.6rem 0;
       color: #dce8f5;
@@ -794,7 +909,7 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
-    .modal-note { color: var(--muted); margin-top: 0.75rem; }
+    .modal-note { color: var(--muted); margin-top: 0.75rem; font-size: 1rem; line-height: 1.6; }
     .modal-sections {
       display: grid;
       gap: 1rem;
@@ -806,7 +921,7 @@
       background: #f8fbff;
       border: 1px solid rgba(17,44,64,0.08);
     }
-    .modal-sections p { margin: 0.4rem 0 0; color: var(--muted); }
+    .modal-sections p { margin: 0.4rem 0 0; color: var(--muted); font-size: 1rem; line-height: 1.6; }
 
     @media (max-width: 980px) {
       .decision-labels,
@@ -821,17 +936,98 @@
         max-width: none;
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+      .label,
+      .eyebrow,
+      .snapshot-label,
+      .price-summary span,
+      .badge,
+      .checkout-item .label,
+      .comparison-table th {
+        font-size: 0.94rem;
+      }
+      .hero-copy,
+      .section-intro,
+      .service-detail,
+      .upgrade-eyebrow,
+      .upgrade-hero p,
+      .review-summary p,
+      .review-card p,
+      .before-after-row p,
+      .checkout-copy,
+      .modal-note,
+      .modal-sections p,
+      .comparison-table td,
+      .one-time-followup li,
+      .next-steps li,
+      .app-list li,
+      .checkout-feature-list li,
+      .not-included li,
+      .upgrade-list li {
+        font-size: 1.08rem;
+      }
+      .before-panel,
+      .after-panel {
+        min-height: 200px;
+      }
     }
 
     @media (max-width: 620px) {
-      .container { width: min(100% - 1.25rem, var(--max)); }
-      .frame-header, .frame-main, .card, .proof-block, .hero-card { padding: 1rem; }
+      .container { width: min(100% - 1.5rem, var(--max)); }
+      .proposal-shell { padding: 0.85rem 0 3rem; }
+      .proposal-frame { border-radius: 22px; }
+      .frame-header {
+        padding: 0.9rem 1rem;
+        align-items: flex-start;
+      }
+      .frame-main {
+        padding: 0.9rem;
+        gap: 0.85rem;
+      }
+      .card,
+      .proof-block,
+      .hero-card {
+        padding: 0.95rem;
+        border-radius: 20px;
+      }
+      .upgrade-hero,
+      .not-included,
+      .one-time-followup,
+      .next-steps,
+      .app-list,
+      .checkout-item {
+        padding: 0.9rem;
+      }
+      .checkout-feature-list li {
+        min-height: 0;
+        padding: 0.85rem 0.9rem;
+        align-items: flex-start;
+      }
       .snapshot {
         grid-template-columns: 1fr;
         width: 100%;
+        padding: 0.7rem;
+      }
+      .brand-logo-image {
+        height: 2.5rem;
+        max-width: 180px;
       }
       .service-line, .before-after-row, .review-summary {
         grid-template-columns: 1fr;
+      }
+      .trust-chips {
+        display: none;
+      }
+      .upgrade-card .card-head {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 0.6rem 0.75rem;
+      }
+      .upgrade-card .card-head-copy {
+        grid-column: 1 / -1;
+        grid-row: 2;
+      }
+      .before-panel,
+      .after-panel {
+        min-height: 180px;
       }
     }
   </style>
@@ -842,23 +1038,22 @@
       <div class="proposal-frame">
         <header class="frame-header">
           <div class="brand">
-            <span class="brand-mark">HH</span>
+            <img class="brand-logo-image" data-field-src="siteLogoUrl" data-field-alt="siteLogoAlt" alt="Handy Homes" hidden />
             <div>
               <div class="brand-title">Handy Homes</div>
-              <div class="brand-subtitle">Premium Home Care Proposal</div>
             </div>
           </div>
           <div class="trust-chips">
             <span>Fully insured and vetted team</span>
-            <span>Clear scope and no-surprise pricing</span>
-            <span>Local, high-touch service</span>
-            <span>Work backed by our satisfaction promise</span>
+            <span>W2 Employees</span>
+            <span>Satisfaction Guarantee</span>
+            <span>Locally Owned &amp; Operated</span>
           </div>
         </header>
 
         <div class="frame-main">
           <section class="hero-card">
-            <p class="eyebrow">Prepared for <span data-field="customerName"></span></p>
+            <p class="eyebrow eyebrow-prepared"><span>Prepared for</span> <strong data-field="customerLastNameResidence"></strong></p>
             <h1>You Can Handle This Project Today…<br />Or Turn It Into Year-Round Home Care</h1>
             <p class="hero-copy">
               Here’s your exterior cleaning quote — and a smarter way to maintain your entire home with one team.
@@ -897,20 +1092,24 @@
                 </div>
               </div>
               <div class="service-lines" data-list="option-one-service-lines"></div>
+              <div class="service-notes">
+                <p class="label">Service Notes</p>
+                <p data-field="serviceNotes"></p>
+              </div>
               <div class="not-included">
                 <p class="label">Does Not Include</p>
                 <ul>
-                  <li>Handyman service</li>
-                  <li>Comprehensive home maintenance</li>
+                  <li>Dedicated handyman service</li>
+                  <li>Personalized home care plan</li>
                   <li>Annual gutter cleaning plan</li>
-                  <li>Painting discounts</li>
+                  <li>Valuable discounts and savings</li>
                 </ul>
               </div>
               <div class="one-time-followup">
                 <p>You’ll likely need to:</p>
                 <ul>
                   <li>Schedule future cleanings manually</li>
-                  <li>Find contractors for repairs</li>
+                  <li>Juggle contractors for repairs</li>
                   <li>Manage seasonal maintenance yourself</li>
                 </ul>
               </div>
@@ -939,27 +1138,29 @@
               <div class="upgrade-toggle-wrap">
                 <button class="toggle" type="button" data-membership-toggle aria-pressed="false">
                   <span class="toggle-copy">
-                    <span>Add Year-Round Home Care</span>
-                    <span>(+<span data-field="upgradeMonthlyExtraSlashLabel"></span>)</span>
+                    <span class="toggle-title">Add Year-Round Home Service</span>
+                    <span class="toggle-helper">Tap this checkbox to include +<span data-field="upgradeMonthlyExtraSlashLabel"></span></span>
                   </span>
                   <span class="toggle-check" aria-hidden="true">✓</span>
                 </button>
               </div>
               <ul class="upgrade-list" data-list="top-membership-services"></ul>
               <button class="btn btn-soft membership-trigger" type="button" data-open-maintenance-modal>
-                See what home maintenance includes
+                Tap to see what home maintenance includes
               </button>
               <div class="next-steps">
                 <p>What happens next:</p>
                 <ol>
                   <li>We schedule your services listed above</li>
-                  <li>Your HandyPro creates your home plan</li>
+                  <li>Schedule your free Walk-Thru</li>
+                  <li>Your handyman creates your home plan</li>
                   <li>We handle your home year-round</li>
                 </ol>
               </div>
               <div class="app-list">
                 <p>Manage everything in one place:</p>
                 <ul>
+                  <li>Download our mobile app</li>
                   <li>Schedule visits</li>
                   <li>Track completed work</li>
                   <li>Track your home care plan</li>
@@ -1032,10 +1233,10 @@
                 <tr><td>Exterior House Wash</td><td>Included</td><td>Included</td></tr>
                 <tr><td>Surface Cleaning</td><td>Included</td><td>Included</td></tr>
                 <tr><td>Exterior Window Cleaning</td><td>Included</td><td>Included</td></tr>
-                <tr><td>Gutter Cleaning</td><td>One time</td><td>4 times annually</td></tr>
+                <tr><td>Gutter Cleaning</td><td>One time</td><td>Flexible based on your home</td></tr>
                 <tr><td>Preventive Home Maintenance</td><td><span class="status status-no">×</span></td><td><span class="status status-yes">✓</span></td></tr>
-                <tr><td>Dedicated HandyPro</td><td><span class="status status-no">×</span></td><td><span class="status status-yes">✓</span></td></tr>
-                <tr><td>Additional Handyman Visits</td><td><span class="status status-no">×</span></td><td data-field="dedicatedHandyProLabel"></td></tr>
+                <tr><td>Dedicated Handyman</td><td><span class="status status-no">×</span></td><td><span class="status status-yes">✓</span></td></tr>
+                <tr><td>Additional Handyman Visits</td><td><span class="status status-no">×</span></td><td>Flexible based on your home</td></tr>
                 <tr><td>Priority Scheduling</td><td><span class="status status-no">×</span></td><td><span class="status status-yes">✓</span></td></tr>
                 <tr><td>Discounted Larger Projects</td><td><span class="status status-no">×</span></td><td><span class="status status-yes">✓</span></td></tr>
               </tbody>
@@ -1055,10 +1256,10 @@
             <p class="section-intro">Single-job buyers can stay on the fast virtual estimate path. Homeowners choosing annual care can use this proposal to upgrade first, then book a Walk-Thru as part of onboarding.</p>
             <div class="checkout-grid">
               <article class="checkout-item">
-                <p class="label">One-Time Service</p>
-                <h3>Exterior Cleaning Package</h3>
+                <p class="label">Exterior House Cleaning</p>
+                <h3>One-Time Service</h3>
                 <span class="checkout-price-main" data-field="oneTimeTotal"></span>
-                <p class="checkout-copy">Requested exterior cleaning services only.</p>
+                <div class="checkout-service-lines" data-list="checkout-one-time-services"></div>
                 <a class="btn btn-outline" href="https://hello.handyhomes.com">Schedule One-Time Service</a>
               </article>
               <article class="checkout-item checkout-featured">
@@ -1070,7 +1271,7 @@
                 <ul class="checkout-feature-list">
                   <li>Exterior cleaning project included now</li>
                   <li>Annual recurring care for key exterior services</li>
-                  <li><span data-field="dedicatedHandyProLabel"></span></li>
+                  <li>30-day money-back guarantee</li>
                   <li>Preventive maintenance and priority scheduling</li>
                   <li>Walk-Thru scheduled after upgrade for onboarding</li>
                 </ul>
@@ -1121,13 +1322,24 @@
 
   <script id="proposal-data" type="application/json">
     {
+      "siteSettings": {
+        "logoUrl": "https://cdn.prod.website-files.com/65a24f4a53a920f4f8e703a7/65a253211bf69dac46c8de8f_Handy-Homes-Logo-01.avif",
+        "logoAlt": "Handy Homes"
+      },
       "proposalToken": "signed-public-token-from-experience-cloud",
       "quoteId": "0Q0xx000000Example",
       "customerName": "Smith Residence",
+      "customerLastName": "Smith",
       "address": "6 Bernard Drive",
       "quoteStatus": "Estimate Ready",
       "preparedOn": "2026-03-16",
       "quoteType": "exterior-cleaning",
+      "reviewSettings": {
+        "source": "cms",
+        "category": "exterior-home-care",
+        "quoteTypes": ["exterior-cleaning"],
+        "serviceMatchMode": "prefer"
+      },
       "reviewSummary": "4.9 average rating from local homeowners",
       "quoteProducts": [
         {
@@ -1166,10 +1378,12 @@
           "Dedicated handyman for ongoing needs",
           "Personalized home care plan for your property",
           "Protection across 30+ home systems",
-          "Priority scheduling for future visits"
+          "Priority scheduling for future visits",
+          "30-day money-back guarantee"
         ]
       },
       "squareFeet": 3797,
+      "serviceNotes": "This field will be fed by Salesforce. Use it for property-specific scope notes, access instructions, timing notes, exclusions, or anything the customer should know about this visit.",
       "oneTimeServices": [
         { "name": "House Soft Wash", "detail": "Cedar shake siding plus covered patio", "price": 1000 },
         { "name": "Surface Cleaning", "detail": "Deck with rails, front walk, rear walkways, and retaining walls", "price": 600 },
@@ -1188,21 +1402,21 @@
         { "name": "Window and Door Screens", "detail": "Window screens, door screens, plumbing and electrical checks, plus dishwasher and safety device review across 30+ home systems", "visits": 1 }
       ],
       "reviewExcerpts": [
-        { "quote": "They were professional, responsive, and the house looked noticeably better the same day.", "author": "Holmdel homeowner" },
-        { "quote": "The crew explained everything clearly and delivered exactly what they promised.", "author": "Monmouth County homeowner" },
-        { "quote": "It felt easy to trust them with the property. Communication and follow-through were excellent.", "author": "Repeat Handy Homes client" }
+        { "quote": "This is the 2nd time we had Al here. Amazing job! Highly recommend him and already booked him for the fall. Excellent service and such a pleasure to work with!", "author": "Lorena C" },
+        { "quote": "Me and my husband are in our 60’s. Al was friendly and very informative on all the packages he has available as I wanted to sign up with him for continuous service on my home. Well me and my husband are so pleased by his work and will continue service with him yearly.", "author": "Teresa M" },
+        { "quote": "We had our house done today and it is spectacular!! Al was such a pleasure to work with. From top to bottom he made our house sparkle. Highly recommend!", "author": "Kim D" }
       ],
       "testimonialsByQuoteType": {
         "exterior-cleaning": [
-          { "quote": "They were professional, responsive, and the house looked noticeably better the same day.", "author": "Holmdel homeowner" },
-          { "quote": "The crew explained everything clearly and delivered exactly what they promised.", "author": "Monmouth County homeowner" },
-          { "quote": "It felt easy to trust them with the property. Communication and follow-through were excellent.", "author": "Repeat Handy Homes client" }
+          { "quote": "This is the 2nd time we had Al here. Amazing job! Highly recommend him and already booked him for the fall. Excellent service and such a pleasure to work with!", "author": "Lorena C" },
+          { "quote": "Me and my husband are in our 60’s. Al was friendly and very informative on all the packages he has available as I wanted to sign up with him for continuous service on my home. Well me and my husband are so pleased by his work and will continue service with him yearly.", "author": "Teresa M" },
+          { "quote": "We had our house done today and it is spectacular!! Al was such a pleasure to work with. From top to bottom he made our house sparkle. Highly recommend!", "author": "Kim D" }
         ]
       },
       "customerReviews": [
         {
-          "quote": "They were professional, responsive, and the house looked noticeably better the same day.",
-          "author": "Holmdel homeowner",
+          "quote": "This is the 2nd time we had Al here. Amazing job! Highly recommend him and already booked him for the fall. Excellent service and such a pleasure to work with!",
+          "author": "Lorena C",
           "rating": 5,
           "categories": ["exterior-home-care"],
           "quoteTypes": ["exterior-cleaning"],
@@ -1210,8 +1424,8 @@
           "approvedForProposal": true
         },
         {
-          "quote": "The crew explained everything clearly and delivered exactly what they promised.",
-          "author": "Monmouth County homeowner",
+          "quote": "Me and my husband are in our 60’s. Al was friendly and very informative on all the packages he has available as I wanted to sign up with him for continuous service on my home. Well me and my husband are so pleased by his work and will continue service with him yearly.",
+          "author": "Teresa M",
           "rating": 5,
           "categories": ["exterior-home-care"],
           "quoteTypes": ["exterior-cleaning"],
@@ -1219,8 +1433,8 @@
           "approvedForProposal": true
         },
         {
-          "quote": "It felt easy to trust them with the property. Communication and follow-through were excellent.",
-          "author": "Repeat Handy Homes client",
+          "quote": "We had our house done today and it is spectacular!! Al was such a pleasure to work with. From top to bottom he made our house sparkle. Highly recommend!",
+          "author": "Kim D",
           "rating": 5,
           "categories": ["exterior-home-care"],
           "quoteTypes": ["exterior-cleaning"],
@@ -1240,8 +1454,8 @@
           "label": "House Soft Wash",
           "before": "Before soft washing: visible organic buildup and staining across the rear siding.",
           "after": "After soft washing: cleaner siding, brighter curb appeal, and a refreshed finish.",
-          "beforeImage": "/images/proposals/before-after/house-soft-wash/before.jpg",
-          "afterImage": "/images/proposals/before-after/house-soft-wash/after.jpg",
+          "beforeImage": "/images/proposals/before-after/house-soft-wash/after.jpg",
+          "afterImage": "/images/proposals/before-after/house-soft-wash/before.jpg",
           "beforeAlt": "House soft wash before cleaning",
           "afterAlt": "House soft wash after cleaning",
           "cmsNote": "Attach the rear-elevation dirty siding photo as BEFORE and the cleaned rear-elevation photo as AFTER on the Sanity service record keyed by salesforceProductId SFDC-PRODUCT-HOUSE-SOFT-WASH."
@@ -1273,6 +1487,8 @@
     - The secure payload returned to this page should include:
       `proposalToken`, `quoteId`, `quoteType`, `customer`, `oneTimeServices[]`, `membershipOffer`, and `quoteProducts[]`.
     - `quoteProducts[]` should include `productId`, `productCode`, `serviceSlug` when available, and `displayName`.
+    - Keep the shared brand logo in Site Settings, not on individual proposal records.
+    - This template expects `siteSettings.logoUrl` and `siteSettings.logoAlt` so every proposal can inherit the same logo source.
     - Sanity is responsible for merchandising content only:
       services with `serviceSlug`, `salesforceProductId`, optional `salesforceProductCode`, before/after images and copy;
       reviews with `categories[]`, `quoteTypes[]`, `serviceSlugs[]`, `approvedForProposal`, `rating`, `authorName`, and `quote`.
@@ -1284,7 +1500,8 @@
       1. explicit per-quote override
       2. Salesforce `quoteProducts[]` matched to Sanity services by `salesforceProductId`, then `salesforceProductCode`, then `serviceSlug`
       3. quote-type fallback
-    - Reviews should be filtered first by `exterior-home-care` + `quoteType`, then narrowed by matched `serviceSlugs` when available.
+    - Reviews should be filtered first by the shared `reviewSettings.category` + `quoteType`, then narrowed by matched `serviceSlugs` when available.
+    - `reviewSettings` is the CMS filter contract for proposal testimonials. For now this preview falls back to embedded test reviews when no live CMS feed is present.
 
     A/B test note for devs:
     Variant A headline:
@@ -1364,12 +1581,19 @@
           .filter(Boolean)
       );
 
+      const reviewSettings = config.reviewSettings || {};
+      const categoryFilter = normalizeKey(reviewSettings.category || 'exterior-home-care');
+      const configuredQuoteTypes = Array.isArray(reviewSettings.quoteTypes)
+        ? reviewSettings.quoteTypes.map(normalizeKey).filter(Boolean)
+        : [];
+      const allowedQuoteTypes = configuredQuoteTypes.length ? configuredQuoteTypes : [normalizeKey(quoteType)];
+
       const cmsReviews = Array.isArray(config.customerReviews) ? config.customerReviews : [];
       const approvedExteriorReviews = cmsReviews.filter((review) => {
         const approved = review.approvedForProposal !== false;
         const categories = Array.isArray(review.categories) ? review.categories.map(normalizeKey) : [];
         const quoteTypes = Array.isArray(review.quoteTypes) ? review.quoteTypes.map(normalizeKey) : [];
-        return approved && categories.includes('exterior-home-care') && quoteTypes.includes(normalizeKey(quoteType));
+        return approved && categories.includes(categoryFilter) && quoteTypes.some((value) => allowedQuoteTypes.includes(value));
       });
 
       const serviceMatchedReviews = approvedExteriorReviews.filter((review) => {
@@ -1423,16 +1647,17 @@
 
       const fieldMap = {
         customerName: config.customerName,
+        customerLastNameResidence: `${config.customerLastName || 'Smith'} Residence`,
         address: config.address,
         quoteStatus: config.quoteStatus,
         preparedOn: preparedOnLabel,
         squareFeet: `${config.squareFeet?.toLocaleString('en-US')} sq ft`,
         oneTimeTotal: formatCurrency(oneTimeTotal),
+        serviceNotes: config.serviceNotes || '',
         upgradeMonthlyExtra: formatCurrency(upgradeMonthly),
         upgradeMonthlyExtraSlashLabel: `${formatCurrency(upgradeMonthly)}/month extra`,
         reviewSummary: config.reviewSummary || '4.9 average rating from local homeowners',
         remainingVisits,
-        dedicatedHandyProLabel: `${remainingVisits} additional handyman visits`,
         membershipOfferName: membershipOffer.productName || 'Complete Care Annual Membership',
         membershipOfferBadge: membershipOffer.badge || 'Most Popular',
         membershipOfferDescription: membershipOffer.description || ''
@@ -1444,9 +1669,44 @@
         });
       });
 
+      const siteSettings = config.siteSettings || {};
+      document.querySelectorAll('[data-field-src="siteLogoUrl"]').forEach((node) => {
+        if (!(node instanceof HTMLImageElement)) return;
+        if (siteSettings.logoUrl) {
+          node.src = siteSettings.logoUrl;
+          node.hidden = false;
+        }
+      });
+      document.querySelectorAll('[data-field-alt="siteLogoAlt"]').forEach((node) => {
+        if (!(node instanceof HTMLImageElement)) return;
+        if (siteSettings.logoAlt) {
+          node.alt = siteSettings.logoAlt;
+        }
+      });
+      if (siteSettings.logoUrl) {
+        document.querySelectorAll('[data-logo-fallback]').forEach((node) => {
+          node.hidden = true;
+        });
+      }
+
       const serviceList = document.querySelector('[data-list="option-one-service-lines"]');
       if (serviceList) {
         serviceList.innerHTML = (config.oneTimeServices || [])
+          .map((item) => `
+            <div class="service-line">
+              <div>
+                <span class="service-name">${item.name}</span>
+                ${item.detail ? `<span class="service-detail">${item.detail}</span>` : ''}
+              </div>
+              <strong>${formatCurrency(item.price)}</strong>
+            </div>
+          `)
+          .join('');
+      }
+
+      const checkoutServiceList = document.querySelector('[data-list="checkout-one-time-services"]');
+      if (checkoutServiceList) {
+        checkoutServiceList.innerHTML = (config.oneTimeServices || [])
           .map((item) => `
             <div class="service-line">
               <div>

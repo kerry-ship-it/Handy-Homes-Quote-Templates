@@ -73,15 +73,17 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 3rem;
+      width: auto;
       height: 3rem;
-      border-radius: 0.9rem;
-      background: linear-gradient(135deg, #1e3a8a 0%, #1e96fc 100%);
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 900;
-      letter-spacing: 0.04em;
+      border-radius: 0;
+      background: transparent;
       flex: 0 0 auto;
+    }
+
+    .brand-mark img {
+      display: block;
+      max-height: 100%;
+      width: auto;
     }
 
     .brand-title {
@@ -243,6 +245,14 @@
       color: #163a63;
     }
 
+    .materials-card {
+      margin-top: 1rem;
+      padding: 0.95rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid #dbe7f3;
+      background: #f8fbff;
+    }
+
     .materials-card h3 {
       margin: 0.2rem 0 0.85rem;
       font-size: 1.15rem;
@@ -276,6 +286,32 @@
       line-height: 1.55;
     }
 
+    .area-thumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.85rem;
+    }
+
+    .area-thumb {
+      display: block;
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #dbe7f3;
+      background: #fff;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+      flex: 0 0 auto;
+    }
+
+    .area-thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .project-summary-list {
       list-style: disc;
       margin: 0.85rem 0 0;
@@ -297,53 +333,111 @@
       margin-top: 0.2rem;
       color: #70839a;
       font-size: 0.95rem;
-      font-weight: 600;
+      font-weight: 400;
     }
 
     .options-list li {
-      gap: 0.65rem;
-      padding: 0.7rem 0.75rem;
+      display: grid;
+      gap: 0.95rem;
+      padding: 1rem;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      border: 1px solid #dbe7f3;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
     }
 
     .option-content {
       min-width: 0;
-      flex: 1 1 auto;
+      display: grid;
+      gap: 0.8rem;
+      align-content: start;
+    }
+
+    .option-top {
+      display: grid;
+      gap: 0.35rem;
     }
 
     .option-title {
       color: #1f3a5c;
-      font-size: 0.96rem;
+      font-size: 1.05rem;
       font-weight: 800;
       line-height: 1.35;
     }
 
     .option-description {
-      margin-top: 0.25rem;
+      margin-top: 0;
       color: #70839a;
-      font-size: 0.86rem;
-      line-height: 1.45;
+      font-size: 0.94rem;
+      line-height: 1.55;
     }
 
     .option-price {
       color: #163a63;
-      font-size: 0.92rem;
+      font-size: 1.85rem;
       font-weight: 900;
-      white-space: nowrap;
+      line-height: 1;
+      text-align: right;
+    }
+
+    .option-price-label {
+      color: #6c84a0;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-align: right;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .option-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.9rem;
+      min-width: 0;
+      padding-top: 0.15rem;
+      border-top: 1px solid #e6eef8;
+    }
+
+    .option-thumbs {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+
+    .option-thumb {
+      display: block;
+      width: 52px;
+      height: 52px;
+      border-radius: 11px;
+      overflow: hidden;
+      border: 1px solid #dbe7f3;
+      background: #fff;
+      flex: 0 0 auto;
+    }
+
+    .option-thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .option-add {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 36px;
-      padding: 0 0.8rem;
-      border-radius: 12px;
+      min-height: 44px;
+      padding: 0 1rem;
+      border-radius: 13px;
       border: 1px solid #b7d7ff;
-      background: #fff;
-      color: #1d4fa3;
-      font-size: 0.84rem;
+      background: linear-gradient(135deg, #ffffff 0%, #eef6ff 100%);
+      color: #0f3d91;
+      font-size: 0.92rem;
       font-weight: 800;
       white-space: nowrap;
+      flex: 0 0 auto;
     }
 
     .option-add.is-selected {
@@ -355,7 +449,7 @@
 
     .options-card {
       margin-top: 1rem;
-      padding: 0.85rem;
+      padding: 1.1rem;
       border-radius: var(--radius-sm);
       border: 1px solid #dbe7f3;
       background: #f8fbff;
@@ -463,14 +557,6 @@
     .materials-card,
     .options-card,
     .testimonial-card,
-    .photo-gallery {
-      margin-top: 1rem;
-      padding: 1rem;
-      border-radius: var(--radius-sm);
-      border: 1px solid #dbe7f3;
-      background: #f8fbff;
-    }
-
     .options-list li,
     .materials-list li,
     .photo-gallery-note {
@@ -490,15 +576,10 @@
       gap: 0.7rem;
     }
 
-    .options-list li,
     .materials-list li {
-      display: flex;
-      gap: 0.7rem;
-      align-items: flex-start;
-      padding: 0.85rem 0.95rem;
-      border-radius: 16px;
-      border: 1px solid #dbe7f3;
-      background: #fff;
+      padding: 0.15rem 0;
+      border: 0;
+      background: transparent;
     }
 
     .materials-list {
@@ -507,15 +588,29 @@
       gap: 0.55rem;
     }
 
+    .materials-list li {
+      font-size: 1.04rem;
+      line-height: 1.6;
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, #15803d 0%, #22a65a 100%);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 12px 24px rgba(21, 128, 61, 0.2);
+    }
+
+    .btn-green:hover {
+      background: linear-gradient(135deg, #166534 0%, #1f8f4d 100%);
+      color: #fff;
+    }
+
     .materials-list li::before {
       content: none;
     }
 
     .materials-list li {
       display: list-item;
-      padding: 0.15rem 0;
-      border: 0;
-      background: transparent;
     }
 
     .options-list li::before {
@@ -527,6 +622,10 @@
       flex-direction: column;
       gap: 0.1rem;
       min-width: 0;
+    }
+
+    .option-item {
+      position: relative;
     }
 
     .review-summary {
@@ -654,34 +753,101 @@
       gap: 0.7rem;
     }
 
-    .annual-options-note {
+    .right-rail {
+      display: grid;
+      gap: 1.25rem;
+      align-content: start;
+    }
+
+    .next-steps {
       margin-top: 1rem;
       padding: 0.95rem 1rem;
       border-radius: 18px;
       border: 1px solid #dbe7f3;
-      background: linear-gradient(180deg, #f5fbff 0%, #ffffff 100%);
-      color: #163a63;
-      font-size: 0.98rem;
-      font-weight: 700;
-      line-height: 1.6;
+      background: rgba(255,255,255,0.92);
     }
 
-    .annual-options-note-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      margin-top: 1rem;
-      padding: 0.95rem 1rem;
-      border-radius: 18px;
-      border: 1px solid #1e64d6;
-      background: linear-gradient(135deg, #0f3d91 0%, #1e64d6 42%, #1e96fc 100%);
-      color: #fff;
+    .next-steps h3 {
+      margin: 0 0 0.7rem;
+      color: #163a63;
+      font-size: 1rem;
+    }
+
+    .next-steps ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .next-steps li {
+      display: flex;
+      gap: 0.65rem;
+      color: #526b88;
       font-size: 0.98rem;
-      font-weight: 800;
-      line-height: 1.4;
-      box-shadow: 0 12px 28px rgba(30, 100, 214, 0.22);
-      cursor: pointer;
+      line-height: 1.55;
+    }
+
+    .next-steps li::before {
+      content: "•";
+      color: #1e64d6;
+      font-weight: 900;
+      margin-top: 0.02rem;
+    }
+
+    .membership-highlight {
+      padding: 1.3rem;
+      border-radius: 22px;
+      border: 1px solid #b7d7ff;
+      background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
+      box-shadow: 0 12px 28px rgba(30, 100, 214, 0.1);
+    }
+
+    .membership-highlight .label {
+      margin-bottom: 0.3rem;
+    }
+
+    .membership-highlight h3 {
+      margin-top: 0.35rem;
+      font-size: 1.2rem;
+      color: #163a63;
+    }
+
+    .membership-highlight p {
+      margin: 0.55rem 0 0;
+      color: #526b88;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .membership-highlight ul {
+      list-style: none;
+      margin: 0.8rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .membership-highlight li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: start;
+      color: #1f3a5c;
+      font-size: 0.94rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .membership-highlight li::before {
+      content: "✓";
+      color: #24a148;
+      font-weight: 900;
+      margin-top: 0.02rem;
+    }
+
+    .membership-highlight .btn {
+      margin-top: 0.9rem;
     }
 
     .add-ons-list li::before {
@@ -692,8 +858,7 @@
     }
 
     .investment-card {
-      position: sticky;
-      top: 1rem;
+      position: static;
       background: linear-gradient(180deg, #ffffff 0%, #f5faff 100%);
       border: 2px solid #9fd0ff;
       box-shadow: 0 14px 30px rgba(30,150,252,0.09);
@@ -768,20 +933,6 @@
       margin-top: 0.1rem;
     }
 
-    .status-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      margin-top: 1rem;
-      padding: 0.55rem 0.85rem;
-      border-radius: 999px;
-      border: 1px solid #dbe7f3;
-      background: #fff;
-      color: #1d4fa3;
-      font-size: 0.92rem;
-      font-weight: 800;
-    }
-
     .cta-row {
       margin-top: 1rem;
       display: grid;
@@ -846,19 +997,16 @@
     }
 
     @media (max-width: 620px) {
-      .container { width: min(100% - 1.25rem, var(--max)); }
-      .proposal-shell { padding: 1rem 0 2.8rem; }
+      .container { width: min(100% - 0.75rem, var(--max)); }
+      .proposal-shell { padding: 0.6rem 0 2.4rem; }
       .frame-header,
-      .frame-main { padding: 1rem; }
+      .frame-main { padding: 0.8rem; }
       .hero,
-      .card { padding: 1rem; }
+      .card { padding: 0.85rem; }
       .trust-chips { display: none; }
-      .option-item {
-        flex-direction: column;
-        align-items: stretch;
-      }
       .option-actions {
-        justify-items: start;
+        align-items: flex-start;
+        flex-direction: column;
       }
       .options-list li,
       .materials-list li {
@@ -867,9 +1015,6 @@
       .materials-list {
         padding-left: 1rem;
       }
-      .photo-grid {
-        grid-template-columns: 1fr;
-      }
       .hero-copy,
       .section-intro,
       .photo-gallery-note,
@@ -877,6 +1022,27 @@
       .meta-list li,
       .task-list li {
         font-size: 0.98rem;
+      }
+      .option-thumbs {
+        gap: 0.35rem;
+      }
+      .option-thumb {
+        width: 48px;
+        height: 48px;
+      }
+      .area-thumb {
+        width: 56px;
+        height: 56px;
+      }
+      .option-actions {
+        width: 100%;
+      }
+      .option-price {
+        font-size: 1.8rem;
+        text-align: left;
+      }
+      .option-price-label {
+        text-align: left;
       }
     }
   </style>
@@ -887,10 +1053,11 @@
       <div class="proposal-frame">
         <header class="frame-header">
           <div class="brand">
-            <span class="brand-mark">HH</span>
+            <span class="brand-mark">
+              <img data-field-src="siteLogoUrl" data-field-alt="siteLogoAlt" alt="Handy Homes" />
+            </span>
             <div>
               <div class="brand-title">Handy Homes</div>
-              <div class="brand-subtitle">Handyman Proposal</div>
             </div>
           </div>
           <div class="trust-chips">
@@ -956,59 +1123,65 @@
                 <ul class="materials-list" data-list="materials"></ul>
               </article>
 
-              <article class="photo-gallery" data-section="projectPhotos" hidden>
-                <p class="label">Project Photos</p>
-                <h3>Open a thumbnail to view the project</h3>
-                <p class="photo-gallery-note">These thumbnails match the optional work above and open larger when clicked.</p>
-                <div class="photo-grid" data-list="projectPhotos"></div>
-              </article>
-
               <article class="options-card" data-section="options" hidden>
                 <p class="label">Options</p>
+                <!-- Options are optional add-ons only and are not included in the base quote unless selected. -->
                 <p class="options-note">Optional work you can add now. Select any item and the total will update automatically.</p>
                 <ul class="options-list" data-list="options"></ul>
               </article>
             </div>
 
-            <aside class="card investment-card">
-              <p class="label">Total Investment</p>
-              <h2>One simple project total</h2>
-              <div class="base-total">
-                <span class="label-line">Base project total</span>
-                <span class="investment-total" data-field="totalProjectPrice"></span>
-              </div>
-              <p class="investment-subnote" data-field="includesLaborAndMaterialsLabel"></p>
-              <div class="selected-options" data-selected-options hidden>
-                <h3>Added options</h3>
-                <ul data-list="selectedOptions"></ul>
-              </div>
-              <div class="investment-divider"></div>
-              <div class="investment-review">
-                <p class="label" style="margin-top:0;">Customer Review</p>
-                <div class="review-summary">
-                  <div class="review-stars" aria-hidden="true">★★★★★</div>
-                  <div>
-                    <strong data-field="reviewSummary">4.9 average rating from local homeowners</strong>
-                    <p>Professional crews, clear communication, and quality work homeowners feel good recommending.</p>
+            <div class="right-rail">
+              <aside class="card investment-card">
+                <p class="label">Total Investment</p>
+                <h2>One simple project total</h2>
+                <div class="base-total">
+                  <span class="label-line">Base project total</span>
+                  <span class="investment-total" data-field="totalProjectPrice"></span>
+                </div>
+                <p class="investment-subnote" data-field="includesLaborAndMaterialsLabel"></p>
+                <div class="selected-options" data-selected-options hidden>
+                  <h3>Added options</h3>
+                  <ul data-list="selectedOptions"></ul>
+                </div>
+                <div class="investment-divider"></div>
+                <div class="investment-review">
+                  <p class="label" style="margin-top:0;">Customer Review</p>
+                  <div class="review-summary">
+                    <div class="review-stars" aria-hidden="true">★★★★★</div>
+                    <div>
+                      <strong data-field="reviewSummary">4.9 average rating from local homeowners</strong>
+                      <p>Professional crews, clear communication, and quality work homeowners feel good recommending.</p>
+                    </div>
                   </div>
                 </div>
+                <ul class="meta-list">
+                  <li>Satisfaction guarantee</li>
+                  <li>Fully insured with $2M liability and workers' comp</li>
+                  <li>Skilled, vetted professionals</li>
+                </ul>
+                <div class="review-grid" data-list="review-excerpts"></div>
+                <div class="next-steps">
+                  <h3>What happens next</h3>
+                  <ul>
+                    <li>We’ll contact you to schedule your service</li>
+                    <li>Your HandyPro arrives on time, ready to complete the work</li>
+                    <li>We confirm everything meets your expectations before collecting payment</li>
+                  </ul>
+                </div>
+                <div class="cta-row">
+                  <a class="btn btn-solid" href="https://hello.handyhomes.com">Approve This Proposal</a>
+                  <a class="btn btn-outline" href="https://hello.handyhomes.com">Ask a Question</a>
+                </div>
+              </aside>
+              <div class="membership-highlight">
+                <p class="label">Annual Home Care</p>
+                <h3>Want your whole home maintained by pros?</h3>
+                <p data-field="membershipOfferDescription"></p>
+                <ul data-list="membership-included-items"></ul>
+                <a class="btn btn-green" href="https://hello.handyhomes.com" style="margin-top:0.65rem;">Learn more</a>
               </div>
-              <ul class="meta-list">
-                <li>Satisfaction guarantee</li>
-                <li>Fully insured with $2M liability and workers' comp</li>
-                <li>Skilled, vetted professionals</li>
-              </ul>
-              <div class="review-grid" data-list="review-excerpts"></div>
-              <button class="annual-options-note-button" type="button" data-membership-toggle aria-pressed="false">
-                Homes need year-round care to keep them humming
-              </button>
-              <div class="annual-options-note" data-field="membershipOfferDescription"></div>
-              <div class="status-chip" data-field="membershipStatusLabel" hidden></div>
-              <div class="cta-row">
-                <a class="btn btn-solid" href="https://hello.handyhomes.com">Approve This Proposal</a>
-                <a class="btn btn-outline" href="https://hello.handyhomes.com">Ask a Question</a>
-              </div>
-            </aside>
+            </div>
           </section>
         </div>
       </div>
@@ -1042,6 +1215,15 @@
         "reviewSummary": "4.9 average rating from local homeowners",
         "totalProjectPrice": 495,
         "includesLaborAndMaterials": true,
+        "membershipOffer": {
+          "description": "Homes need year-round care to keep them humming. Get a dedicated handyman and a personalized home care plan that helps protect over 30 home systems all year round.",
+          "includedItems": [
+            "Dedicated handyman for ongoing needs",
+            "Personalized home care plan for your property",
+            "Protection across 30+ home systems",
+            "Priority scheduling for future visits"
+          ]
+        },
         "projectSummaryIntro": "This project summary gives you a quick overview of the work we will complete.",
         "projectSummaryBullets": [
           "Repair drywall and prepare the finish surfaces in the hallway",
@@ -1061,23 +1243,41 @@
             "id": "hallway-drywall-touch-up",
             "title": "Repair and patch hallway drywall before painting or finish touch-ups.",
             "description": "This keeps the finish clean and avoids rework later.",
-            "price": 75
+            "price": 75,
+            "thumbnails": [
+              {
+                "imageUrl": "https://placehold.co/160x160/png?text=Hallway+1",
+                "imageAlt": "Hallway drywall repair thumbnail"
+              },
+              {
+                "imageUrl": "https://placehold.co/160x160/png?text=Hallway+2",
+                "imageAlt": "Hallway finish repair thumbnail"
+              }
+            ]
           },
           {
             "id": "bedroom-closet-adjustment",
             "title": "Address the first-floor bedroom closet adjustment now.",
-            "price": 95
+            "price": 95,
+            "thumbnails": [
+              {
+                "imageUrl": "https://placehold.co/160x160/png?text=Closet+1",
+                "imageAlt": "Bedroom closet adjustment thumbnail"
+              }
+            ]
           }
         ],
         "projectPhotos": [
           {
             "title": "Hallway drywall repair",
+            "areaName": "Main Hallway",
             "imageUrl": "https://placehold.co/640x480/png?text=Hallway",
             "imageAlt": "Hallway repair photo",
             "caption": "Open to view the hallway repair image."
           },
           {
             "title": "Bedroom closet adjustment",
+            "areaName": "First Floor Bedroom",
             "imageUrl": "https://placehold.co/640x480/png?text=Bedroom",
             "imageAlt": "Bedroom closet photo",
             "caption": "Open to view the bedroom closet image."
@@ -1269,6 +1469,10 @@
       return String(value || '').trim().toLowerCase();
     }
 
+    function getAreaPhotoKey(area) {
+      return normalizeKey(area?.areaName || area?.areaType || '');
+    }
+
     function getAreaHeading(area) {
       return String(area?.areaName || area?.areaType || '').trim();
     }
@@ -1284,7 +1488,15 @@
         id: String(option?.id || `option-${index}`).trim(),
         title: String(option?.title || option?.taskName || option?.name || '').trim(),
         description: String(option?.description || option?.customerDescription || '').trim(),
-        price: Number(option?.price || 0) || 0
+        price: Number(option?.price || 0) || 0,
+        thumbnails: Array.isArray(option?.thumbnails)
+          ? option.thumbnails
+              .map((item) => ({
+                imageUrl: String(item?.imageUrl || '').trim(),
+                imageAlt: String(item?.imageAlt || item?.title || 'Option thumbnail').trim()
+              }))
+              .filter((item) => item.imageUrl)
+          : []
       };
     }
 
@@ -1367,10 +1579,28 @@
       const areasNode = document.querySelector('[data-list="areas"]');
       const emptyAreasNode = document.querySelector('[data-empty-areas]');
       const areas = Array.isArray(proposal.areas) ? proposal.areas : [];
+      const projectPhotos = Array.isArray(proposal.projectPhotos) ? proposal.projectPhotos : [];
+      const renderableProjectPhotos = projectPhotos
+        .map((photo, index) => ({
+          title: String(photo?.title || `Project photo ${index + 1}`).trim(),
+          areaKey: normalizeKey(photo?.areaName || photo?.areaType || photo?.area || ''),
+          imageUrl: String(photo?.imageUrl || '').trim(),
+          imageAlt: String(photo?.imageAlt || photo?.title || 'Project photo').trim(),
+          caption: String(photo?.caption || '').trim()
+        }))
+        .filter((photo) => photo.imageUrl);
+      const photosByAreaKey = renderableProjectPhotos.reduce((map, photo) => {
+        if (!photo.areaKey) return map;
+        if (!map.has(photo.areaKey)) map.set(photo.areaKey, []);
+        map.get(photo.areaKey).push(photo);
+        return map;
+      }, new Map());
+
       const renderableAreas = areas
         .map((area) => ({
           ...area,
           heading: getAreaHeading(area),
+          areaPhotoKey: getAreaPhotoKey(area),
           tasks: Array.isArray(area.tasks)
             ? area.tasks
                 .map((task) => ({
@@ -1412,6 +1642,15 @@
                   </li>
                 `).join('')}
               </ul>
+              ${photosByAreaKey.get(area.areaPhotoKey)?.length ? `
+                <div class="area-thumbs">
+                  ${photosByAreaKey.get(area.areaPhotoKey).map((photo) => `
+                    <a class="area-thumb" href="${photo.imageUrl}" target="_blank" rel="noreferrer" title="${photo.title}">
+                      <img src="${photo.imageUrl}" alt="${photo.imageAlt}" />
+                    </a>
+                  `).join('')}
+                </div>
+              ` : ''}
             </article>
           `).join('');
           if (emptyAreasNode) emptyAreasNode.hidden = true;
@@ -1443,26 +1682,23 @@
 
       const optionsSection = document.querySelector('[data-section="options"]');
       const optionsList = document.querySelector('[data-list="options"]');
+      const membershipIncludedList = document.querySelector('[data-list="membership-included-items"]');
       const selectedOptionsNode = document.querySelector('[data-selected-options]');
       const selectedOptionsList = document.querySelector('[data-list="selectedOptions"]');
-      const projectPhotosSection = document.querySelector('[data-section="projectPhotos"]');
-      const projectPhotosList = document.querySelector('[data-list="projectPhotos"]');
       const options = Array.isArray(proposal.options) ? proposal.options : [];
-      const projectPhotos = Array.isArray(proposal.projectPhotos) ? proposal.projectPhotos : [];
       const renderableOptions = options
         .map((option, index) => normalizeOption(option, index))
         .filter((option) => option.title);
-      const renderableProjectPhotos = projectPhotos
-        .map((photo, index) => ({
-          title: String(photo?.title || `Project photo ${index + 1}`).trim(),
-          imageUrl: String(photo?.imageUrl || '').trim(),
-          imageAlt: String(photo?.imageAlt || photo?.title || 'Project photo').trim(),
-          caption: String(photo?.caption || '').trim()
-        }))
-        .filter((photo) => photo.title && photo.imageUrl);
       const selectedOptionIds = new Set();
       const optionMap = new Map(renderableOptions.map((option) => [option.id, option]));
       const baseTotal = Number(proposal.totalProjectPrice) || 0;
+      const membershipIncludedItems = Array.isArray(proposal.membershipOffer?.includedItems) ? proposal.membershipOffer.includedItems : [];
+
+      if (membershipIncludedList) {
+        membershipIncludedList.innerHTML = membershipIncludedItems
+          .map((item) => `<li>${String(item)}</li>`)
+          .join('');
+      }
 
       const updateTotals = () => {
         const selectedOptions = renderableOptions.filter((option) => selectedOptionIds.has(option.id));
@@ -1496,32 +1732,26 @@
           optionsList.innerHTML = renderableOptions.map((option) => `
             <li class="option-item" data-option-id="${option.id}">
               <div class="option-content">
-                <div class="option-head">
+                <div class="option-top">
                   <div class="option-meta">
                     <div class="option-title">${option.title}</div>
                     ${option.description ? `<div class="option-description">${option.description}</div>` : ''}
                   </div>
-                  <div class="option-price">${formatCurrency(option.price)}</div>
+                </div>
+                <div class="option-thumbs">
+                  ${option.thumbnails.map((thumb) => `
+                    <a class="option-thumb" href="${thumb.imageUrl}" target="_blank" rel="noreferrer">
+                      <img src="${thumb.imageUrl}" alt="${thumb.imageAlt}" />
+                    </a>
+                  `).join('')}
                 </div>
               </div>
               <div class="option-actions">
+                <div class="option-price-label">Add this option</div>
+                <div class="option-price">${formatCurrency(option.price)}</div>
                 <button class="option-add" type="button" data-option-toggle="${option.id}" aria-pressed="false">Add to quote</button>
               </div>
             </li>
-          `).join('');
-        }
-      }
-
-      if (projectPhotosSection) {
-        const hasProjectPhotos = renderableProjectPhotos.length > 0;
-        projectPhotosSection.hidden = !hasProjectPhotos;
-        if (projectPhotosList && hasProjectPhotos) {
-          projectPhotosList.innerHTML = renderableProjectPhotos.map((photo) => `
-            <a class="photo-card" href="${photo.imageUrl}" target="_blank" rel="noreferrer">
-              <img src="${photo.imageUrl}" alt="${photo.imageAlt}" />
-              <strong>${photo.title}</strong>
-              ${photo.caption ? `<span>${photo.caption}</span>` : ''}
-            </a>
           `).join('');
         }
       }
