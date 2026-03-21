@@ -50,29 +50,14 @@
     h3 { font-size: 1rem; }
     a { color: inherit; text-decoration: none; }
     .container { width: min(100% - 2rem, var(--max)); margin: 0 auto; }
-    .proposal-shell { padding: 2rem 0 4.5rem; }
+    .proposal-shell { padding: 1rem 0 3rem; }
     .proposal-frame {
       overflow: hidden;
       border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.82);
-      backdrop-filter: blur(12px);
-      box-shadow: var(--shadow);
-    }
-    .frame-header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1.1rem 1.5rem;
-      border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,0.72);
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      border: 0;
+      background: transparent;
+      backdrop-filter: none;
+      box-shadow: none;
     }
     .brand-logo-image {
       display: block;
@@ -81,42 +66,26 @@
       max-width: 220px;
       object-fit: contain;
     }
-    .brand-mark {
-      width: 44px;
-      height: 44px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
-      color: #fff;
-      font-weight: 800;
-      box-shadow: 0 10px 24px rgba(30, 150, 252, 0.24);
-    }
-    .brand-title { font-size: 1.3rem; font-weight: 800; }
-    .brand-contact {
-      margin-top: 0.18rem;
-      color: #475569;
-      font-size: 0.92rem;
-      font-weight: 700;
-    }
-    .brand-contact a {
-      color: inherit;
-    }
     .trust-chips {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 0.5rem;
+      margin-top: 0.9rem;
+      overflow-x: auto;
+      scrollbar-width: none;
     }
+    .trust-chips::-webkit-scrollbar { display: none; }
     .trust-chips span {
+      flex: 0 0 auto;
       padding: 0.45rem 0.75rem;
       border-radius: 999px;
-      background: #fff;
-      border: 1px solid var(--line);
-      color: #475569;
+      background: #edf6ff;
+      border: 1px solid #cfe6ff;
+      color: #35608f;
       font-size: 0.88rem;
       font-weight: 700;
     }
-    .frame-main { padding: 1.5rem; display: grid; gap: 1rem; }
+    .frame-main { padding: 0.75rem; display: grid; gap: 0.9rem; }
     .hero-card {
       position: relative;
       padding: 1.75rem;
@@ -124,58 +93,164 @@
       background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #1e96fc 100%);
       color: #fff;
     }
-    .eyebrow {
-      margin: 0 0 0.8rem;
-      color: #dbeafe;
-      font-size: 0.94rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 800;
-    }
-    .eyebrow-prepared {
-      font-size: 1.18rem;
-      letter-spacing: 0;
-      text-transform: none;
-      font-weight: 500;
-    }
-    .eyebrow-prepared strong {
-      font-weight: 800;
-    }
-    .hero-copy {
-      max-width: 38rem;
-      color: rgba(240, 249, 255, 0.9);
-      margin: 0.85rem 0 0;
-      font-size: 1.25rem;
-      line-height: 1.55;
+    .hero-card h1 {
+      margin: 0;
+      font-size: clamp(1.7rem, 4.6vw, 3.3rem);
+      line-height: 1.02;
+      white-space: nowrap;
+      letter-spacing: -0.035em;
     }
     .snapshot {
       margin-top: 1.25rem;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.75rem;
       width: 100%;
-      padding: 0.8rem;
-      border-radius: var(--radius-sm);
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
+      padding: 0;
     }
     .snapshot-card {
-      padding: 0.95rem;
-      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
       background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      display: grid;
+      gap: 0.35rem;
     }
     .snapshot-label {
-      margin: 0 0 0.35rem;
+      margin: 0 0 0.15rem;
       color: #dbeafe;
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
     .snapshot-value {
       display: block;
       color: #fff;
       font-weight: 800;
+      font-size: 0.98rem;
+      line-height: 1.2;
+    }
+    .snapshot-value-primary {
+      font-size: 1.18rem;
+      line-height: 1.2;
+    }
+    .snapshot-company {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      gap: 0.65rem 0.55rem;
+      align-items: start;
+    }
+    .snapshot-company-logo {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 0 0 0 10px;
+      min-width: 0;
+    }
+    .snapshot-company-top {
+      grid-column: 2;
+      grid-row: 1;
+      display: grid;
+      gap: 0.2rem;
+      min-width: 0;
+      justify-items: start;
+      text-align: left;
+    }
+    .snapshot-company-meta {
+      grid-column: 1;
+      grid-row: 2;
+      display: grid;
+      gap: 0.18rem;
+      min-width: 0;
+    }
+    .snapshot-company-copy {
+      grid-column: 2;
+      grid-row: 2;
+      display: grid;
+      gap: 0.18rem;
+      min-width: 0;
+      justify-items: start;
+      text-align: left;
+    }
+    .snapshot-company .brand-logo-image {
+      width: auto;
+      height: auto;
+      max-height: 3.9rem;
+      max-width: 100%;
+      align-self: flex-start;
+    }
+    .snapshot-customer {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      gap: 0.65rem 0.55rem;
+      align-items: start;
+    }
+    .snapshot-customer-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      min-width: 0;
+      color: #dbeafe;
+    }
+    .snapshot-customer-icon svg {
+      width: 1.8rem;
+      height: 1.8rem;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .snapshot-customer-name {
+      display: grid;
+      gap: 0.18rem;
+      min-width: 0;
+      justify-items: start;
+      text-align: left;
+      align-self: center;
+    }
+    .snapshot-customer-address {
+      display: grid;
+      gap: 0.12rem;
+      min-width: 0;
+      justify-items: start;
+      text-align: left;
+    }
+    .snapshot-customer .snapshot-customer-icon:first-child {
+      align-self: center;
+    }
+    .snapshot-card[data-customer-card] .snapshot-value-primary {
+      line-height: 1.08;
+    }
+    .snapshot-card[data-customer-card] {
+      gap: 0.18rem;
+    }
+    .snapshot-card[data-customer-card] [data-field="address"],
+    .snapshot-card[data-customer-card] [data-field="customerCity"] {
+      font-weight: 500;
+      line-height: 1.08;
+    }
+    .snapshot-inline-label {
+      color: #dbeafe;
+      font-weight: 700;
     }
     .decision-grid {
       display: grid;
@@ -285,6 +360,212 @@
       font-size: 1.08rem;
       line-height: 1.65;
       white-space: pre-line;
+    }
+    .one-time-benefits {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid #dbe7f3;
+      background: #f8fbff;
+    }
+    .one-time-benefits ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.6rem;
+    }
+    .one-time-benefits li {
+      display: flex;
+      gap: 0.65rem;
+      color: #334155;
+      font-size: 1.04rem;
+      line-height: 1.55;
+      align-items: flex-start;
+    }
+    .one-time-benefits li::before {
+      content: "✓";
+      width: 1.25rem;
+      height: 1.25rem;
+      flex: 0 0 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--surface-success);
+      color: var(--success);
+      font-weight: 800;
+      margin-top: 0.08rem;
+    }
+    .decision-support-card {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+    .decision-support-card .one-time-inline-reviews,
+    .decision-support-card .next-steps {
+      margin-top: 0;
+    }
+    .decision-support-card .review-carousel {
+      min-height: 244px;
+      height: 244px;
+    }
+    .decision-support-card .review-carousel .review-card {
+      min-height: 100%;
+      height: 100%;
+    }
+    .decision-support-card .one-time-benefits {
+      margin-top: 0;
+    }
+    .trust-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+    .trust-list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-sm);
+      background: #f8fbff;
+      border: 1px solid #dbe7f3;
+      color: #334155;
+      font-size: 1.02rem;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+    .trust-list li::before {
+      content: "✓";
+      width: 1.2rem;
+      height: 1.2rem;
+      flex: 0 0 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--surface-success);
+      color: var(--success);
+      font-size: 0.95rem;
+      font-weight: 900;
+      margin-top: 0.08rem;
+    }
+    .walkthrough-interest-card {
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(180deg, #f7fbff 0%, #eef6ff 100%);
+      border: 1px solid #dbe7f3;
+      display: grid;
+      gap: 0.85rem;
+    }
+    .annual-plan-callout {
+      margin-top: 1rem;
+    }
+    .walkthrough-interest-card h3 {
+      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+      line-height: 1.2;
+      color: #163a63;
+    }
+    .walkthrough-caption {
+      margin: 0;
+      color: #526b88;
+      font-size: 1rem;
+      line-height: 1.55;
+      font-weight: 600;
+    }
+    .walkthrough-interest-card .toggle {
+      margin-top: 0;
+    }
+    .savings-line {
+      margin: 0;
+      padding: 0.8rem 0.95rem;
+      border-radius: var(--radius-sm);
+      background: #ecfdf5;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      font-size: 0.98rem;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+    .walkthrough-interest-card .plan-explainer {
+      margin-top: 0;
+    }
+    .walkthrough-interest-card .plan-explainer summary {
+      color: #0f3d91;
+    }
+    .walkthrough-interest-card .plan-explainer summary::after {
+      color: #0284c7;
+    }
+    .followup-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: start;
+    }
+    .followup-grid > :only-child {
+      grid-column: 1 / -1;
+    }
+    .checkout-section {
+      margin-top: 1rem;
+      padding: 1.1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid #dbe7f3;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      display: grid;
+      gap: 0.8rem;
+      box-shadow: 0 18px 40px rgba(15, 61, 145, 0.08);
+    }
+    .checkout-section .label {
+      margin-bottom: 0;
+    }
+    .checkout-section .btn {
+      width: auto;
+      justify-self: start;
+    }
+    .checkout-section .schedule-cta {
+      background: linear-gradient(135deg, #166534 0%, #16a34a 52%, #34d399 100%);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(22, 163, 74, 0.24);
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+    }
+    .checkout-section .schedule-cta:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+    }
+    .btn.is-disabled,
+    .btn[aria-disabled="true"] {
+      opacity: 0.55;
+      pointer-events: none;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    .checkout-walkthrough-offer[hidden] {
+      display: none;
+    }
+    .checkout-walkthrough-offer {
+      padding: 0.95rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid #bbf7d0;
+      background: linear-gradient(180deg, #f0fdf4 0%, #ecfdf5 100%);
+      display: grid;
+      gap: 0.7rem;
+    }
+    .checkout-walkthrough-offer p {
+      margin: 0;
+    }
+    .checkout-walkthrough-offer .toggle {
+      margin-top: 0;
+      background: #fff;
+      border-color: #86efac;
+    }
+    .checkout-walkthrough-offer .toggle-title {
+      color: #166534;
+    }
+    .checkout-walkthrough-offer .toggle-helper {
+      color: #3f6212;
     }
     .not-included {
       margin-top: 1rem;
@@ -497,6 +778,35 @@
     .plan-explainer-body p {
       margin: 0;
     }
+    .plan-benefits {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.7rem;
+    }
+    .plan-benefits li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      color: #334155;
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+    .plan-benefits li::before {
+      content: "✓";
+      width: 1.25rem;
+      height: 1.25rem;
+      flex: 0 0 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 900;
+      margin-top: 0.08rem;
+    }
     .plan-explainer-links {
       display: flex;
       flex-wrap: wrap;
@@ -553,7 +863,7 @@
       width: 100%;
       margin-top: 1rem;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       gap: 1rem;
       padding: 1rem 1.1rem;
@@ -579,7 +889,7 @@
     .toggle-helper {
       font-size: 0.98rem;
       line-height: 1.5;
-      font-weight: 700;
+      font-weight: 500;
       color: #526b88;
     }
     .toggle-check {
@@ -596,6 +906,7 @@
       flex: 0 0 1.85rem;
       font-size: 1rem;
       font-weight: 900;
+      margin-top: 0.05rem;
     }
     .toggle.is-selected {
       border-color: rgba(30,150,252,0.6);
@@ -637,6 +948,7 @@
     }
     .one-time-followup ul,
     .next-steps ol,
+    .next-steps ul,
     .app-list ul {
       margin: 0;
       padding-left: 0;
@@ -667,7 +979,20 @@
         no-repeat;
       border: 1px solid #fed7d7;
     }
-    .next-steps li::before,
+    .next-steps li::before {
+      content: "";
+      width: 1.3rem;
+      height: 1.3rem;
+      flex: 0 0 1.3rem;
+      margin-top: 0.06rem;
+      border-radius: 999px;
+      border: 1px solid #cfe6ff;
+      background:
+        #eaf4ff
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%230284c7' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m20 6-11 11-5-5'/%3E%3C/svg%3E")
+        center / 13px 13px
+        no-repeat;
+    }
     .app-list li::before {
       content: "";
       width: 0.45rem;
@@ -676,6 +1001,11 @@
       margin-top: 0.5rem;
       border-radius: 999px;
       background: #38bdf8;
+    }
+    .annual-benefits-card ul {
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
     }
     .proof-grid {
       display: grid;
@@ -737,6 +1067,10 @@
       color: #ff9e1b;
       letter-spacing: 0.12em;
     }
+    .review-card-stars {
+      font-size: 1.35rem;
+      letter-spacing: 0.16em;
+    }
     .review-summary strong {
       font-size: 1.05rem;
     }
@@ -759,7 +1093,10 @@
       border: 1px solid var(--line);
       box-shadow: 0 10px 24px rgba(17,44,64,0.05);
     }
-    .review-card p, .before-after-row p {
+    .proof-cta {
+      margin-top: 1rem;
+    }
+    .review-card p {
       margin: 0.45rem 0 0;
       color: var(--muted);
       font-size: 1.08rem;
@@ -787,22 +1124,44 @@
     .review-carousel {
       position: relative;
       overflow: hidden;
-      min-height: 174px;
+      min-height: 244px;
+      height: 244px;
       touch-action: pan-y;
     }
     .review-carousel-track {
       position: relative;
-      min-height: inherit;
+      min-height: 100%;
+      height: 100%;
     }
     .review-carousel-slide {
       display: none;
+      height: 100%;
     }
     .review-carousel-slide.is-active {
       display: block;
     }
     .review-carousel .review-card {
-      min-height: 174px;
+      min-height: 100%;
+      height: 100%;
       padding: 1rem 1.05rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 0.8rem;
+      text-align: center;
+      align-items: center;
+    }
+    .review-carousel .review-card p {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-inline: auto;
+      max-width: 100%;
+    }
+    .review-carousel .review-card strong {
+      margin-top: auto;
     }
     .review-carousel-dots {
       display: flex;
@@ -928,12 +1287,6 @@
       object-fit: cover;
     }
     .before-panel span, .after-panel span { position: relative; z-index: 1; }
-    .before-after-row {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem;
-      margin-top: 0.7rem;
-    }
     .comparison-card, .checkout-card { padding: 1.5rem; }
     .comparison-table {
       width: 100%;
@@ -1096,7 +1449,41 @@
       background: #112c40;
       margin-top: 2rem;
     }
-    .footer p { margin: 0; }
+    .footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 1rem;
+      width: min(100% - 1.2rem, var(--max));
+    }
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
+    .footer-brand img {
+      display: block;
+      height: 2.3rem;
+      width: auto;
+      max-width: 150px;
+      object-fit: contain;
+    }
+    .footer-brand span {
+      color: #dce8f5;
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+    .footer-phone {
+      color: #dce8f5;
+      font-weight: 800;
+      font-size: 1rem;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
     .modal[hidden] { display: none; }
     .modal {
       position: fixed;
@@ -1148,6 +1535,14 @@
       border: 1px solid rgba(17,44,64,0.08);
     }
     .modal-sections p { margin: 0.4rem 0 0; color: var(--muted); font-size: 1rem; line-height: 1.6; }
+    .modal-cta-stack {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .modal-cta-stack .btn {
+      width: 100%;
+    }
 
     @media (max-width: 980px) {
       .decision-labels,
@@ -1158,9 +1553,15 @@
       .checkout-grid {
         grid-template-columns: 1fr;
       }
-      .snapshot {
-        max-width: none;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .followup-grid {
+        grid-template-columns: 1fr;
+      }
+      .checkout-section {
+        padding: 1rem;
+      }
+      .checkout-section .btn {
+        width: 100%;
+        justify-self: stretch;
       }
       .label,
       .eyebrow,
@@ -1178,7 +1579,6 @@
       .upgrade-hero p,
       .review-summary p,
       .review-card p,
-      .before-after-row p,
       .checkout-copy,
       .modal-note,
       .modal-sections p,
@@ -1212,14 +1612,6 @@
         border-radius: 0;
         overflow: visible;
       }
-      .frame-header {
-        margin: 0.5rem 0.6rem 0;
-        padding: 0.7rem 0.8rem;
-        align-items: flex-start;
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        background: rgba(255,255,255,0.88);
-      }
       .frame-main {
         padding: 0.5rem 0.6rem 0;
         gap: 0.65rem;
@@ -1230,12 +1622,8 @@
         padding: 0.8rem;
         border-radius: 22px;
       }
-      .upgrade-hero,
-      .not-included,
-      .one-time-followup,
       .next-steps,
-      .app-list,
-      .checkout-item {
+      .walkthrough-interest-card {
         padding: 0.75rem;
       }
       .checkout-feature-list li {
@@ -1243,61 +1631,141 @@
         padding: 0.85rem 0.9rem;
         align-items: flex-start;
       }
-      .snapshot {
-        grid-template-columns: 1fr;
-        width: 100%;
-        padding: 0.45rem;
-      }
-      .brand-logo-image {
-        height: 2.35rem;
-        max-width: 170px;
-      }
-      .brand-contact {
-        font-size: 0.88rem;
-      }
       .hero-card h1 {
-        font-size: clamp(1.55rem, 7vw, 2.1rem);
-        line-height: 1.08;
-        overflow-wrap: anywhere;
-      }
-      .hero-copy {
-        font-size: 0.98rem;
-        line-height: 1.42;
+        font-size: clamp(1.45rem, 6.2vw, 1.95rem);
+        white-space: normal;
+        line-height: 1.06;
       }
       .snapshot-card {
-        padding: 0.7rem;
+        padding: 0.85rem 0.9rem;
       }
-      .snapshot-label {
-        margin-bottom: 0.25rem;
+      .snapshot {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.55rem;
+        padding: 0.35rem 0;
+      }
+      .snapshot-company-logo,
+      .snapshot-company-top,
+      .snapshot-company-meta,
+      .snapshot-company-copy,
+      .snapshot-customer-icon,
+      .snapshot-customer-name,
+      .snapshot-customer-address {
+        grid-column: auto;
+        grid-row: auto;
+      }
+      .snapshot-company .brand-logo-image {
+        height: 2.7rem;
       }
       .snapshot-value {
-        font-size: 1rem;
-        line-height: 1.2;
+        font-size: 0.96rem;
+        line-height: 1.35;
       }
-      .service-line, .before-after-row, .review-summary {
+      .review-summary {
         grid-template-columns: 1fr;
       }
-      .trust-chips {
-        display: none;
-      }
-      .upgrade-card .card-head {
+      .service-line {
         grid-template-columns: minmax(0, 1fr) auto;
-        gap: 0.6rem 0.75rem;
+        align-items: start;
+        gap: 0.75rem;
       }
-      .upgrade-card .card-head-copy {
+      .trust-chips {
+        flex-wrap: wrap;
+        overflow: visible;
+        margin-top: 0.75rem;
+      }
+      .toggle {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 0.35rem 0.75rem;
+      }
+      .toggle-copy {
+        display: contents;
+      }
+      .toggle-title {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .toggle-check {
+        grid-column: 2;
+        grid-row: 1;
+      }
+      .toggle-helper {
         grid-column: 1 / -1;
         grid-row: 2;
       }
-      .upgrade-card .card-head-copy h2 {
-        font-size: clamp(1.75rem, 8vw, 2.35rem);
-        line-height: 1.04;
+      .trust-chips span {
+        flex: 0 1 auto;
       }
       .schedule-cta {
-        display: none;
+        display: inline-flex;
+      }
+      .decision-support-card {
+        gap: 0.85rem;
+      }
+      .walkthrough-interest-card h3 {
+        font-size: 1.18rem;
+      }
+      .trust-list li,
+      .one-time-benefits li {
+        font-size: 0.98rem;
+      }
+      .review-carousel {
+        min-height: 272px;
+        height: 272px;
+      }
+      .proof-block {
+        padding: 0.25rem 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+      }
+      .before-after-grid {
+        gap: 0.7rem;
+        margin-top: 0.65rem;
+      }
+      .before-after-card {
+        padding: 0.75rem;
+        border-radius: 18px;
+        box-shadow: none;
+      }
+      .before-after-visuals {
+        gap: 0.5rem;
+        margin-bottom: 0.65rem;
       }
       .before-panel,
       .after-panel {
         min-height: 160px;
+      }
+      .snapshot > .snapshot-card:first-child {
+        order: 2;
+      }
+      .snapshot > .snapshot-card:last-child {
+        order: 1;
+      }
+      .footer .container {
+        gap: 0.65rem;
+      }
+      .footer-brand {
+        flex-wrap: nowrap;
+        min-width: 0;
+      }
+      .footer-brand img {
+        height: 1.95rem;
+        max-width: 122px;
+      }
+      .footer-brand span {
+        font-size: 0.88rem;
+        white-space: nowrap;
+      }
+      .footer-phone {
+        font-size: 0.88rem;
+        white-space: nowrap;
+        padding-left: 0;
+        margin-left: auto;
       }
     }
   </style>
@@ -1306,55 +1774,62 @@
   <main class="proposal-shell" data-proposal-root>
     <div class="container">
       <div class="proposal-frame">
-        <header class="frame-header">
-          <div class="brand">
-            <img class="brand-logo-image" data-field-src="siteLogoUrl" data-field-alt="siteLogoAlt" alt="Handy Homes" hidden />
-            <div>
-              <div class="brand-title">Handy Homes</div>
-              <div class="brand-contact"><a href="tel:18668372050">(866) 837-2050</a></div>
-            </div>
-          </div>
-          <div class="trust-chips">
-            <span>Fully insured and vetted team</span>
-            <span>W2 Employees</span>
-            <span>Satisfaction Guarantee</span>
-            <span>Locally Owned &amp; Operated</span>
-          </div>
-        </header>
-
         <div class="frame-main">
           <section class="hero-card">
-            <p class="eyebrow eyebrow-prepared"><span>Prepared for</span> <strong data-field="customerLastNameResidence"></strong></p>
-            <h1>Fix It Today — Or Never Worry About It Again</h1>
-            <p class="hero-copy">
-              Here’s your exterior cleaning quote — and a smarter way to maintain your entire home with one team.
-            </p>
+            <h1>Your Handy Homes Quote</h1>
             <div class="snapshot">
-              <article class="snapshot-card">
-                <p class="snapshot-label">Address</p>
-                <strong class="snapshot-value" data-field="address"></strong>
+              <article class="snapshot-card" data-customer-card>
+                <div class="snapshot-customer">
+                  <div class="snapshot-customer-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="8" r="3.5"></circle>
+                      <path d="M5.5 19c1.6-3 4-4.5 6.5-4.5s4.9 1.5 6.5 4.5"></path>
+                    </svg>
+                  </div>
+                  <div class="snapshot-customer-name">
+                    <strong class="snapshot-value snapshot-value-primary" data-field="customerName"></strong>
+                  </div>
+                  <div class="snapshot-customer-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 21s6-4.35 6-10a6 6 0 1 0-12 0c0 5.65 6 10 6 10Z"></path>
+                      <circle cx="12" cy="11" r="2.5"></circle>
+                    </svg>
+                  </div>
+                  <div class="snapshot-customer-address">
+                    <span class="snapshot-value" data-field="address"></span>
+                    <span class="snapshot-value" data-field="customerCity"></span>
+                  </div>
+                </div>
               </article>
               <article class="snapshot-card">
-                <p class="snapshot-label">Home Size</p>
-                <strong class="snapshot-value" data-field="squareFeet"></strong>
-              </article>
-              <article class="snapshot-card">
-                <p class="snapshot-label">Prepared On</p>
-                <strong class="snapshot-value" data-field="preparedOn"></strong>
-              </article>
-              <article class="snapshot-card">
-                <p class="snapshot-label">Status</p>
-                <strong class="snapshot-value" data-field="quoteStatus"></strong>
+                <div class="snapshot-company">
+                  <div class="snapshot-company-logo">
+                    <img class="brand-logo-image" data-field-src="siteLogoUrl" data-field-alt="siteLogoAlt" alt="Handy Homes" hidden />
+                  </div>
+                  <div class="snapshot-company-top">
+                    <span class="snapshot-value snapshot-value-primary">Handy Homes</span>
+                    <span class="snapshot-value">Rumson, NJ</span>
+                    <span class="snapshot-value">(866) 837-2050</span>
+                  </div>
+                  <div class="snapshot-company-meta">
+                    <span class="snapshot-inline-label">Prepared by:</span>
+                    <span class="snapshot-inline-label">Email:</span>
+                  </div>
+                  <div class="snapshot-company-copy">
+                    <span class="snapshot-value" data-field="preparedBy"></span>
+                    <span class="snapshot-value" data-field="preparedByEmail"></span>
+                  </div>
+                </div>
               </article>
             </div>
           </section>
 
-          <section>
+          <section id="quote-top">
             <div class="decision-grid">
             <article class="card">
               <div class="card-head">
                 <div class="card-head-copy">
-                  <p class="label">Handle It Once</p>
+                  <p class="label">One Time Service</p>
                   <h2>One-Time Exterior Cleaning</h2>
                 </div>
                 <div class="price-summary">
@@ -1367,250 +1842,112 @@
                 <p class="label">Service Notes</p>
                 <p data-field="serviceNotes"></p>
               </div>
-              <div class="not-included">
-                <p class="label">Does Not Include</p>
-                <ul>
-                  <li>Dedicated handyman service</li>
-                  <li>Personalized home care plan</li>
-                  <li>Annual gutter cleaning plan</li>
-                  <li>Valuable discounts and savings</li>
-                </ul>
+              <div class="trust-chips">
+                <span>Fully insured and vetted team</span>
+                <span>W2 Employees</span>
+                <span>Satisfaction Guarantee</span>
+                <span>Locally Owned &amp; Operated</span>
               </div>
-              <div class="one-time-followup">
-                <p>You’ll likely need to:</p>
-                <ul>
-                  <li>Schedule future cleanings manually</li>
-                  <li>Juggle contractors for repairs</li>
-                  <li>Manage seasonal maintenance yourself</li>
-                </ul>
-              </div>
-              <a class="btn btn-outline schedule-cta" href="https://hello.handyhomes.com" data-primary-cta>Book One-Time Service</a>
-            </article>
-
-            <article class="card upgrade-card">
-              <div class="card-head">
-                <div class="card-head-copy">
-                  <p class="label">Put Your Home on a Plan</p>
-                  <h2>Have this done every year and everything else handled too.</h2>
-                </div>
-                <span class="badge" data-field="membershipOfferBadge">Most Popular</span>
-              </div>
-              <div class="upgrade-hero">
-                <div class="upgrade-eyebrow">Complete this project today for <span data-field="oneTimeTotal"></span></div>
-                <div class="upgrade-eyebrow" style="margin-top:0.45rem;font-weight:800;color:#0f172a;">Or…</div>
-                <div class="upgrade-eyebrow" style="margin-top:0.45rem;">Turn it into a home care plan:</div>
-                <div class="upgrade-eyebrow" style="margin-top:0.45rem;color:#0f172a;font-weight:800;"><span data-field="oneTimeTotal"></span> today</div>
-                <div class="upgrade-price">
-                  <strong data-field="upgradeMonthlyExtra"></strong>
-                  <span>/mo extra</span>
-                </div>
-                <p data-field="membershipOfferDescription"></p>
-              </div>
-              <div class="upgrade-toggle-wrap">
-                <button class="toggle" type="button" data-membership-toggle aria-pressed="false">
+              <div class="walkthrough-interest-card annual-plan-callout" id="annual-plan-overview">
+                <h3>Want to save up to 40% on today&apos;s services?</h3>
+                <button class="toggle" type="button" data-membership-toggle aria-pressed="true">
                   <span class="toggle-copy">
-                    <span class="toggle-title">Add Year-Round Home Service</span>
-                    <span class="toggle-helper">Tap this checkbox to include +<span data-field="upgradeMonthlyExtraSlashLabel"></span></span>
+                    <span class="toggle-title">Add Free Walk-Thru</span>
+                    <span class="toggle-helper">Book a Free 30 min, no-obligation Walk-Thru and we&apos;ll explain how you can turn this one-time service into a annual Home Care Plan that provides all these services at discounted rates.</span>
                   </span>
                   <span class="toggle-check" aria-hidden="true">✓</span>
                 </button>
-              </div>
-              <div class="upgrade-reassurance">
-                <div><strong>The extra <span data-field="upgradeMonthlyExtraSlashLabel"></span></strong> adds ongoing home care, a dedicated handyman, preventive maintenance, and annual recurring service planning.</div>
-                <div>Not sure yet? We’ll walk the home with you first. If you decide it’s not the right fit, you can still move forward with today’s one-time service at <strong data-field="oneTimeTotal"></strong>.</div>
-              </div>
-              <details class="plan-explainer">
-                <summary>What does the extra <span data-field="upgradeMonthlyExtraSlashLabel"></span> include?</summary>
-                <div class="plan-explainer-body">
-                  <p>The monthly plan turns today’s exterior project into ongoing home care, so you get a dedicated handyman, preventive maintenance, and a plan that keeps key systems and seasonal needs from piling up.</p>
-                  <p>Your free Walk-Thru is where we tailor the plan to your home and answer questions before you commit to the long-term fit.</p>
-                  <p>If annual care is not the right fit after that, you can still keep the one-time service at <strong data-field="oneTimeTotal"></strong>.</p>
-                  <div class="plan-explainer-links">
-                    <button type="button" data-open-maintenance-modal>See what home maintenance includes</button>
+                <details class="plan-explainer">
+                  <summary>What’s a Walk-Thru?</summary>
+                  <div class="plan-explainer-body">
+                    <ul class="plan-benefits">
+                      <li>A 30 min, no-obligation in-home visit with your dedicated handyman</li>
+                      <li>We walk your home together and review everything on your list</li>
+                      <li>Identify repairs, maintenance, and opportunities to prevent future issues</li>
+                      <li>Focused on planning, not just fixing one issue</li>
+                      <li>See how we can save you time and 30–40% with ongoing care</li>
+                    </ul>
                   </div>
-                </div>
-              </details>
-              <ul class="upgrade-list" data-list="top-membership-services"></ul>
-              <div class="next-steps">
-                <p>What happens next:</p>
-                <ol>
-                  <li>We schedule your services listed above</li>
-                  <li>We schedule your free Walk-Thru</li>
-                  <li>Your handyman helps build the right home care plan for your property</li>
-                  <li>If you decide annual care is not the right fit, you can still proceed with the one-time service at <span data-field="oneTimeTotal"></span></li>
-                  <li>If it is the right fit, we handle your home year-round</li>
-                </ol>
+                </details>
+                <a class="btn btn-outline schedule-cta proof-cta" href="#checkout">Checkout</a>
               </div>
-              <div class="app-list">
-                <p>Manage everything in one place:</p>
-                <ul>
-                  <li>Download our mobile app</li>
-                  <li>Schedule visits</li>
-                  <li>Track completed work</li>
-                  <li>Track your home care plan</li>
-                  <li>Message your team</li>
-                </ul>
-              </div>
-              <div class="upgrade-note">
-                Never think about this again — we handle it every year, plus everything else your home needs.
-              </div>
-              <a class="btn btn-solid membership-trigger" href="https://hello.handyhomes.com">Put My Home on a Plan</a>
             </article>
-            <div class="one-time-inline-reviews">
-              <p class="label">Homeowners Trust Handy Homes</p>
-              <div class="review-widget" aria-label="Review snapshot">
-                <div class="review-widget-badge" aria-hidden="true">G</div>
-                <div class="review-widget-copy">
-                  <div class="review-widget-kicker">Review Snapshot</div>
-                  <div class="review-widget-topline">
-                    <span class="review-widget-score">4.9</span>
-                    <span class="review-widget-stars" aria-hidden="true">★★★★★</span>
-                    <span class="review-widget-source">Google reviews</span>
-                  </div>
-                  <div class="review-widget-note">Top-rated by local homeowners for clear communication, dependable crews, and results they would book again.</div>
-                </div>
-              </div>
-              <div class="review-carousel" data-review-carousel hidden>
-                <div class="review-carousel-track" data-list="review-excerpts-inline"></div>
-                <div class="review-carousel-dots" data-review-carousel-dots></div>
-              </div>
-            </div>
-            </div>
-          </section>
 
-          <section class="proof-grid">
-            <article class="card proof-mini">
-              <h3>Trusted by local homeowners</h3>
-              <span class="proof-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2l2.4 4.86 5.37.78-3.88 3.78.92 5.35L12 14.77 7.19 16.77l.92-5.35L4.23 7.64l5.37-.78L12 2z"></path>
-                </svg>
-              </span>
-            </article>
-            <article class="card proof-mini">
-              <h3>We Maintain Your Critical Systems</h3>
-              <span class="proof-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.1-3.1a6 6 0 0 1-7.5 7.5L6 21l-3-3 7.3-7.3a6 6 0 0 1 7.5-7.5z"></path>
-                </svg>
-              </span>
-            </article>
-            <article class="card proof-mini">
-              <h3>One Dedicated Handyman</h3>
-              <span class="proof-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 21a6 6 0 0 0-12 0"></path>
-                  <circle cx="12" cy="8" r="4"></circle>
-                </svg>
-              </span>
-            </article>
+            <aside class="card decision-support-card">
+              <div class="one-time-inline-reviews" id="reviews">
+                <p class="label">Homeowners Trust Handy Homes</p>
+                <div class="review-carousel" data-review-carousel hidden>
+                  <div class="review-carousel-track" data-list="review-excerpts-inline"></div>
+                  <div class="review-carousel-dots" data-review-carousel-dots></div>
+                </div>
+              </div>
+            </aside>
+            </div>
           </section>
 
           <section class="proof-block" id="trust">
-            <p class="label">Built for peace of mind</p>
-            <h2>Why Homeowners Trust Handy Homes</h2>
-            <div class="review-summary">
-              <div class="review-stars" aria-hidden="true">★★★★★</div>
-              <div>
-                <strong data-field="reviewSummary">4.9 average rating from local homeowners</strong>
-                <p>Professional crews, clear communication, and quality work homeowners feel good recommending.</p>
-              </div>
-            </div>
+            <p class="label">See the Difference</p>
             <div class="before-after-grid" data-list="before-after-cards"></div>
           </section>
 
-          <section class="proof-block" id="comparison">
-            <p class="label">Comparison</p>
-            <h2>Why Most Homeowners Choose the Annual Plan</h2>
-            <p class="section-intro">You can handle this once — or have it done every year and take care of the rest of your home.</p>
-            <table class="comparison-table">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>One-Time Service</th>
-                  <th>Complete Care</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Exterior House Wash</td><td>Included</td><td>Included</td></tr>
-                <tr><td>Surface Cleaning</td><td>Included</td><td>Included</td></tr>
-                <tr><td>Exterior Window Cleaning</td><td>Included</td><td>Included</td></tr>
-                <tr><td>Gutter Cleaning</td><td>One time</td><td>Flexible based on your home</td></tr>
-                <tr><td>Preventive Home Maintenance</td><td><span class="status status-no">×</span></td><td><span class="status status-yes">✓</span></td></tr>
-                <tr><td>Dedicated Handyman</td><td><span class="status status-no">×</span></td><td><span class="status status-yes">✓</span></td></tr>
-                <tr><td>Additional Handyman Visits</td><td><span class="status status-no">×</span></td><td>Flexible based on your home</td></tr>
-                <tr><td>Priority Scheduling</td><td><span class="status status-no">×</span></td><td><span class="status status-yes">✓</span></td></tr>
-                <tr><td>Discounted Larger Projects</td><td><span class="status status-no">×</span></td><td><span class="status status-yes">✓</span></td></tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td>Your price</td>
-                  <td data-field="oneTimeTotal"></td>
-                  <td data-field="upgradeMonthlyExtraSlashLabel"></td>
-                </tr>
-              </tfoot>
-            </table>
+          <section class="checkout-section" id="checkout">
+            <p class="label">Checkout</p>
+            <h2>Ready to book your service?</h2>
+            <p class="walkthrough-caption">Click below and our office will call you to schedule a convient day. Payment will be collected at the time of service.</p>
+            <div class="checkout-walkthrough-offer" data-bottom-walkthrough-offer hidden>
+              <p class="label">Before you book</p>
+              <button class="toggle" type="button" data-bottom-membership-toggle aria-pressed="false">
+                <span class="toggle-copy">
+                  <span class="toggle-title">Add Free Walk-Thru</span>
+                  <span class="toggle-helper">Book a Free 30 min, no-obligation Walk-Thru and we&apos;ll explain how you can turn this one-time service into a annual Home Care Plan that provides all these services at discounted rates.</span>
+                </span>
+                <span class="toggle-check" aria-hidden="true">✓</span>
+              </button>
+            </div>
+            <a class="btn btn-outline schedule-cta proof-cta" href="https://hello.handyhomes.com" data-primary-cta>Book Service + Walk-Thru</a>
           </section>
 
-          <section class="proof-block checkout-card" id="checkout">
-            <p class="label">Complete Your Booking</p>
-            <h2>Choose the path that fits you best</h2>
-            <p class="section-intro">Single-job buyers can stay on the fast virtual estimate path. Homeowners choosing annual care can use this proposal to upgrade first, then book a Walk-Thru as part of onboarding.</p>
-            <div class="checkout-grid">
-              <article class="checkout-item">
-                <p class="label">Exterior House Cleaning</p>
-                <h3>One-Time Service</h3>
-                <span class="checkout-price-main" data-field="oneTimeTotal"></span>
-                <div class="checkout-service-lines" data-list="checkout-one-time-services"></div>
-                <a class="btn btn-outline" href="https://hello.handyhomes.com">Book One-Time Service</a>
-              </article>
-              <article class="checkout-item checkout-featured">
-                <span class="badge">Recommended</span>
-                <h3>Annual Home Care</h3>
-                <span class="checkout-price-main"><span data-field="oneTimeTotal"></span> today</span>
-                <span class="checkout-price-sub">+ <span data-field="upgradeMonthlyExtraSlashLabel"></span> ongoing</span>
-                <p class="checkout-copy">Complete today’s project now, then keep this handled every year and add ongoing care for the rest of the home.</p>
-                <p class="checkout-copy">Upgrade first, then confirm the right long-term plan during your Walk-Thru. If annual care is not the right fit, you can still keep the one-time service.</p>
-                <ul class="checkout-feature-list">
-                  <li>Exterior cleaning project included now</li>
-                  <li>Annual recurring care for key exterior services</li>
-                  <li>30-day money-back guarantee</li>
-                  <li>Preventive maintenance and priority scheduling</li>
-                  <li>Walk-Thru scheduled after upgrade for onboarding</li>
-                </ul>
-                <a class="btn btn-solid" href="https://hello.handyhomes.com">Upgrade to Annual Home Care</a>
-              </article>
-            </div>
-            <p class="small-note">By continuing, the customer should see the selected option clearly, any monthly commitment terms, a link to Handy Homes’ Terms &amp; Conditions, and an acknowledgment checkbox confirming the purchase and billing terms.</p>
-          </section>
+          <template id="annual-member-benefits-template">
+            <section class="next-steps annual-benefits-card">
+              <p class="label">Annual Member Benefits:</p>
+              <ul>
+                <li>One dedicated, skilled handyman for your home</li>
+                <li>A bank of visits to use as you’d like</li>
+                <li>Use visits for repairs, gutter cleaning, power washing, and preventive maintenance</li>
+                <li>Proactive House Care Plan tailored to your needs</li>
+                <li>App to add tasks, track projects, book visits, and chat with team</li>
+                <li>Up to 40% savings over single service prices</li>
+                <li>Free Planning Sessions included</li>
+                <li>30-day money-back guarantee</li>
+              </ul>
+            </section>
+          </template>
         </div>
       </div>
     </div>
 
-    <div class="modal" data-maintenance-modal hidden>
-      <div class="modal-backdrop" data-close-maintenance-modal></div>
-      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="maintenance-modal-title">
-        <button class="modal-close" type="button" data-close-maintenance-modal aria-label="Close">×</button>
-        <p class="label">Preventive Maintenance</p>
-        <h2 id="maintenance-modal-title">Home care that keeps small issues from becoming bigger ones</h2>
-        <p class="modal-note">Your annual plan includes recurring care across kitchen and bath areas, mechanical systems, window and door screens, and more than 30 home systems throughout the year.</p>
+    <div class="modal" data-walkthrough-prompt-modal hidden>
+      <div class="modal-backdrop" data-close-walkthrough-prompt></div>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="walkthrough-prompt-title">
+        <button class="modal-close" type="button" data-close-walkthrough-prompt aria-label="Close">×</button>
+        <p class="label">Before You Book</p>
+        <h2 id="walkthrough-prompt-title">30–40% Savings</h2>
+        <p class="modal-note">Add a free 30-minute Walk-Thru to meet your HandyPro, review your full to-do list, and see how we can help you save 30–40%.</p>
         <div class="modal-sections">
           <section>
-            <h3>Kitchen and Bath Care</h3>
-            <p>Sinks, drains, faucets, toilet checks, plumbing, dishwasher, refrigerators, cabinet hardware.</p>
+            <h3>What you get</h3>
+            <ul class="plan-benefits">
+              <li>A 30 min, no-obligation in-home visit with your dedicated handyman</li>
+              <li>We walk your home together and review everything on your list</li>
+              <li>Identify repairs, maintenance, and opportunities to prevent future issues</li>
+              <li>Focused on planning, not just fixing one issue</li>
+              <li>See how we can save you time and 30–40% with ongoing care</li>
+            </ul>
           </section>
-          <section>
-            <h3>Mechanical Systems</h3>
-            <p>Dryer vent cleaning, hot water tank flushing, sump pumps, thermostat checks, furnace filter changes and cleaning, plumbing, electrical, structure inspections.</p>
-          </section>
-          <section>
-            <h3>Window and Door Screens</h3>
-            <p>Interior doors, exterior doors, garage doors, window screens, and door screens.</p>
-          </section>
-          <section>
-            <h3>Backup Generator Maintenance</h3>
-            <p>Air-cooled and liquid-cooled models, including Generac and Kohler.</p>
-          </section>
+        </div>
+        <div class="modal-cta-stack">
+          <button class="btn btn-solid" type="button" data-add-walkthrough-and-continue>Add Free Walk-Thru</button>
+          <button class="btn btn-outline" type="button" data-continue-without-walkthrough>Continue Without It</button>
         </div>
       </div>
     </div>
@@ -1618,8 +1955,11 @@
 
   <footer class="footer">
     <div class="container">
-      <p>Handy Homes</p>
-      <p>Exterior care, maintenance planning, and ongoing home service memberships for New Jersey homeowners.</p>
+      <a class="footer-brand" href="https://www.handyhomes.com" target="_blank" rel="noreferrer">
+        <img data-field-src="siteLogoUrl" data-field-alt="siteLogoAlt" alt="Handy Homes" hidden />
+        <span>HandyHomes.com</span>
+      </a>
+      <a class="footer-phone" href="tel:18668372050">(866) 837-2050</a>
     </div>
   </footer>
 
@@ -1631,11 +1971,14 @@
       },
       "proposalToken": "signed-public-token-from-experience-cloud",
       "quoteId": "0Q0xx000000Example",
-      "customerName": "Smith Residence",
+      "customerName": "John Taylor",
       "customerLastName": "Smith",
       "address": "6 Bernard Drive",
+      "customerCity": "Holmdel",
       "quoteStatus": "Estimate Ready",
       "preparedOn": "2026-03-16",
+      "preparedBy": "Al Postell",
+      "preparedByEmail": "al@handyhomes.com",
       "quoteType": "exterior-cleaning",
       "reviewSettings": {
         "source": "cms",
@@ -1952,8 +2295,11 @@
         customerName: config.customerName,
         customerLastNameResidence: `${config.customerLastName || 'Smith'} Residence`,
         address: config.address,
+        customerCity: config.customerCity || '',
         quoteStatus: config.quoteStatus,
         preparedOn: preparedOnLabel,
+        preparedBy: config.preparedBy || 'Al Postell',
+        preparedByEmail: config.preparedByEmail || 'al@handyhomes.com',
         squareFeet: `${config.squareFeet?.toLocaleString('en-US')} sq ft`,
         oneTimeTotal: formatCurrency(oneTimeTotal),
         serviceNotes: config.serviceNotes || '',
@@ -2143,16 +2489,6 @@
                 </div>
               </div>
               <p class="label">${item.label}</p>
-              <div class="before-after-row">
-                <div>
-                  <strong>Before</strong>
-                  <p>${item.before}</p>
-                </div>
-                <div>
-                  <strong>After</strong>
-                  <p>${item.after}</p>
-                </div>
-              </div>
             </article>
           `)
           .join('');
@@ -2161,36 +2497,54 @@
 
     function setupMembershipToggle() {
       const toggle = document.querySelector('[data-membership-toggle]');
+      const bottomToggle = document.querySelector('[data-bottom-membership-toggle]');
+      const bottomOffer = document.querySelector('[data-bottom-walkthrough-offer]');
       const primaryCta = document.querySelector('[data-primary-cta]');
       if (!toggle) return;
 
       const syncState = (isSelected) => {
         toggle.setAttribute('aria-pressed', String(isSelected));
         toggle.classList.toggle('is-selected', isSelected);
+        if (bottomToggle) {
+          bottomToggle.setAttribute('aria-pressed', String(isSelected));
+          bottomToggle.classList.toggle('is-selected', isSelected);
+        }
+        if (bottomOffer) {
+          bottomOffer.hidden = isSelected;
+        }
 
         if (primaryCta) {
-          primaryCta.classList.toggle('is-dimmed', isSelected);
-          primaryCta.setAttribute('aria-disabled', isSelected ? 'true' : 'false');
-          primaryCta.setAttribute('tabindex', isSelected ? '-1' : '0');
+          primaryCta.textContent = isSelected ? 'Book Service + Walk-Thru' : 'Book One-Time Cleaning';
         }
       };
 
-      syncState(false);
+      const initialSelected = toggle.getAttribute('aria-pressed') === 'true';
+      syncState(initialSelected);
 
       toggle.addEventListener('click', () => {
         const nextPressed = toggle.getAttribute('aria-pressed') !== 'true';
         syncState(nextPressed);
       });
+
+      bottomToggle?.addEventListener('click', () => {
+        const nextPressed = bottomToggle.getAttribute('aria-pressed') !== 'true';
+        syncState(nextPressed);
+      });
     }
 
-    function setupMaintenanceModal() {
-      const modal = document.querySelector('[data-maintenance-modal]');
-      if (!modal) return;
+    function setupWalkthroughPrompt() {
+      const modal = document.querySelector('[data-walkthrough-prompt-modal]');
+      const primaryCta = document.querySelector('[data-primary-cta]');
+      const toggle = document.querySelector('[data-membership-toggle]');
+      if (!modal || !primaryCta || !toggle) return;
 
-      const openers = Array.from(document.querySelectorAll('[data-open-maintenance-modal]'));
-      const closers = Array.from(modal.querySelectorAll('[data-close-maintenance-modal]'));
+      const sessionKey = 'ehcWalkthroughPromptShown';
+      const closers = Array.from(modal.querySelectorAll('[data-close-walkthrough-prompt]'));
+      const addWalkthroughButton = modal.querySelector('[data-add-walkthrough-and-continue]');
+      const continueWithoutButton = modal.querySelector('[data-continue-without-walkthrough]');
 
       const openModal = () => {
+        window.sessionStorage.setItem(sessionKey, 'true');
         modal.hidden = false;
         document.body.style.overflow = 'hidden';
       };
@@ -2200,7 +2554,31 @@
         document.body.style.overflow = '';
       };
 
-      openers.forEach((button) => button.addEventListener('click', openModal));
+      const continueToBooking = () => {
+        window.location.href = primaryCta.href;
+      };
+
+      primaryCta.addEventListener('click', (event) => {
+        const isSelected = toggle.getAttribute('aria-pressed') === 'true';
+        const promptShown = window.sessionStorage.getItem(sessionKey) === 'true';
+        if (isSelected || promptShown) return;
+        event.preventDefault();
+        openModal();
+      });
+
+      addWalkthroughButton?.addEventListener('click', () => {
+        if (toggle.getAttribute('aria-pressed') !== 'true') {
+          toggle.click();
+        }
+        closeModal();
+        continueToBooking();
+      });
+
+      continueWithoutButton?.addEventListener('click', () => {
+        closeModal();
+        continueToBooking();
+      });
+
       closers.forEach((button) => button.addEventListener('click', closeModal));
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && !modal.hidden) closeModal();
@@ -2209,7 +2587,7 @@
 
     setupProposalPage();
     setupMembershipToggle();
-    setupMaintenanceModal();
+    setupWalkthroughPrompt();
   </script>
 </body>
 </html>
