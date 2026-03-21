@@ -17,6 +17,7 @@
       --surface: #ffffff;
       --surface-soft: #f8fbff;
       --surface-blue: #eff7ff;
+      --success: #1f6f39;
       --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
       --radius: 28px;
       --radius-md: 22px;
@@ -43,156 +44,229 @@
 
     a { color: inherit; text-decoration: none; }
     .container { width: min(100% - 2rem, var(--max)); margin: 0 auto; }
-    .proposal-shell { padding: 2rem 0 4rem; }
+    .proposal-shell { padding: 1rem 0 3rem; }
     .proposal-frame {
-      border: 1px solid var(--line);
+      border: 0;
       border-radius: var(--radius);
-      background: rgba(255,255,255,0.84);
-      backdrop-filter: blur(12px);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .frame-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1.1rem 1.5rem;
-      border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,0.74);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-    }
-
-    .brand-mark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: auto;
-      height: 3rem;
-      border-radius: 0;
       background: transparent;
-      flex: 0 0 auto;
-    }
-
-    .brand-mark img {
-      display: block;
-      max-height: 100%;
-      width: auto;
-    }
-
-    .brand-title {
-      font-size: 1.3rem;
-      font-weight: 800;
-    }
-
-    .brand-contact {
-      margin-top: 0.18rem;
-      color: var(--muted);
-      font-size: 0.92rem;
-      font-weight: 700;
-    }
-
-    .brand-contact a {
-      color: inherit;
-    }
-
-    .brand-subtitle {
-      margin-top: 0.15rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-
-    .trust-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .trust-chips span {
-      padding: 0.45rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: #4b6179;
-      font-size: 0.9rem;
-      font-weight: 700;
-      white-space: nowrap;
+      backdrop-filter: none;
+      box-shadow: none;
+      overflow: hidden;
     }
 
     .frame-main {
       display: grid;
       gap: 1rem;
-      padding: 1.5rem;
+      padding: 0.75rem;
     }
 
     .hero {
-      padding: 1.8rem;
+      padding: 1.75rem;
       border-radius: var(--radius-md);
       background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #1e96fc 100%);
       color: #fff;
     }
 
-    .eyebrow {
-      margin: 0 0 0.8rem;
-      color: #dbeafe;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0;
-      text-transform: none;
-    }
-
-    .eyebrow strong {
-      font-weight: 800;
-    }
-
     .hero h1 {
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-    }
-
-    .hero-copy {
-      margin: 0.85rem 0 0;
-      max-width: 46rem;
-      font-size: 1.18rem;
-      color: rgba(240, 249, 255, 0.92);
+      margin: 0;
+      font-size: clamp(1.7rem, 4.6vw, 3.3rem);
+      line-height: 1.02;
+      white-space: nowrap;
+      letter-spacing: -0.035em;
     }
 
     .snapshot {
       margin-top: 1.2rem;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.75rem;
-      padding: 0.8rem;
-      border-radius: var(--radius-sm);
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
+      width: 100%;
+      padding: 0;
     }
 
     .snapshot-card {
-      padding: 0.95rem;
-      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
       background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .brand-logo-image {
+      display: block;
+      width: auto;
+      height: 3rem;
+      max-width: 220px;
+      object-fit: contain;
+    }
+
+    .snapshot-company {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      gap: 0.65rem 0.55rem;
+      align-items: start;
+    }
+
+    .snapshot-company-logo {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 0 0 0 10px;
+      min-width: 0;
+    }
+
+    .snapshot-company-top {
+      grid-column: 2;
+      grid-row: 1;
+      display: grid;
+      gap: 0.2rem;
+      min-width: 0;
+      justify-items: start;
+      text-align: left;
+    }
+
+    .snapshot-company-meta {
+      grid-column: 1;
+      grid-row: 2;
+      display: grid;
+      gap: 0.18rem;
+      min-width: 0;
+    }
+
+    .snapshot-company-copy {
+      grid-column: 2;
+      grid-row: 2;
+      display: grid;
+      gap: 0.18rem;
+      min-width: 0;
+      justify-items: start;
+      text-align: left;
+    }
+
+    .snapshot-company .brand-logo-image {
+      width: auto;
+      height: auto;
+      max-height: 3.9rem;
+      max-width: 100%;
+      align-self: flex-start;
+    }
+
+    .snapshot-customer {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      gap: 0.65rem 0.55rem;
+      align-items: start;
+    }
+
+    .snapshot-customer-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      min-width: 0;
+      color: #dbeafe;
+    }
+
+    .snapshot-customer-icon svg {
+      width: 1.8rem;
+      height: 1.8rem;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .snapshot-customer-name {
+      display: grid;
+      gap: 0.18rem;
+      min-width: 0;
+      justify-items: start;
+      text-align: left;
+      align-self: center;
+    }
+
+    .snapshot-customer-address {
+      display: grid;
+      gap: 0.12rem;
+      min-width: 0;
+      justify-items: start;
+      text-align: left;
+    }
+
+    .snapshot-customer .snapshot-customer-icon:first-child {
+      align-self: center;
+    }
+
+    .snapshot-value {
+      display: block;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.98rem;
+      line-height: 1.2;
+    }
+
+    .snapshot-value-primary {
+      font-size: 1.18rem;
+      line-height: 1.2;
+    }
+
+    .snapshot-inline-label {
+      color: #dbeafe;
+      font-weight: 700;
+    }
+
+    .snapshot-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      min-width: 0;
+      margin-bottom: 0.32rem;
+    }
+
+    .snapshot-icon {
+      width: 1rem;
+      height: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #dbeafe;
+      opacity: 0.95;
+      flex: 0 0 auto;
+    }
+
+    .snapshot-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .snapshot-label {
-      margin: 0 0 0.3rem;
+      margin: 0;
       color: #dbeafe;
       font-size: 0.88rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
+      min-width: 0;
     }
 
     .snapshot-value {
       color: #fff;
       font-weight: 800;
       display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .proposal-layout {
@@ -238,45 +312,68 @@
 
     .areas-grid {
       display: grid;
-      gap: 1.1rem;
+      gap: 0.85rem;
       margin-top: 1rem;
     }
 
     .area-card {
-      padding: 1.1rem 1.05rem 1.05rem;
       border-radius: var(--radius-sm);
       border: 1px solid #e3edf7;
       background: var(--surface-soft);
+      overflow: hidden;
+    }
+
+    .area-toggle {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 0.95rem 1rem;
+      cursor: pointer;
+      text-align: left;
     }
 
     .area-head {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       gap: 0.85rem;
     }
 
+    .area-head-copy {
+      min-width: 0;
+      display: grid;
+      gap: 0.22rem;
+    }
+
     .area-card h3 {
+      margin: 0;
       font-size: 1.15rem;
       color: #163a63;
     }
 
+    .area-summary {
+      color: #526b88;
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .area-toggle-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex: 0 0 auto;
+    }
+
     .materials-card {
       margin-top: 1rem;
-      padding: 0.58rem 0.72rem;
+      padding: 0.85rem 0.95rem;
       border-radius: var(--radius-sm);
       border: 1px solid #dbe7f3;
       background: #f8fbff;
     }
 
     .materials-card .label {
-      margin-bottom: 4px;
-    }
-
-    .materials-card h3 {
-      margin: 0 0 6px;
-      font-size: 0.94rem;
-      color: #163a63;
+      margin-bottom: 0.25rem;
     }
 
     .area-pill {
@@ -290,9 +387,43 @@
       white-space: nowrap;
     }
 
+    .area-toggle-icon,
+    .section-toggle-icon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #c8dbef;
+      background: #fff;
+      color: #1d4fa3;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+    }
+
+    .area-card.is-open .area-toggle-icon,
+    .options-card.is-open .section-toggle-icon {
+      border-color: transparent;
+      background: linear-gradient(135deg, #0f3d91 0%, #1e64d6 42%, #1e96fc 100%);
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(30, 100, 214, 0.22);
+    }
+
+    .area-body {
+      padding: 0 1rem 1rem;
+      border-top: 0;
+    }
+
+    .section-body {
+      border-top: 1px solid #e3edf7;
+    }
+
     .task-list {
       list-style: none;
-      margin: 0.95rem 0 0;
+      margin: 0;
       padding: 0;
       display: grid;
       gap: 0.7rem;
@@ -310,7 +441,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.45rem;
-      margin-top: 0.85rem;
+      margin-top: 0.75rem;
     }
 
     .area-thumb {
@@ -469,14 +600,43 @@
 
     .options-card {
       margin-top: 1rem;
-      padding: 0.62rem 0.72rem;
       border-radius: var(--radius-sm);
       border: 1px solid #dbe7f3;
       background: #f8fbff;
+      overflow: hidden;
     }
 
-    .options-card .label {
-      margin-bottom: 4px;
+    .section-toggle {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 0.72rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.85rem;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .section-toggle-copy {
+      min-width: 0;
+      display: grid;
+      gap: 0.2rem;
+    }
+
+    .section-toggle .label {
+      margin: 0;
+    }
+
+    .section-toggle-summary {
+      color: #526b88;
+      font-size: 0.96rem;
+      line-height: 1.4;
+    }
+
+    .section-body {
+      padding: 0.72rem;
     }
 
     .options-note {
@@ -614,13 +774,13 @@
 
     .materials-list {
       list-style: disc;
-      padding-left: 0.95rem;
-      gap: 0.1rem;
+      padding-left: 1rem;
+      gap: 0.12rem;
       margin-top: 0;
     }
 
     .materials-list li {
-      font-size: 1.1rem;
+      font-size: 1.02rem;
       line-height: 1.22;
       padding: 0.05rem 0;
     }
@@ -779,16 +939,91 @@
       font-weight: 700;
     }
 
-    .review-grid {
-      margin-top: 0;
-      display: grid;
-      gap: 0.7rem;
-    }
-
     .right-rail {
       display: grid;
       gap: 1rem;
       align-content: start;
+    }
+
+    .review-carousel-card {
+      padding: 0.9rem 1rem;
+      border-radius: 18px;
+      background: #f8fbff;
+      border: 1px solid #dbe7f3;
+    }
+
+    .review-carousel {
+      position: relative;
+      overflow: hidden;
+      min-height: 244px;
+      height: 244px;
+      touch-action: pan-y;
+      margin-top: 0.45rem;
+    }
+
+    .review-carousel-track {
+      position: relative;
+      min-height: 100%;
+      height: 100%;
+    }
+
+    .review-carousel-slide {
+      display: none;
+      height: 100%;
+    }
+
+    .review-carousel-slide.is-active {
+      display: block;
+    }
+
+    .review-carousel .review-card {
+      min-height: 100%;
+      height: 100%;
+      padding: 1rem 1.05rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 0.8rem;
+      text-align: center;
+      align-items: center;
+      background: #fff;
+    }
+
+    .review-carousel .review-card p {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-inline: auto;
+      max-width: 100%;
+      white-space: normal;
+    }
+
+    .review-carousel .review-card strong {
+      margin-top: auto;
+    }
+
+    .review-carousel-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.42rem;
+      margin-top: 0.2rem;
+    }
+
+    .review-carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      border: 0;
+      background: #c7d7ec;
+      padding: 0;
+    }
+
+    .review-carousel-dot.is-active {
+      width: 22px;
+      background: linear-gradient(135deg, #0f3d91 0%, #1e96fc 100%);
     }
 
     .next-steps {
@@ -828,59 +1063,76 @@
       margin-top: 0.02rem;
     }
 
-    .membership-highlight {
-      padding: 1.3rem;
+    .walkthrough-interest-card {
+      padding: 1rem;
       border-radius: 22px;
       border: 1px solid #b7d7ff;
       background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
       box-shadow: 0 12px 28px rgba(30, 100, 214, 0.1);
+    }
+
+    .walkthrough-interest-card h3 {
       margin-top: 0;
-    }
-
-    .membership-highlight .label {
-      margin-bottom: 0.3rem;
-    }
-
-    .membership-highlight h3 {
-      margin-top: 0.35rem;
-      font-size: 1.2rem;
+      font-size: 1.22rem;
       color: #163a63;
     }
 
-    .membership-highlight p {
-      margin: 0.55rem 0 0;
-      color: #526b88;
-      font-size: 0.95rem;
-      line-height: 1.55;
-    }
-
-    .membership-highlight ul {
-      list-style: none;
-      margin: 0.8rem 0 0;
-      padding: 0;
-      display: grid;
-      gap: 0.55rem;
-    }
-
-    .membership-highlight li {
+    .toggle {
+      margin-top: 0.85rem;
+      width: 100%;
       display: flex;
-      gap: 0.6rem;
-      align-items: start;
-      color: #1f3a5c;
-      font-size: 0.94rem;
-      font-weight: 700;
-      line-height: 1.45;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding: 0.95rem 1rem;
+      border-radius: 18px;
+      border: 1px solid #dbe7f3;
+      background: rgba(255,255,255,0.92);
+      text-align: left;
+      cursor: pointer;
     }
 
-    .membership-highlight li::before {
-      content: "✓";
-      color: #24a148;
+    .toggle-copy {
+      min-width: 0;
+      display: grid;
+      gap: 0.32rem;
+    }
+
+    .toggle-title {
+      color: #163a63;
+      font-size: 1.02rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .toggle-helper {
+      color: #526b88;
+      font-size: 0.98rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .toggle-check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.25rem;
+      height: 1.25rem;
+      flex: 0 0 auto;
+      margin-top: 0.05rem;
+      border-radius: 4px;
+      border: 1px solid #93c5fd;
+      background: #fff;
+      color: transparent;
+      font-size: 0.9rem;
       font-weight: 900;
-      margin-top: 0.02rem;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
 
-    .membership-highlight .btn {
-      margin-top: 0.9rem;
+    .toggle.is-selected .toggle-check {
+      border-color: transparent;
+      background: linear-gradient(135deg, #15803d 0%, #22a65a 100%);
+      color: #fff;
     }
 
     .add-ons-list li::before {
@@ -1013,13 +1265,50 @@
       margin-top: 2rem;
     }
 
-    .footer p { margin: 0; }
+    .footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 1rem;
+      width: min(100% - 1.2rem, var(--max));
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+      max-width: 100%;
+      flex-wrap: nowrap;
+    }
+
+    .footer-brand img {
+      display: block;
+      height: 2.3rem;
+      width: auto;
+      max-width: 150px;
+      object-fit: contain;
+    }
+
+    .footer-brand span {
+      color: #dce8f5;
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+
+    .footer-phone {
+      color: #dce8f5;
+      font-weight: 800;
+      font-size: 1rem;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
 
     [hidden] { display: none !important; }
 
     @media (max-width: 980px) {
       .proposal-layout,
-      .snapshot,
       .testimonial-row {
         grid-template-columns: 1fr;
       }
@@ -1044,13 +1333,6 @@
         border-radius: 0;
         overflow: visible;
       }
-      .frame-header {
-        margin: 0.5rem 0.6rem 0;
-        padding: 0.7rem 0.8rem;
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        background: rgba(255,255,255,0.88);
-      }
       .frame-main {
         padding: 0.5rem 0.6rem 0;
         gap: 0.65rem;
@@ -1060,23 +1342,36 @@
         padding: 0.8rem;
         border-radius: 22px;
       }
-      .trust-chips { display: none; }
       .hero h1 {
-        font-size: clamp(1.55rem, 7vw, 2.1rem);
-        line-height: 1.08;
-      }
-      .hero-copy {
-        font-size: 0.98rem;
-        line-height: 1.42;
+        font-size: clamp(1.45rem, 6.2vw, 1.95rem);
+        white-space: normal;
+        line-height: 1.06;
       }
       .snapshot {
-        padding: 0.45rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.55rem;
+        padding: 0.35rem 0 0;
       }
       .snapshot-card {
-        padding: 0.7rem;
+        padding: 0.85rem 0.9rem;
+      }
+      .snapshot-company-logo,
+      .snapshot-company-top,
+      .snapshot-company-meta,
+      .snapshot-company-copy,
+      .snapshot-customer-icon,
+      .snapshot-customer-name,
+      .snapshot-customer-address {
+        grid-column: auto;
+        grid-row: auto;
+      }
+      .snapshot-company .brand-logo-image {
+        height: 2.7rem;
       }
       .snapshot-value {
-        font-size: 1rem;
+        font-size: 0.96rem;
+        line-height: 1.35;
       }
       .option-actions {
         align-items: flex-start;
@@ -1118,6 +1413,65 @@
       .option-price-label {
         text-align: left;
       }
+      .area-toggle,
+      .area-body,
+      .section-toggle,
+      .section-body {
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
+      }
+      .area-toggle-meta {
+        gap: 0.45rem;
+      }
+      .section-toggle-summary,
+      .area-summary {
+        font-size: 0.92rem;
+      }
+      .toggle {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 0.35rem 0.75rem;
+      }
+      .toggle-copy {
+        display: contents;
+      }
+      .toggle-title {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .toggle-check {
+        grid-column: 2;
+        grid-row: 1;
+      }
+      .toggle-helper {
+        grid-column: 1 / -1;
+        grid-row: 2;
+      }
+      .review-carousel {
+        min-height: 272px;
+        height: 272px;
+      }
+      .footer .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.35rem 0.75rem;
+      }
+      .footer-brand {
+        width: 100%;
+        justify-content: center;
+      }
+      .footer-brand img {
+        height: 2rem;
+      }
+      .footer-brand span,
+      .footer-phone {
+        font-size: 0.92rem;
+      }
+      .footer-phone {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -1125,47 +1479,52 @@
   <main class="proposal-shell" data-proposal-root>
     <div class="container">
       <div class="proposal-frame">
-        <header class="frame-header">
-          <div class="brand">
-            <span class="brand-mark">
-              <img data-field-src="siteLogoUrl" data-field-alt="siteLogoAlt" alt="Handy Homes" />
-            </span>
-            <div>
-              <div class="brand-title">Handy Homes</div>
-              <div class="brand-contact"><a href="tel:18668372050">(866) 837-2050</a></div>
-            </div>
-          </div>
-          <div class="trust-chips">
-            <span>Fully insured and vetted team</span>
-            <span>W2 Employees</span>
-            <span>Satisfaction Guarantee</span>
-            <span>Locally Owned &amp; Operated</span>
-          </div>
-        </header>
-
         <div class="frame-main">
           <section class="hero">
-            <p class="eyebrow">Prepared for <strong data-field="customerDisplayName"></strong></p>
-            <h1>Your Handyman Project Proposal</h1>
-            <p class="hero-copy">
-              We organized your project by area so it is easy to review what is included, while keeping the total simple and customer-friendly.
-            </p>
+            <h1>Your Handy Homes Quote</h1>
             <div class="snapshot">
-              <article class="snapshot-card">
-                <p class="snapshot-label">Address</p>
-                <strong class="snapshot-value" data-field="address"></strong>
+              <article class="snapshot-card" data-customer-card>
+                <div class="snapshot-customer">
+                  <div class="snapshot-customer-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="8" r="3.5"></circle>
+                      <path d="M5.5 19c1.6-3 4-4.5 6.5-4.5s4.9 1.5 6.5 4.5"></path>
+                    </svg>
+                  </div>
+                  <div class="snapshot-customer-name">
+                    <strong class="snapshot-value snapshot-value-primary" data-field="customerName"></strong>
+                  </div>
+                  <div class="snapshot-customer-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 21s6-4.35 6-10a6 6 0 1 0-12 0c0 5.65 6 10 6 10Z"></path>
+                      <circle cx="12" cy="11" r="2.5"></circle>
+                    </svg>
+                  </div>
+                  <div class="snapshot-customer-address">
+                    <span class="snapshot-value" data-field="addressLine1"></span>
+                    <span class="snapshot-value" data-field="customerCity"></span>
+                  </div>
+                </div>
               </article>
               <article class="snapshot-card">
-                <p class="snapshot-label">Prepared On</p>
-                <strong class="snapshot-value" data-field="preparedOn"></strong>
-              </article>
-              <article class="snapshot-card">
-                <p class="snapshot-label">Status</p>
-                <strong class="snapshot-value" data-field="proposalStatus"></strong>
-              </article>
-              <article class="snapshot-card">
-                <p class="snapshot-label">Quote ID</p>
-                <strong class="snapshot-value" data-field="quoteId"></strong>
+                <div class="snapshot-company">
+                  <div class="snapshot-company-logo">
+                    <img class="brand-logo-image" data-field-src="siteLogoUrl" data-field-alt="siteLogoAlt" alt="Handy Homes" hidden />
+                  </div>
+                  <div class="snapshot-company-top">
+                    <span class="snapshot-value snapshot-value-primary">Handy Homes</span>
+                    <span class="snapshot-value">Rumson, NJ</span>
+                    <span class="snapshot-value">(866) 837-2050</span>
+                  </div>
+                  <div class="snapshot-company-meta">
+                    <span class="snapshot-inline-label">Prepared by:</span>
+                    <span class="snapshot-inline-label">Email:</span>
+                  </div>
+                  <div class="snapshot-company-copy">
+                    <span class="snapshot-value" data-field="preparedBy"></span>
+                    <span class="snapshot-value" data-field="preparedByEmail"></span>
+                  </div>
+                </div>
               </article>
             </div>
           </section>
@@ -1176,37 +1535,38 @@
                 <p class="label">Project Summary</p>
                 <p class="section-intro" data-field="projectSummaryIntro"></p>
                 <ul class="project-summary-list" data-list="projectSummaryBullets"></ul>
+                <article class="materials-card" data-section="materials" hidden>
+                  <p class="label">Materials</p>
+                  <ul class="materials-list" data-list="materials"></ul>
+                </article>
                 <div class="areas-grid" data-list="areas"></div>
                 <div class="empty-state" data-empty-areas hidden>No scoped work has been added to this proposal yet.</div>
               </article>
 
-              <article class="testimonial-card" data-section="testimonials" hidden>
-                <p class="label">Customer Testimonial</p>
-                <div class="review-summary" style="margin-top:0;">
-                  <div class="review-stars" aria-hidden="true">★★★★★</div>
-                  <div>
-                    <strong data-field="reviewSummary">4.9 average rating from local homeowners</strong>
-                    <p>Professional crews, clear communication, and quality work homeowners feel good recommending.</p>
-                  </div>
-                </div>
-                <div class="testimonial-row" data-list="testimonial-row"></div>
-              </article>
-
-              <article class="materials-card" data-section="materials" hidden>
-                <p class="label">Materials</p>
-                <h3 data-field="materialsTitle"></h3>
-                <ul class="materials-list" data-list="materials"></ul>
-              </article>
-
               <article class="options-card" data-section="options" hidden>
-                <p class="label">Options</p>
-                <!-- Options are optional add-ons only and are not included in the base quote unless selected. -->
-                <p class="options-note">Optional work you can add now. Select any item and the total will update automatically.</p>
-                <ul class="options-list" data-list="options"></ul>
+                <button class="section-toggle" type="button" data-section-toggle="options" aria-expanded="false">
+                  <div class="section-toggle-copy">
+                    <p class="label">Options</p>
+                    <p class="section-toggle-summary">Optional add-ons you can review only if you want to expand the project.</p>
+                  </div>
+                  <span class="section-toggle-icon" data-toggle-icon aria-hidden="true">+</span>
+                </button>
+                <div class="section-body" data-section-body="options" hidden>
+                  <!-- Options are optional add-ons only and are not included in the base quote unless selected. -->
+                  <p class="options-note">Optional work you can add now. Select any item and the total will update automatically.</p>
+                  <ul class="options-list" data-list="options"></ul>
+                </div>
               </article>
             </div>
 
             <div class="right-rail">
+              <aside class="card review-carousel-card">
+                <p class="label">Homeowners Trust Handy Homes</p>
+                <div class="review-carousel" data-review-carousel hidden>
+                  <div class="review-carousel-track" data-list="review-excerpts-inline"></div>
+                  <div class="review-carousel-dots" data-review-carousel-dots></div>
+                </div>
+              </aside>
               <aside class="card investment-card">
                 <p class="label">Total Investment</p>
                 <h2>One simple project total</h2>
@@ -1219,23 +1579,11 @@
                   <h3>Added options</h3>
                   <ul data-list="selectedOptions"></ul>
                 </div>
-                <div class="investment-divider"></div>
-                <div class="investment-review">
-                  <p class="label" style="margin-top:0;">Customer Review</p>
-                  <div class="review-summary">
-                    <div class="review-stars" aria-hidden="true">★★★★★</div>
-                    <div>
-                      <strong data-field="reviewSummary">4.9 average rating from local homeowners</strong>
-                      <p>Professional crews, clear communication, and quality work homeowners feel good recommending.</p>
-                    </div>
-                  </div>
-                </div>
                 <ul class="meta-list">
                   <li>Satisfaction guarantee</li>
                   <li>Fully insured with $2M liability and workers' comp</li>
                   <li>Skilled, vetted professionals</li>
                 </ul>
-                <div class="review-grid" data-list="review-excerpts"></div>
                 <div class="next-steps">
                   <h3>What happens next</h3>
                   <ul>
@@ -1244,18 +1592,31 @@
                     <li>We confirm everything meets your expectations before collecting payment</li>
                   </ul>
                 </div>
+                <div class="walkthrough-interest-card">
+                  <p class="label">Save More</p>
+                  <h3>Want to save up to 40% on today's services?</h3>
+                  <button class="toggle is-selected" type="button" data-walkthrough-toggle aria-pressed="true">
+                    <span class="toggle-copy">
+                      <span class="toggle-title">Add Free Walk-Thru</span>
+                      <span class="toggle-helper">Book a free 30-minute Walk-Thru and see how this project, and everything else on your to-do list, can be handled year-round at a lower rate, with a dedicated handyman and ongoing visits including gutter cleaning and power washing.</span>
+                    </span>
+                    <span class="toggle-check" aria-hidden="true">✓</span>
+                  </button>
+                </div>
                 <div class="cta-row">
                   <a class="btn btn-green" href="https://hello.handyhomes.com">Approve This Proposal</a>
                   <a class="btn btn-outline" href="https://hello.handyhomes.com">Ask a Question</a>
                 </div>
               </aside>
-              <div class="membership-highlight">
+              <template id="annual-home-care-template">
+              <div class="walkthrough-interest-card">
                 <p class="label">Annual Home Care</p>
                 <h3>Want your whole home maintained by pros?</h3>
                 <p data-field="membershipOfferDescription"></p>
                 <ul data-list="membership-included-items"></ul>
                 <a class="btn btn-solid" href="https://hello.handyhomes.com" style="margin-top:0.65rem;">Learn more</a>
               </div>
+              </template>
             </div>
           </section>
         </div>
@@ -1265,8 +1626,11 @@
 
   <footer class="footer">
     <div class="container">
-      <p>Handy Homes</p>
-      <p>Customer-facing proposal view only. Estimate creation and pricing happen upstream in Salesforce or another internal estimating app.</p>
+      <a class="footer-brand" href="https://www.handyhomes.com" target="_blank" rel="noreferrer">
+        <img data-field-src="siteLogoUrl" data-field-alt="siteLogoAlt" alt="Handy Homes" hidden />
+        <span>HandyHomes.com</span>
+      </a>
+      <a class="footer-phone" href="tel:18668372050">(866) 837-2050</a>
     </div>
   </footer>
 
@@ -1283,6 +1647,8 @@
           "displayName": "Smith Residence",
           "address": "6 Bernard Drive, Holmdel, NJ"
         },
+        "preparedBy": "Al Postell",
+        "preparedByEmail": "al@handyhomes.com",
         "membershipStatus": "non-member",
         "proposalStatus": "Estimate Ready",
         "preparedOn": "2026-03-18",
@@ -1544,6 +1910,17 @@
       return String(value || '').trim().toLowerCase();
     }
 
+    function parseCustomerAddress(address) {
+      const raw = String(address || '').trim();
+      if (!raw) {
+        return { line1: 'Address available upon request', city: '' };
+      }
+      const parts = raw.split(',').map((part) => part.trim()).filter(Boolean);
+      const line1 = parts[0] || raw;
+      const city = parts[1] || '';
+      return { line1, city };
+    }
+
     function getAreaPhotoKey(area) {
       return normalizeKey(area?.areaName || area?.areaType || '');
     }
@@ -1607,17 +1984,17 @@
       const siteSettings = parsed.siteSettings || {};
       const proposal = parsed.proposal || {};
       const customer = proposal.customer || {};
+      const parsedAddress = parseCustomerAddress(customer.address);
       const quoteType = proposal.quoteType || 'handyman';
 
       const fieldMap = {
-        customerDisplayName: customer.displayName || 'Customer',
-        address: customer.address || 'Address available upon request',
-        proposalStatus: proposal.proposalStatus || 'Estimate Ready',
-        preparedOn: formatDate(proposal.preparedOn),
-        quoteId: proposal.quoteId || 'Proposal',
+        customerName: customer.displayName || 'Customer',
+        addressLine1: parsedAddress.line1,
+        customerCity: parsedAddress.city,
+        preparedBy: proposal.preparedBy || 'Al Postell',
+        preparedByEmail: proposal.preparedByEmail || 'al@handyhomes.com',
         totalProjectPrice: formatCurrency(proposal.totalProjectPrice),
         includesLaborAndMaterialsLabel: proposal.includesLaborAndMaterials ? 'Includes labor and materials' : '',
-        materialsTitle: proposal.materialsTitle || 'Project Materials',
         reviewSummary: proposal.reviewSummary || '4.9 average rating from local homeowners',
         membershipOfferDescription: proposal.membershipOffer?.description || 'Homes need year-round care to keep them humming, and this annual option keeps everything handled for you.'
       };
@@ -1625,6 +2002,9 @@
       Object.entries(fieldMap).forEach(([key, value]) => {
         document.querySelectorAll(`[data-field="${key}"]`).forEach((node) => {
           node.textContent = String(value);
+          if (node.classList.contains('snapshot-value')) {
+            node.setAttribute('title', String(value));
+          }
         });
       });
 
@@ -1642,14 +2022,6 @@
           node.alt = siteSettings.logoAlt;
         }
       });
-
-      const membershipNode = document.querySelector('[data-field="membershipStatusLabel"]');
-      if (membershipNode && proposal.membershipStatus) {
-        membershipNode.hidden = false;
-        membershipNode.textContent = proposal.membershipStatus === 'member'
-          ? 'Member pricing already applied'
-          : 'Annual care option available';
-      }
 
       const areasNode = document.querySelector('[data-list="areas"]');
       const emptyAreasNode = document.querySelector('[data-empty-areas]');
@@ -1701,33 +2073,62 @@
           .join('');
       }
 
+      const setDisclosureState = (container, button, body, expanded) => {
+        if (!container || !button || !body) return;
+        container.classList.toggle('is-open', expanded);
+        button.setAttribute('aria-expanded', String(expanded));
+        body.hidden = !expanded;
+        const icon = button.querySelector('[data-toggle-icon]');
+        if (icon) icon.textContent = expanded ? '−' : '+';
+      };
+
       if (areasNode) {
         if (renderableAreas.length) {
           areasNode.innerHTML = renderableAreas.map((area) => `
-            <article class="area-card">
-              <div class="area-head">
-                <h3>${area.heading}</h3>
-                ${area.areaType ? `<span class="area-pill">${area.areaType}</span>` : ''}
-              </div>
-              <ul class="task-list">
-                ${area.tasks.map((task) => `
-                  <li class="task-item">
-                    <div class="task-title">${task.title || task.description}</div>
-                    ${task.description && task.description !== task.title ? `<div class="task-description">${task.description}</div>` : ''}
-                  </li>
-                `).join('')}
-              </ul>
-              ${photosByAreaKey.get(area.areaPhotoKey)?.length ? `
-                <div class="area-thumbs">
-                  ${photosByAreaKey.get(area.areaPhotoKey).map((photo) => `
-                    <a class="area-thumb" href="${photo.imageUrl}" target="_blank" rel="noreferrer" title="${photo.title}">
-                      <img src="${photo.imageUrl}" alt="${photo.imageAlt}" />
-                    </a>
-                  `).join('')}
+            <article class="area-card" data-area-card>
+              <button class="area-toggle" type="button" data-area-toggle aria-expanded="false">
+                <div class="area-head">
+                  <div class="area-head-copy">
+                    <h3>${area.heading}</h3>
+                    <div class="area-summary">Tap to review ${area.tasks.length} scoped ${area.tasks.length === 1 ? 'task' : 'tasks'}${photosByAreaKey.get(area.areaPhotoKey)?.length ? ' and project photos' : ''}.</div>
+                  </div>
+                  <div class="area-toggle-meta">
+                    ${area.areaType ? `<span class="area-pill">${area.areaType}</span>` : ''}
+                    <span class="area-toggle-icon" data-toggle-icon aria-hidden="true">+</span>
+                  </div>
                 </div>
-              ` : ''}
+              </button>
+              <div class="area-body" data-area-body hidden>
+                <ul class="task-list">
+                  ${area.tasks.map((task) => `
+                    <li class="task-item">
+                      <div class="task-title">${task.title || task.description}</div>
+                      ${task.description && task.description !== task.title ? `<div class="task-description">${task.description}</div>` : ''}
+                    </li>
+                  `).join('')}
+                </ul>
+                ${photosByAreaKey.get(area.areaPhotoKey)?.length ? `
+                  <div class="area-thumbs">
+                    ${photosByAreaKey.get(area.areaPhotoKey).map((photo) => `
+                      <a class="area-thumb" href="${photo.imageUrl}" target="_blank" rel="noreferrer" title="${photo.title}">
+                        <img src="${photo.imageUrl}" alt="${photo.imageAlt}" />
+                      </a>
+                    `).join('')}
+                  </div>
+                ` : ''}
+              </div>
             </article>
           `).join('');
+          areasNode.querySelectorAll('[data-area-card]').forEach((card) => {
+            const button = card.querySelector('[data-area-toggle]');
+            const body = card.querySelector('[data-area-body]');
+            if (!button || !body) return;
+            setDisclosureState(card, button, body, false);
+            button.addEventListener('click', () => {
+              const expanded = button.getAttribute('aria-expanded') === 'true';
+              setDisclosureState(card, button, body, !expanded);
+            });
+          });
           if (emptyAreasNode) emptyAreasNode.hidden = true;
         } else {
           areasNode.innerHTML = '';
@@ -1803,6 +2204,15 @@
       if (optionsSection) {
         const hasOptions = renderableOptions.length > 0;
         optionsSection.hidden = !hasOptions;
+        const optionsToggle = optionsSection.querySelector('[data-section-toggle="options"]');
+        const optionsBody = optionsSection.querySelector('[data-section-body="options"]');
+        if (optionsToggle && optionsBody) {
+          setDisclosureState(optionsSection, optionsToggle, optionsBody, false);
+          optionsToggle.addEventListener('click', () => {
+            const expanded = optionsToggle.getAttribute('aria-expanded') === 'true';
+            setDisclosureState(optionsSection, optionsToggle, optionsBody, !expanded);
+          });
+        }
         if (optionsList && hasOptions) {
           optionsList.innerHTML = renderableOptions.map((option) => `
             <li class="option-item" data-option-id="${option.id}">
@@ -1822,7 +2232,6 @@
                 </div>
               </div>
               <div class="option-actions">
-                <div class="option-price-label">Add this option</div>
                 <div class="option-price">${formatCurrency(option.price)}</div>
                 <button class="option-add" type="button" data-option-toggle="${option.id}" aria-pressed="false">Add to quote</button>
               </div>
@@ -1831,37 +2240,96 @@
         }
       }
 
-      const testimonialSection = document.querySelector('[data-section="testimonials"]');
-      const testimonialRow = document.querySelector('[data-list="testimonial-row"]');
-      const reviewList = document.querySelector('[data-list="review-excerpts"]');
       const selectedReviews = resolveReviews(proposal, quoteType);
-      const testimonialEntries = Array.isArray(proposal.testimonialsByQuoteType?.[quoteType])
-        ? proposal.testimonialsByQuoteType[quoteType]
-        : Array.isArray(proposal.reviewExcerpts)
-          ? proposal.reviewExcerpts
-          : [];
-      if (testimonialSection && testimonialRow) {
-        testimonialSection.hidden = !testimonialEntries.length;
-        testimonialRow.innerHTML = testimonialEntries.slice(0, 3).map((item) => `
-          <article class="review-card">
-            <div class="review-card-stars" aria-hidden="true">★★★★★</div>
-            <p>"${String(item.quote || '').trim()}"</p>
-            <strong>${String(item.author || item.authorName || 'Handy Homes homeowner').trim()}</strong>
-          </article>
-        `).join('');
-      }
-      if (reviewList) {
-        const reviewMarkup = selectedReviews
-          .map((item) => `
+      const inlineReviewList = document.querySelector('[data-list="review-excerpts-inline"]');
+      const inlineReviewCarousel = document.querySelector('[data-review-carousel]');
+      const inlineReviewDots = document.querySelector('[data-review-carousel-dots]');
+      if (inlineReviewList && inlineReviewCarousel) {
+        const reviewSlides = selectedReviews.map((item, index) => `
+          <div class="review-carousel-slide${index === 0 ? ' is-active' : ''}" data-review-slide>
             <article class="review-card">
               <div class="review-card-stars" aria-hidden="true">★★★★★</div>
               <p>"${String(item.quote || '').trim()}"</p>
               <strong>${String(item.author || item.authorName || 'Handy Homes homeowner').trim()}</strong>
             </article>
-          `)
-          .join('');
-        reviewList.innerHTML = reviewMarkup;
-        reviewList.hidden = !reviewMarkup;
+          </div>
+        `).join('');
+        inlineReviewList.innerHTML = reviewSlides;
+        inlineReviewCarousel.hidden = !selectedReviews.length;
+        if (inlineReviewDots) {
+          inlineReviewDots.innerHTML = selectedReviews.map((_, index) => `
+            <button class="review-carousel-dot${index === 0 ? ' is-active' : ''}" type="button" aria-label="Show review ${index + 1}" data-review-dot="${index}"></button>
+          `).join('');
+        }
+        const slides = Array.from(inlineReviewList.querySelectorAll('[data-review-slide]'));
+        const dots = inlineReviewDots ? Array.from(inlineReviewDots.querySelectorAll('[data-review-dot]')) : [];
+        let activeReviewIndex = 0;
+        let reviewTimer = null;
+        let touchStartX = null;
+        let touchStartY = null;
+        const setActiveReview = (nextIndex) => {
+          activeReviewIndex = nextIndex;
+          slides.forEach((slide, index) => slide.classList.toggle('is-active', index === activeReviewIndex));
+          dots.forEach((dot, index) => dot.classList.toggle('is-active', index === activeReviewIndex));
+        };
+        const stopReviewLoop = () => {
+          if (reviewTimer) {
+            window.clearInterval(reviewTimer);
+            reviewTimer = null;
+          }
+        };
+        const startReviewLoop = () => {
+          if (slides.length <= 1) return;
+          stopReviewLoop();
+          reviewTimer = window.setInterval(() => {
+            setActiveReview((activeReviewIndex + 1) % slides.length);
+          }, 3200);
+        };
+        const stepReview = (direction) => {
+          if (slides.length <= 1) return;
+          setActiveReview((activeReviewIndex + direction + slides.length) % slides.length);
+          startReviewLoop();
+        };
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            setActiveReview(index);
+            startReviewLoop();
+          });
+        });
+        inlineReviewCarousel.addEventListener('touchstart', (event) => {
+          const touch = event.changedTouches && event.changedTouches[0];
+          if (!touch) return;
+          touchStartX = touch.clientX;
+          touchStartY = touch.clientY;
+          stopReviewLoop();
+        }, { passive: true });
+        inlineReviewCarousel.addEventListener('touchend', (event) => {
+          const touch = event.changedTouches && event.changedTouches[0];
+          if (!touch || touchStartX === null || touchStartY === null) {
+            startReviewLoop();
+            return;
+          }
+          const deltaX = touch.clientX - touchStartX;
+          const deltaY = touch.clientY - touchStartY;
+          touchStartX = null;
+          touchStartY = null;
+          if (Math.abs(deltaX) > 36 && Math.abs(deltaX) > Math.abs(deltaY)) {
+            stepReview(deltaX < 0 ? 1 : -1);
+            return;
+          }
+          startReviewLoop();
+        }, { passive: true });
+        setActiveReview(0);
+        startReviewLoop();
+      }
+
+      const walkthroughToggle = document.querySelector('[data-walkthrough-toggle]');
+      if (walkthroughToggle) {
+        walkthroughToggle.addEventListener('click', () => {
+          const selected = walkthroughToggle.getAttribute('aria-pressed') === 'true';
+          walkthroughToggle.setAttribute('aria-pressed', String(!selected));
+          walkthroughToggle.classList.toggle('is-selected', !selected);
+        });
       }
 
       if (optionsList) {
