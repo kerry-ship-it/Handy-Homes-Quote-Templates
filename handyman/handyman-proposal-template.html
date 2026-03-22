@@ -376,17 +376,6 @@
       margin-bottom: 0.25rem;
     }
 
-    .area-pill {
-      padding: 0.35rem 0.65rem;
-      border-radius: 999px;
-      background: #e7f2ff;
-      border: 1px solid #c6e0ff;
-      color: #1d4fa3;
-      font-size: 0.82rem;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
     .area-toggle-icon,
     .section-toggle-icon {
       width: 2rem;
@@ -1026,6 +1015,43 @@
       background: linear-gradient(135deg, #0f3d91 0%, #1e96fc 100%);
     }
 
+    .financial-cards {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .financial-card {
+      padding: 0.95rem 1rem;
+      border-radius: 18px;
+      border: 1px solid #dbe7f3;
+      background: #fff;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+    }
+
+    .financial-card .label {
+      margin-bottom: 0.35rem;
+    }
+
+    .financial-card h3 {
+      font-size: 1rem;
+      color: #163a63;
+    }
+
+    .financial-card p {
+      margin: 0.45rem 0 0;
+      color: #526b88;
+      font-size: 0.96rem;
+      line-height: 1.5;
+    }
+
+    .financial-card .financial-amount {
+      display: block;
+      margin-top: 0.55rem;
+      color: #0f3d91;
+      font-size: 1.12rem;
+      font-weight: 900;
+    }
+
     .next-steps {
       margin-top: 0;
       padding: 0.95rem 1rem;
@@ -1562,6 +1588,13 @@
             <div class="right-rail">
               <aside class="card review-carousel-card">
                 <p class="label">Homeowners Trust Handy Homes</p>
+                <div class="review-summary" style="margin-top:0;">
+                  <div class="review-stars" aria-hidden="true">★★★★★</div>
+                  <div>
+                    <strong data-field="reviewSummary">4.9 average rating from local homeowners</strong>
+                    <p>Professional crews, clear communication, and quality work homeowners feel good recommending.</p>
+                  </div>
+                </div>
                 <div class="review-carousel" data-review-carousel hidden>
                   <div class="review-carousel-track" data-list="review-excerpts-inline"></div>
                   <div class="review-carousel-dots" data-review-carousel-dots></div>
@@ -1579,6 +1612,7 @@
                   <h3>Added options</h3>
                   <ul data-list="selectedOptions"></ul>
                 </div>
+                <div class="financial-cards" data-financial-cards hidden></div>
                 <ul class="meta-list">
                   <li>Satisfaction guarantee</li>
                   <li>Fully insured with $2M liability and workers' comp</li>
@@ -1592,13 +1626,14 @@
                     <li>We confirm everything meets your expectations before collecting payment</li>
                   </ul>
                 </div>
-                <div class="walkthrough-interest-card">
+                <div class="walkthrough-interest-card" data-walkthrough-card hidden>
                   <p class="label">Save More</p>
                   <h3>Want to save up to 40% on today's services?</h3>
                   <button class="toggle is-selected" type="button" data-walkthrough-toggle aria-pressed="true">
                     <span class="toggle-copy">
-                      <span class="toggle-title">Add Free Walk-Thru</span>
-                      <span class="toggle-helper">Book a free 30-minute Walk-Thru and see how this project, and everything else on your to-do list, can be handled year-round at a lower rate, with a dedicated handyman and ongoing visits including gutter cleaning and power washing.</span>
+                      <span class="toggle-title">Add a free 30-minute Walk-Thru</span>
+                      <span class="toggle-helper">We&rsquo;ll review your home and to-do list and show how you can save with a Home Care Plan—your service moves forward either way.</span>
+                      <span class="toggle-helper">If you decide to join a plan within 30 days, today&rsquo;s service labor is applied at the lower member rate.</span>
                     </span>
                     <span class="toggle-check" aria-hidden="true">✓</span>
                   </button>
@@ -1656,6 +1691,17 @@
         "reviewSummary": "4.9 average rating from local homeowners",
         "totalProjectPrice": 495,
         "includesLaborAndMaterials": true,
+        "walkthroughOfferEnabled": true,
+        "deposit": {
+          "title": "Deposit",
+          "amount": "$150",
+          "description": "Collected only when this job requires a reserved service date."
+        },
+        "discount": {
+          "title": "Discount",
+          "amount": "$75 off",
+          "description": "Optional savings may apply when work is bundled with a Home Care Plan."
+        },
         "membershipOffer": {
           "description": "Homes need year-round care to keep them humming. Get a dedicated handyman and a personalized home care plan that helps protect over 30 home systems all year round.",
           "includedItems": [
@@ -1857,6 +1903,17 @@
           serviceSlugs?: string[]
           approvedForProposal?: boolean
         }>
+        walkthroughOfferEnabled?: boolean
+        deposit?: {
+          title?: string
+          amount?: string
+          description?: string
+        }
+        discount?: {
+          title?: string
+          amount?: string
+          description?: string
+        }
         areas: ProposalArea[]
       }
 
@@ -2081,6 +2138,7 @@
         const icon = button.querySelector('[data-toggle-icon]');
         if (icon) icon.textContent = expanded ? '−' : '+';
       };
+      const isMobileLayout = window.matchMedia('(max-width: 620px)').matches;
 
       if (areasNode) {
         if (renderableAreas.length) {
@@ -2093,7 +2151,6 @@
                     <div class="area-summary">Tap to review ${area.tasks.length} scoped ${area.tasks.length === 1 ? 'task' : 'tasks'}${photosByAreaKey.get(area.areaPhotoKey)?.length ? ' and project photos' : ''}.</div>
                   </div>
                   <div class="area-toggle-meta">
-                    ${area.areaType ? `<span class="area-pill">${area.areaType}</span>` : ''}
                     <span class="area-toggle-icon" data-toggle-icon aria-hidden="true">+</span>
                   </div>
                 </div>
@@ -2123,7 +2180,7 @@
             const button = card.querySelector('[data-area-toggle]');
             const body = card.querySelector('[data-area-body]');
             if (!button || !body) return;
-            setDisclosureState(card, button, body, false);
+            setDisclosureState(card, button, body, !isMobileLayout);
             button.addEventListener('click', () => {
               const expanded = button.getAttribute('aria-expanded') === 'true';
               setDisclosureState(card, button, body, !expanded);
@@ -2155,6 +2212,37 @@
             .join('');
         }
       });
+
+      const financialCardsNode = document.querySelector('[data-financial-cards]');
+      const financialEntries = [
+        proposal.deposit ? {
+          title: String(proposal.deposit.title || 'Deposit'),
+          amount: String(proposal.deposit.amount || '').trim(),
+          description: String(proposal.deposit.description || '').trim()
+        } : null,
+        proposal.discount ? {
+          title: String(proposal.discount.title || 'Discount'),
+          amount: String(proposal.discount.amount || '').trim(),
+          description: String(proposal.discount.description || '').trim()
+        } : null
+      ].filter(Boolean);
+      if (financialCardsNode) {
+        financialCardsNode.hidden = financialEntries.length === 0;
+        financialCardsNode.innerHTML = financialEntries.map((entry) => `
+          <article class="financial-card">
+            <p class="label">${entry.title}</p>
+            <h3>${entry.title}</h3>
+            ${entry.amount ? `<span class="financial-amount">${entry.amount}</span>` : ''}
+            ${entry.description ? `<p>${entry.description}</p>` : ''}
+          </article>
+        `).join('');
+      }
+
+      const walkthroughCard = document.querySelector('[data-walkthrough-card]');
+      if (walkthroughCard) {
+        const enabled = proposal.walkthroughOfferEnabled !== false;
+        walkthroughCard.hidden = !enabled;
+      }
 
       const optionsSection = document.querySelector('[data-section="options"]');
       const optionsList = document.querySelector('[data-list="options"]');
