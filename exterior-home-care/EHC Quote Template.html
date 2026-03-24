@@ -325,19 +325,82 @@
       line-height: 1;
       color: var(--ink);
     }
+    .price-summary-inline {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 0.9rem 0 0;
+      padding-top: 0.9rem;
+      border-top: 1px solid #e6edf5;
+      text-align: left;
+    }
+    .price-summary-inline span {
+      font-size: 0.84rem;
+      line-height: 1.2;
+    }
+    .price-summary-inline strong {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .checkout-price {
+      text-align: left;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.65rem;
+    }
+    .checkout-price span { font-size: 0.95rem; letter-spacing: 0.04em; }
+    .checkout-price strong { font-size: clamp(2rem, 4vw, 2.4rem); }
+    .trust-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0.45rem 0 1rem;
+      display: grid;
+      gap: 0.42rem;
+    }
+    .trust-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: #163a63;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .trust-checklist .check-icon {
+      width: 1.2rem;
+      height: 1.2rem;
+      flex: 0 0 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 900;
+      font-size: 0.9rem;
+    }
     .service-lines {
       margin-top: 0;
       display: grid;
     }
     .service-line {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 1rem;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.8rem;
       align-items: start;
-      padding: 1rem 0;
+      padding: 0.85rem 0;
       border-bottom: 1px solid #f1f5f9;
     }
     .service-line:last-child { border-bottom: none; }
+    .service-line > div { min-width: 0; }
+    .service-toggle {
+      margin-top: 0.25rem;
+      accent-color: #15803d;
+      width: 1.1rem;
+      height: 1.1rem;
+      flex: 0 0 1.1rem;
+    }
     .service-name { font-size: 1.05rem; font-weight: 800; }
     .service-detail {
       display: block;
@@ -348,17 +411,17 @@
     }
     .service-line strong { font-size: 1.15rem; font-weight: 900; }
     .service-notes {
-      margin-top: 1rem;
-      padding: 1rem;
+      margin-top: 0.75rem;
+      padding: 0.75rem 0.9rem;
       border-radius: var(--radius-sm);
-      border: 1px solid #dbe7f3;
-      background: #f8fbff;
+      border: 1px solid #e7eef6;
+      background: #f9fbff;
     }
     .service-notes p {
       margin: 0;
       color: #526b88;
-      font-size: 1.08rem;
-      line-height: 1.65;
+      font-size: 1.02rem;
+      line-height: 1.5;
       white-space: pre-line;
     }
     .one-time-benefits {
@@ -1666,9 +1729,9 @@
         grid-template-columns: 1fr;
       }
       .service-line {
-        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-columns: auto minmax(0, 1fr);
         align-items: start;
-        gap: 0.75rem;
+        gap: 0.65rem;
       }
       .trust-chips {
         flex-wrap: wrap;
@@ -1829,24 +1892,17 @@
             <article class="card">
               <div class="card-head">
                 <div class="card-head-copy">
-                  <p class="label">One Time Service</p>
-                  <h2>One-Time Exterior Cleaning</h2>
-                </div>
-                <div class="price-summary">
-                  <span>Proposal Total</span>
-                  <strong data-field="oneTimeTotal"></strong>
+                  <h2>One-Time Exterior Cleaning Service</h2>
                 </div>
               </div>
               <div class="service-lines" data-list="option-one-service-lines"></div>
+              <div class="price-summary price-summary-inline">
+                <span>Proposal Total</span>
+                <strong data-field="oneTimeTotal"></strong>
+              </div>
               <div class="service-notes">
                 <p class="label">Service Notes</p>
                 <p data-field="serviceNotes"></p>
-              </div>
-              <div class="trust-chips">
-                <span>Fully insured and vetted team</span>
-                <span>W2 Employees</span>
-                <span>Satisfaction Guarantee</span>
-                <span>Locally Owned &amp; Operated</span>
               </div>
               <div class="walkthrough-interest-card annual-plan-callout" id="annual-plan-overview">
                 <h3>Want to save up to 40% on today&apos;s services?</h3>
@@ -1857,18 +1913,6 @@
                   </span>
                   <span class="toggle-check" aria-hidden="true">✓</span>
                 </button>
-                <details class="plan-explainer">
-                  <summary>What’s a Walk-Thru?</summary>
-                  <div class="plan-explainer-body">
-                    <ul class="plan-benefits">
-                      <li>A 30 min, no-obligation in-home visit with your dedicated handyman</li>
-                      <li>We walk your home together and review everything on your list</li>
-                      <li>Identify repairs, maintenance, and opportunities to prevent future issues</li>
-                      <li>Focused on planning, not just fixing one issue</li>
-                      <li>See how we can save you time and 30–40% with ongoing care</li>
-                    </ul>
-                  </div>
-                </details>
                 <a class="btn btn-outline schedule-cta proof-cta" href="#checkout">Checkout</a>
               </div>
             </article>
@@ -1894,6 +1938,12 @@
             <p class="label">Checkout</p>
             <h2>Ready to book your service?</h2>
             <p class="walkthrough-caption">Click below and our office will call you to schedule a convient day. Payment will be collected at the time of service.</p>
+            <ul class="trust-checklist">
+              <li><span class="check-icon">✓</span><span>Fully insured and vetted team</span></li>
+              <li><span class="check-icon">✓</span><span>W2 employees</span></li>
+              <li><span class="check-icon">✓</span><span>Satisfaction Guarantee</span></li>
+              <li><span class="check-icon">✓</span><span>Locally owned &amp; operated</span></li>
+            </ul>
             <div class="checkout-walkthrough-offer" data-bottom-walkthrough-offer hidden>
               <p class="label">Before you book</p>
               <button class="toggle" type="button" data-bottom-membership-toggle aria-pressed="false">
@@ -1904,8 +1954,23 @@
                 <span class="toggle-check" aria-hidden="true">✓</span>
               </button>
             </div>
-            <a class="btn btn-outline schedule-cta proof-cta" href="https://hello.handyhomes.com" data-primary-cta>Book Service + Walk-Thru</a>
+            <a class="btn btn-outline schedule-cta proof-cta" href="https://hello.handyhomes.com" data-primary-cta data-action="sfdc-flow-schedule">Schedule</a>
           </section>
+
+          <template id="walkthrough-explainer-template">
+            <details class="plan-explainer">
+              <summary>What’s a Walk-Thru?</summary>
+              <div class="plan-explainer-body">
+                <ul class="plan-benefits">
+                  <li>A 30 min, no-obligation in-home visit with your dedicated handyman</li>
+                  <li>We walk your home together and review everything on your list</li>
+                  <li>Identify repairs, maintenance, and opportunities to prevent future issues</li>
+                  <li>Focused on planning, not just fixing one issue</li>
+                  <li>See how we can save you time and 30–40% with ongoing care</li>
+                </ul>
+              </div>
+            </details>
+          </template>
 
           <template id="annual-member-benefits-template">
             <section class="next-steps annual-benefits-card">
@@ -2339,34 +2404,63 @@
       }
 
       const serviceList = document.querySelector('[data-list="option-one-service-lines"]');
-      if (serviceList) {
-        serviceList.innerHTML = (config.oneTimeServices || [])
-          .map((item) => `
-            <div class="service-line">
-              <div>
-                <span class="service-name">${item.name}</span>
-                ${item.detail ? `<span class="service-detail">${item.detail}</span>` : ''}
-              </div>
-              <strong>${formatCurrency(item.price)}</strong>
-            </div>
-          `)
-          .join('');
-      }
 
-      const checkoutServiceList = document.querySelector('[data-list="checkout-one-time-services"]');
-      if (checkoutServiceList) {
-        checkoutServiceList.innerHTML = (config.oneTimeServices || [])
-          .map((item) => `
-            <div class="service-line">
-              <div>
-                <span class="service-name">${item.name}</span>
-                ${item.detail ? `<span class="service-detail">${item.detail}</span>` : ''}
-              </div>
-              <strong>${formatCurrency(item.price)}</strong>
+      const oneTimeServices = (config.oneTimeServices || []).map((item, index) => ({
+        id: String(item.id || `service-${index}`),
+        name: String(item.name || '').trim(),
+        detail: String(item.detail || '').trim(),
+        price: Number(item.price || 0) || 0
+      })).filter((item) => item.name);
+
+      const selectedServiceIds = new Set(oneTimeServices.map((item) => item.id));
+
+      const renderServices = () => {
+        const renderLine = (item) => `
+          <div class="service-line">
+            <input class="service-toggle" type="checkbox" data-service-toggle="${item.id}" aria-label="Include ${item.name}" checked />
+            <div>
+              <span class="service-name">${item.name}</span>
+              ${item.detail ? `<span class="service-detail">${item.detail}</span>` : ''}
             </div>
-          `)
-          .join('');
-      }
+          </div>`;
+
+        if (serviceList) {
+          serviceList.innerHTML = oneTimeServices
+            .filter((item) => selectedServiceIds.has(item.id))
+            .map(renderLine)
+            .join('');
+        }
+      };
+
+      const updateTotals = () => {
+        const total = oneTimeServices
+          .filter((item) => selectedServiceIds.has(item.id))
+          .reduce((sum, item) => sum + item.price, 0);
+        document.querySelectorAll('[data-field="oneTimeTotal"]').forEach((node) => {
+          node.textContent = formatCurrency(total);
+        });
+      };
+
+      const bindServiceToggles = () => {
+        document.querySelectorAll('[data-service-toggle]').forEach((checkbox) => {
+          checkbox.addEventListener('change', () => {
+            const id = checkbox.getAttribute('data-service-toggle');
+            if (!id) return;
+            if (checkbox.checked) {
+              selectedServiceIds.add(id);
+            } else {
+              selectedServiceIds.delete(id);
+            }
+            renderServices();
+            bindServiceToggles();
+            updateTotals();
+          });
+        });
+      };
+
+      renderServices();
+      bindServiceToggles();
+      updateTotals();
 
       const upgradeList = document.querySelector('[data-list="top-membership-services"]');
       if (upgradeList) {

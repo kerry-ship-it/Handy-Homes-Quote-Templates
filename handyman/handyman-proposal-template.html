@@ -106,7 +106,7 @@
       display: grid;
       grid-template-columns: auto minmax(0, 1fr);
       grid-template-rows: auto auto;
-      gap: 0.65rem 0.55rem;
+      gap: 0.75rem 0.65rem;
       align-items: start;
     }
 
@@ -116,7 +116,7 @@
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
-      padding: 0 0 0 10px;
+      padding: 0;
       min-width: 0;
     }
 
@@ -134,26 +134,36 @@
       grid-column: 1;
       grid-row: 2;
       display: grid;
-      gap: 0.18rem;
+      gap: 0.14rem;
       min-width: 0;
+      align-self: start;
     }
 
     .snapshot-company-copy {
       grid-column: 2;
       grid-row: 2;
       display: grid;
-      gap: 0.18rem;
+      gap: 0.14rem;
       min-width: 0;
       justify-items: start;
       text-align: left;
+      align-self: start;
     }
 
     .snapshot-company .brand-logo-image {
       width: auto;
       height: auto;
-      max-height: 3.9rem;
+      max-height: 3.2rem;
       max-width: 100%;
       align-self: flex-start;
+    }
+
+    .snapshot-company-top .snapshot-value {
+      font-weight: 500;
+    }
+
+    .snapshot-company-top .snapshot-value-primary {
+      font-weight: 800;
     }
 
     .snapshot-customer {
@@ -215,6 +225,10 @@
     .snapshot-value-primary {
       font-size: 1.18rem;
       line-height: 1.2;
+    }
+
+    .snapshot-value-regular {
+      font-weight: 500;
     }
 
     .snapshot-inline-label {
@@ -752,26 +766,26 @@
       padding: 0;
       margin: 0;
       display: grid;
-      gap: 0.36rem;
+      gap: 0.26rem;
     }
 
     .materials-list li {
-      padding: 0.15rem 0;
+      padding: 0.06rem 0;
       border: 0;
       background: transparent;
     }
 
     .materials-list {
       list-style: disc;
-      padding-left: 1rem;
-      gap: 0.12rem;
+      padding-left: 0.85rem;
+      gap: 0.06rem;
       margin-top: 0;
     }
 
     .materials-list li {
       font-size: 1.02rem;
-      line-height: 1.22;
-      padding: 0.05rem 0;
+      line-height: 1.14;
+      padding: 0.02rem 0;
     }
 
     .btn-green {
@@ -934,122 +948,177 @@
       align-content: start;
     }
 
-    .review-carousel-card {
-      padding: 0.9rem 1rem;
-      border-radius: 18px;
-      background: #f8fbff;
+    .review-style-grid {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .review-style-grid > * {
+      min-width: 0;
+    }
+
+    .review-style-card {
+      min-width: 0;
+      height: 100%;
+      padding: 0.95rem 1rem;
+      border-radius: 20px;
       border: 1px solid #dbe7f3;
-    }
-
-    .review-carousel {
-      position: relative;
-      overflow: hidden;
-      min-height: 244px;
-      height: 244px;
-      touch-action: pan-y;
-      margin-top: 0.45rem;
-    }
-
-    .review-carousel-track {
-      position: relative;
-      min-height: 100%;
-      height: 100%;
-    }
-
-    .review-carousel-slide {
-      display: none;
-      height: 100%;
-    }
-
-    .review-carousel-slide.is-active {
-      display: block;
-    }
-
-    .review-carousel .review-card {
-      min-height: 100%;
-      height: 100%;
-      padding: 1rem 1.05rem;
+      background: #f8fbff;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      gap: 0.8rem;
-      text-align: center;
-      align-items: center;
-      background: #fff;
+      gap: 0.75rem;
     }
 
-    .review-carousel .review-card p {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 4;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-inline: auto;
-      max-width: 100%;
-      white-space: normal;
+    .review-style-title {
+      margin: 0 0 0.5rem;
+      color: #0f3d91;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .review-carousel .review-card strong {
-      margin-top: auto;
+    .review-style-appstore {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
     }
 
-    .review-carousel-dots {
+    .review-style-appstore .review-style-score {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.42rem;
-      margin-top: 0.2rem;
+      gap: 0.75rem;
     }
 
-    .review-carousel-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      border: 0;
-      background: #c7d7ec;
-      padding: 0;
+    .review-style-appstore .review-score-group {
+      display: flex;
+      align-items: baseline;
+      gap: 0.45rem;
+      flex-wrap: wrap;
     }
 
-    .review-carousel-dot.is-active {
-      width: 22px;
-      background: linear-gradient(135deg, #0f3d91 0%, #1e96fc 100%);
+    .review-style-appstore .review-score-value {
+      color: #163a63;
+      font-size: 2.55rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.04em;
     }
 
-    .financial-cards {
+    .review-style-appstore .review-stars {
+      margin-top: 0;
+      font-size: 1.45rem;
+      letter-spacing: 0.07em;
+      white-space: nowrap;
+    }
+
+    .review-style-savings {
+      background: linear-gradient(180deg, #ffffff 0%, #eff7ff 100%);
+    }
+
+    .review-style-savings .review-savings-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .review-style-savings .review-savings-headline {
+      margin: 0;
+      color: #0f3d91;
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+    }
+
+    .review-style-savings .review-savings-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.08rem;
+    }
+
+    .review-style-savings .review-savings-value {
+      color: #0f3d91;
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .review-style-savings .review-stars {
+      margin-top: 0;
+      font-size: 1.45rem;
+      letter-spacing: 0.07em;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .review-style-savings .review-savings-copy {
+      margin: 0;
+      color: #526b88;
+      font-size: 0.92rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .review-style-savings .review-savings-note {
+      margin: 0;
+      color: #0f3d91;
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .financial-lines {
       display: grid;
       gap: 0.7rem;
     }
 
-    .financial-card {
-      padding: 0.95rem 1rem;
-      border-radius: 18px;
+    .financial-line {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        "label amount"
+        "description description";
+      gap: 0.15rem 0.6rem;
+      padding: 0.82rem 0.9rem;
+      border-radius: 16px;
       border: 1px solid #dbe7f3;
       background: #fff;
       box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
     }
 
-    .financial-card .label {
-      margin-bottom: 0.35rem;
-    }
-
-    .financial-card h3 {
-      font-size: 1rem;
+    .financial-line-label {
+      grid-area: label;
       color: #163a63;
-    }
-
-    .financial-card p {
-      margin: 0.45rem 0 0;
-      color: #526b88;
       font-size: 0.96rem;
-      line-height: 1.5;
+      font-weight: 800;
     }
 
-    .financial-card .financial-amount {
-      display: block;
-      margin-top: 0.55rem;
+    .financial-line-amount {
+      grid-area: amount;
       color: #0f3d91;
-      font-size: 1.12rem;
+      font-size: 1rem;
       font-weight: 900;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .financial-line-description {
+      grid-area: description;
+      color: #526b88;
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .approval-note {
+      margin: 0.1rem 0 0;
+      color: #526b88;
+      font-size: 0.9rem;
+      line-height: 1.45;
     }
 
     .next-steps {
@@ -1261,6 +1330,7 @@
       border: 1px solid transparent;
       font-weight: 800;
       font-size: 1rem;
+      letter-spacing: 0.04em;
     }
 
     .btn-solid {
@@ -1539,16 +1609,16 @@
                   </div>
                   <div class="snapshot-company-top">
                     <span class="snapshot-value snapshot-value-primary">Handy Homes</span>
-                    <span class="snapshot-value">Rumson, NJ</span>
+                    <span class="snapshot-value">Rumson, New Jersey</span>
                     <span class="snapshot-value">(866) 837-2050</span>
                   </div>
                   <div class="snapshot-company-meta">
-                    <span class="snapshot-inline-label">Prepared by:</span>
-                    <span class="snapshot-inline-label">Email:</span>
+                    <span class="snapshot-inline-label">Estimator:</span>
+                    <span class="snapshot-inline-label" aria-hidden="true">✉</span>
                   </div>
                   <div class="snapshot-company-copy">
                     <span class="snapshot-value" data-field="preparedBy"></span>
-                    <span class="snapshot-value" data-field="preparedByEmail"></span>
+                    <span class="snapshot-value snapshot-value-regular" data-field="preparedByEmail"></span>
                   </div>
                 </div>
               </article>
@@ -1585,21 +1655,21 @@
               </article>
             </div>
 
-            <div class="right-rail">
-              <aside class="card review-carousel-card">
-                <p class="label">Homeowners Trust Handy Homes</p>
-                <div class="review-summary" style="margin-top:0;">
-                  <div class="review-stars" aria-hidden="true">★★★★★</div>
-                  <div>
-                    <strong data-field="reviewSummary">4.9 average rating from local homeowners</strong>
-                    <p>Professional crews, clear communication, and quality work homeowners feel good recommending.</p>
-                  </div>
-                </div>
-                <div class="review-carousel" data-review-carousel hidden>
-                  <div class="review-carousel-track" data-list="review-excerpts-inline"></div>
-                  <div class="review-carousel-dots" data-review-carousel-dots></div>
-                </div>
-              </aside>
+              <div class="right-rail">
+                <div class="review-style-grid" data-review-style-grid>
+                  <article class="review-style-card review-style-savings">
+                    <p class="review-style-title">Annual Plan Savings</p>
+                    <div class="review-savings-row">
+                      <p class="review-savings-headline">Save up to 40%</p>
+                      <div class="review-savings-stack">
+                        <span class="review-savings-value" data-review-appstore-score>4.9</span>
+                        <span class="review-stars" aria-hidden="true">★★★★★</span>
+                      </div>
+                    </div>
+                  <p class="review-savings-copy">Bundle services and keep a dedicated handyman on call with a plan that simplifies future maintenance.</p>
+                  <p class="review-savings-note">Annual plan savings for customers who want year-round home care.</p>
+                </article>
+              </div>
               <aside class="card investment-card">
                 <p class="label">Total Investment</p>
                 <h2>One simple project total</h2>
@@ -1612,7 +1682,8 @@
                   <h3>Added options</h3>
                   <ul data-list="selectedOptions"></ul>
                 </div>
-                <div class="financial-cards" data-financial-cards hidden></div>
+                <div class="financial-lines" data-financial-cards hidden></div>
+                <p class="approval-note" data-deposit-note hidden>Approve this proposal to collect the deposit listed above and get your service scheduled.</p>
                 <ul class="meta-list">
                   <li>Satisfaction guarantee</li>
                   <li>Fully insured with $2M liability and workers' comp</li>
@@ -1626,20 +1697,19 @@
                     <li>We confirm everything meets your expectations before collecting payment</li>
                   </ul>
                 </div>
-                <div class="walkthrough-interest-card" data-walkthrough-card hidden>
-                  <p class="label">Save More</p>
-                  <h3>Want to save up to 40% on today's services?</h3>
-                  <button class="toggle is-selected" type="button" data-walkthrough-toggle aria-pressed="true">
-                    <span class="toggle-copy">
-                      <span class="toggle-title">Add a free 30-minute Walk-Thru</span>
-                      <span class="toggle-helper">We&rsquo;ll review your home and to-do list and show how you can save with a Home Care Plan—your service moves forward either way.</span>
-                      <span class="toggle-helper">If you decide to join a plan within 30 days, today&rsquo;s service labor is applied at the lower member rate.</span>
-                    </span>
-                    <span class="toggle-check" aria-hidden="true">✓</span>
-                  </button>
-                </div>
+                  <div class="walkthrough-interest-card" data-walkthrough-card hidden>
+                    <p class="label">Save More</p>
+                    <h3>Want to save up to 40% on today's services?</h3>
+                    <button class="toggle is-selected" type="button" data-walkthrough-toggle aria-pressed="true">
+                      <span class="toggle-copy">
+                        <span class="toggle-title">Add a free 30-minute Walk-Thru</span>
+                        <span class="toggle-helper">We&rsquo;ll review your home and to-do list and show how you can save with a Home Care Plan—your service moves forward either way.</span>
+                      </span>
+                      <span class="toggle-check" aria-hidden="true">✓</span>
+                    </button>
+                  </div>
                 <div class="cta-row">
-                  <a class="btn btn-green" href="https://hello.handyhomes.com">Approve This Proposal</a>
+                  <a class="btn btn-green" data-primary-cta href="https://hello.handyhomes.com">APPROVE &amp; PAY</a>
                   <a class="btn btn-outline" href="https://hello.handyhomes.com">Ask a Question</a>
                 </div>
               </aside>
@@ -2026,6 +2096,15 @@
       return Array.isArray(config.reviewExcerpts) ? config.reviewExcerpts : [];
     }
 
+    function getAverageRating(reviews, fallback = '4.9') {
+      const ratings = Array.isArray(reviews)
+        ? reviews.map((review) => Number(review?.rating)).filter((value) => Number.isFinite(value) && value > 0)
+        : [];
+      if (!ratings.length) return fallback;
+      const average = ratings.reduce((sum, value) => sum + value, 0) / ratings.length;
+      return average.toFixed(1);
+    }
+
     function setupProposalView() {
       const dataNode = document.getElementById('proposal-data');
       if (!dataNode) return;
@@ -2049,10 +2128,9 @@
         addressLine1: parsedAddress.line1,
         customerCity: parsedAddress.city,
         preparedBy: proposal.preparedBy || 'Al Postell',
-        preparedByEmail: proposal.preparedByEmail || 'al@handyhomes.com',
+        preparedByEmail: proposal.preparedByEmail || 'l@handyhomes.com',
         totalProjectPrice: formatCurrency(proposal.totalProjectPrice),
         includesLaborAndMaterialsLabel: proposal.includesLaborAndMaterials ? 'Includes labor and materials' : '',
-        reviewSummary: proposal.reviewSummary || '4.9 average rating from local homeowners',
         membershipOfferDescription: proposal.membershipOffer?.description || 'Homes need year-round care to keep them humming, and this annual option keeps everything handled for you.'
       };
 
@@ -2078,6 +2156,21 @@
         if (siteSettings.logoAlt) {
           node.alt = siteSettings.logoAlt;
         }
+      });
+
+      const approvedReviews = Array.isArray(proposal.customerReviews)
+        ? proposal.customerReviews.filter((review) => {
+            const approved = review.approvedForProposal !== false;
+            const categories = Array.isArray(review.categories) ? review.categories.map(normalizeKey) : [];
+            const quoteTypes = Array.isArray(review.quoteTypes) ? review.quoteTypes.map(normalizeKey) : [];
+            return approved && categories.includes('handyman') && quoteTypes.includes(normalizeKey(quoteType));
+          })
+        : [];
+      const reviewPool = resolveReviews(proposal, quoteType);
+      const reviewSource = reviewPool.length ? reviewPool : approvedReviews;
+      const reviewAverage = getAverageRating(approvedReviews.length ? approvedReviews : proposal.customerReviews);
+      document.querySelectorAll('[data-review-appstore-score]').forEach((node) => {
+        node.textContent = reviewAverage;
       });
 
       const areasNode = document.querySelector('[data-list="areas"]');
@@ -2214,6 +2307,7 @@
       });
 
       const financialCardsNode = document.querySelector('[data-financial-cards]');
+      const depositNoteNode = document.querySelector('[data-deposit-note]');
       const financialEntries = [
         proposal.deposit ? {
           title: String(proposal.deposit.title || 'Deposit'),
@@ -2229,13 +2323,15 @@
       if (financialCardsNode) {
         financialCardsNode.hidden = financialEntries.length === 0;
         financialCardsNode.innerHTML = financialEntries.map((entry) => `
-          <article class="financial-card">
-            <p class="label">${entry.title}</p>
-            <h3>${entry.title}</h3>
-            ${entry.amount ? `<span class="financial-amount">${entry.amount}</span>` : ''}
-            ${entry.description ? `<p>${entry.description}</p>` : ''}
+          <article class="financial-line">
+            <span class="financial-line-label">${entry.title}</span>
+            ${entry.amount ? `<span class="financial-line-amount">${entry.amount}</span>` : ''}
+            ${entry.description ? `<span class="financial-line-description">${entry.description}</span>` : ''}
           </article>
         `).join('');
+      }
+      if (depositNoteNode) {
+        depositNoteNode.hidden = !(proposal.deposit && String(proposal.deposit.amount || '').trim());
       }
 
       const walkthroughCard = document.querySelector('[data-walkthrough-card]');
@@ -2326,89 +2422,6 @@
             </li>
           `).join('');
         }
-      }
-
-      const selectedReviews = resolveReviews(proposal, quoteType);
-      const inlineReviewList = document.querySelector('[data-list="review-excerpts-inline"]');
-      const inlineReviewCarousel = document.querySelector('[data-review-carousel]');
-      const inlineReviewDots = document.querySelector('[data-review-carousel-dots]');
-      if (inlineReviewList && inlineReviewCarousel) {
-        const reviewSlides = selectedReviews.map((item, index) => `
-          <div class="review-carousel-slide${index === 0 ? ' is-active' : ''}" data-review-slide>
-            <article class="review-card">
-              <div class="review-card-stars" aria-hidden="true">★★★★★</div>
-              <p>"${String(item.quote || '').trim()}"</p>
-              <strong>${String(item.author || item.authorName || 'Handy Homes homeowner').trim()}</strong>
-            </article>
-          </div>
-        `).join('');
-        inlineReviewList.innerHTML = reviewSlides;
-        inlineReviewCarousel.hidden = !selectedReviews.length;
-        if (inlineReviewDots) {
-          inlineReviewDots.innerHTML = selectedReviews.map((_, index) => `
-            <button class="review-carousel-dot${index === 0 ? ' is-active' : ''}" type="button" aria-label="Show review ${index + 1}" data-review-dot="${index}"></button>
-          `).join('');
-        }
-        const slides = Array.from(inlineReviewList.querySelectorAll('[data-review-slide]'));
-        const dots = inlineReviewDots ? Array.from(inlineReviewDots.querySelectorAll('[data-review-dot]')) : [];
-        let activeReviewIndex = 0;
-        let reviewTimer = null;
-        let touchStartX = null;
-        let touchStartY = null;
-        const setActiveReview = (nextIndex) => {
-          activeReviewIndex = nextIndex;
-          slides.forEach((slide, index) => slide.classList.toggle('is-active', index === activeReviewIndex));
-          dots.forEach((dot, index) => dot.classList.toggle('is-active', index === activeReviewIndex));
-        };
-        const stopReviewLoop = () => {
-          if (reviewTimer) {
-            window.clearInterval(reviewTimer);
-            reviewTimer = null;
-          }
-        };
-        const startReviewLoop = () => {
-          if (slides.length <= 1) return;
-          stopReviewLoop();
-          reviewTimer = window.setInterval(() => {
-            setActiveReview((activeReviewIndex + 1) % slides.length);
-          }, 3200);
-        };
-        const stepReview = (direction) => {
-          if (slides.length <= 1) return;
-          setActiveReview((activeReviewIndex + direction + slides.length) % slides.length);
-          startReviewLoop();
-        };
-        dots.forEach((dot, index) => {
-          dot.addEventListener('click', () => {
-            setActiveReview(index);
-            startReviewLoop();
-          });
-        });
-        inlineReviewCarousel.addEventListener('touchstart', (event) => {
-          const touch = event.changedTouches && event.changedTouches[0];
-          if (!touch) return;
-          touchStartX = touch.clientX;
-          touchStartY = touch.clientY;
-          stopReviewLoop();
-        }, { passive: true });
-        inlineReviewCarousel.addEventListener('touchend', (event) => {
-          const touch = event.changedTouches && event.changedTouches[0];
-          if (!touch || touchStartX === null || touchStartY === null) {
-            startReviewLoop();
-            return;
-          }
-          const deltaX = touch.clientX - touchStartX;
-          const deltaY = touch.clientY - touchStartY;
-          touchStartX = null;
-          touchStartY = null;
-          if (Math.abs(deltaX) > 36 && Math.abs(deltaX) > Math.abs(deltaY)) {
-            stepReview(deltaX < 0 ? 1 : -1);
-            return;
-          }
-          startReviewLoop();
-        }, { passive: true });
-        setActiveReview(0);
-        startReviewLoop();
       }
 
       const walkthroughToggle = document.querySelector('[data-walkthrough-toggle]');
