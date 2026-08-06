@@ -1,0 +1,1102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scheduled Gutter Cleaning | Free GutterCare Enrollment</title>
+    <meta
+      name="description"
+      content="Choose 2, 4, or 6 scheduled gutter cleanings a year with GutterCare. $0 to enroll. Pay only after each completed visit."
+    />
+    <style>
+      :root {
+        --navy: #07284c;
+        --navy-2: #0b3765;
+        --blue: #087ff5;
+        --blue-2: #0568d8;
+        --green: #82c943;
+        --ink: #09213f;
+        --muted: #52657c;
+        --line: #d9e2ec;
+        --soft: #f3f8fd;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .site-header {
+        position: relative;
+        z-index: 20;
+        display: flex;
+        min-height: 86px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 14px max(24px, calc((100vw - 1180px) / 2));
+        background: #fff;
+        box-shadow: 0 1px 0 rgba(9, 33, 63, 0.08);
+      }
+
+      .site-header img {
+        width: 150px;
+        height: 56px;
+        object-fit: contain;
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .site-nav a {
+        color: inherit;
+      }
+
+      .site-phone {
+        white-space: nowrap;
+      }
+
+      .menu-button {
+        display: none;
+        width: 48px;
+        height: 48px;
+        border: 0;
+        background: transparent;
+        color: var(--navy);
+        font-size: 32px;
+      }
+
+      .sgc-shell {
+        overflow: hidden;
+      }
+
+      .sgc-wrap,
+      .sgc-hero-inner {
+        width: min(1180px, calc(100% - 48px));
+        margin: 0 auto;
+      }
+
+      .sgc-hero {
+        position: relative;
+        min-height: clamp(620px, calc(100svh - 86px), 760px);
+        display: flex;
+        isolation: isolate;
+        background: var(--navy);
+      }
+
+      .sgc-hero > img {
+        position: absolute;
+        inset: 0;
+        z-index: -3;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 62% center;
+        animation: hero-zoom 1.3s ease-out both;
+      }
+
+      .sgc-hero::before {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        content: "";
+        background: linear-gradient(
+          90deg,
+          rgba(4, 29, 57, 0.98) 0%,
+          rgba(4, 34, 66, 0.92) 34%,
+          rgba(4, 34, 66, 0.52) 58%,
+          rgba(4, 34, 66, 0.08) 82%
+        );
+      }
+
+      .sgc-hero::after {
+        position: absolute;
+        inset: auto 0 0;
+        z-index: -1;
+        height: 34%;
+        content: "";
+        background: linear-gradient(180deg, transparent, rgba(3, 27, 53, 0.58));
+      }
+
+      .sgc-hero-inner {
+        padding: clamp(72px, 10vh, 116px) 0 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .sgc-hero-copy {
+        max-width: 620px;
+        color: #fff;
+        animation: hero-rise 0.7s 0.08s ease-out both;
+      }
+
+      .sgc-eyebrow,
+      .sgc-kicker {
+        margin: 0 0 14px;
+        color: var(--blue-2);
+        font-size: 13px;
+        font-weight: 850;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .sgc-eyebrow {
+        margin-bottom: 18px;
+        color: #59aaff;
+        font-size: 14px;
+      }
+
+      .sgc-hero h1 {
+        max-width: 610px;
+        margin: 0;
+        color: #fff;
+        font-size: clamp(48px, 5.4vw, 78px);
+        font-weight: 760;
+        letter-spacing: -0.045em;
+        line-height: 1.02;
+      }
+
+      .sgc-hero-lede {
+        max-width: 560px;
+        margin: 25px 0 30px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: clamp(18px, 1.7vw, 23px);
+      }
+
+      .sgc-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .sgc-btn {
+        min-height: 54px;
+        padding: 14px 24px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 750;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .sgc-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .sgc-btn-primary {
+        color: #fff;
+        background: var(--blue);
+        box-shadow: 0 12px 32px rgba(0, 112, 242, 0.3);
+      }
+
+      .sgc-btn-primary:hover {
+        background: var(--blue-2);
+      }
+
+      .sgc-btn-secondary {
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        background: rgba(7, 40, 76, 0.34);
+        backdrop-filter: blur(6px);
+      }
+
+      .sgc-proof {
+        padding-top: 36px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .sgc-proof span,
+      .sgc-trust-list li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .sgc-check {
+        width: 22px;
+        height: 22px;
+        display: inline-grid;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 50%;
+        color: var(--navy);
+        background: var(--green);
+        font-style: normal;
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .sgc-section {
+        padding: clamp(72px, 9vw, 118px) 0;
+      }
+
+      .sgc-title {
+        max-width: 780px;
+        margin: 0;
+        font-size: clamp(34px, 4vw, 54px);
+        letter-spacing: -0.035em;
+        line-height: 1.08;
+      }
+
+      .sgc-copy {
+        max-width: 700px;
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .sgc-cadences {
+        margin: 42px 0 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        border: 0;
+      }
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+      }
+
+      .sgc-choice input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .sgc-choice label {
+        position: relative;
+        min-height: 238px;
+        height: 100%;
+        padding: 30px;
+        display: block;
+        border: 1px solid #cbd7e5;
+        border-radius: 18px;
+        background: #fff;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .sgc-choice label:hover {
+        transform: translateY(-4px);
+        border-color: #83bdf6;
+        box-shadow: 0 18px 42px rgba(17, 55, 93, 0.1);
+      }
+
+      .sgc-choice input:focus-visible + label {
+        outline: 3px solid rgba(8, 127, 245, 0.28);
+        outline-offset: 3px;
+      }
+
+      .sgc-choice input:checked + label {
+        padding: 29px;
+        border: 2px solid var(--blue);
+        background: #f7fbff;
+        box-shadow: 0 16px 36px rgba(8, 127, 245, 0.14);
+      }
+
+      .sgc-choice input:checked + label::after {
+        position: absolute;
+        top: 22px;
+        right: 22px;
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        content: "✓";
+        color: #fff;
+        background: var(--blue);
+        font-weight: 900;
+      }
+
+      .sgc-popular {
+        position: absolute;
+        top: -13px;
+        left: 22px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        color: var(--ink);
+        background: var(--green);
+        font-size: 12px;
+        font-weight: 850;
+      }
+
+      .sgc-frequency {
+        margin: 16px 0 6px;
+        display: block;
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+
+      .sgc-cadence-name {
+        display: block;
+        font-size: 18px;
+        font-weight: 750;
+      }
+
+      .sgc-cadence-note {
+        margin-top: 8px;
+        display: block;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .sgc-address {
+        margin-top: 34px;
+        padding: 42px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(400px, 0.9fr);
+        gap: 50px;
+        align-items: center;
+        border: 1px solid #d5e8fb;
+        border-radius: 22px;
+        background: linear-gradient(135deg, #edf6ff, #f8fbfe);
+      }
+
+      .sgc-address h3 {
+        margin: 0;
+        font-size: clamp(28px, 3vw, 40px);
+        letter-spacing: -0.025em;
+        line-height: 1.12;
+      }
+
+      .sgc-address p {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .sgc-field {
+        display: flex;
+        gap: 10px;
+      }
+
+      .sgc-field input {
+        min-width: 0;
+        height: 56px;
+        padding: 0 16px;
+        flex: 1;
+        border: 1px solid #b8c9dc;
+        border-radius: 10px;
+        color: var(--ink);
+        background: #fff;
+        font: inherit;
+        font-size: 16px;
+      }
+
+      .sgc-field input:focus {
+        outline: 3px solid rgba(8, 127, 245, 0.2);
+        border-color: var(--blue);
+      }
+
+      .sgc-field button {
+        border: 0;
+        cursor: pointer;
+      }
+
+      .sgc-price-grid {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 72px;
+        align-items: start;
+      }
+
+      .sgc-zero {
+        font-size: clamp(50px, 7vw, 86px);
+        font-weight: 820;
+        letter-spacing: 0;
+        line-height: 1;
+      }
+
+      .sgc-zero-note {
+        max-width: 430px;
+        margin: 20px 0 0;
+        color: var(--muted);
+        font-size: 19px;
+      }
+
+      .sgc-definitions {
+        margin: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .sgc-definition {
+        padding: 28px 0;
+        display: grid;
+        grid-template-columns: 52px 1fr;
+        gap: 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .sgc-definition-icon {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        border: 1px solid #84bdf7;
+        border-radius: 50%;
+        color: var(--blue);
+        font-weight: 850;
+      }
+
+      .sgc-definition h3,
+      .sgc-step h3 {
+        margin: 0 0 6px;
+        font-size: 19px;
+      }
+
+      .sgc-definition p,
+      .sgc-step p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .sgc-how {
+        background: var(--soft);
+      }
+
+      .sgc-steps {
+        counter-reset: steps;
+        margin: 48px 0 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        list-style: none;
+      }
+
+      .sgc-step {
+        counter-increment: steps;
+        position: relative;
+        padding-right: 28px;
+      }
+
+      .sgc-step:not(:last-child)::after {
+        position: absolute;
+        top: 22px;
+        right: 14px;
+        left: 52px;
+        height: 1px;
+        content: "";
+        background: #b9cce0;
+      }
+
+      .sgc-step-num {
+        position: relative;
+        z-index: 1;
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        color: #fff;
+        background: var(--blue);
+        font-weight: 850;
+      }
+
+      .sgc-step-num::before {
+        content: counter(steps);
+      }
+
+      .sgc-step h3 {
+        margin-top: 22px;
+      }
+
+      .sgc-step p {
+        font-size: 15px;
+      }
+
+      .sgc-trust,
+      .sgc-final {
+        padding: 72px 0;
+        color: #fff;
+        background: var(--navy);
+      }
+
+      .sgc-trust-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 70px;
+        align-items: center;
+      }
+
+      .sgc-trust h2,
+      .sgc-final h2 {
+        margin: 0;
+        color: #fff;
+        font-size: clamp(34px, 4vw, 52px);
+        letter-spacing: -0.035em;
+        line-height: 1.08;
+      }
+
+      .sgc-trust p,
+      .sgc-final p {
+        max-width: 560px;
+        margin: 18px 0 0;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 18px;
+      }
+
+      .sgc-trust-list {
+        margin: 0;
+        padding: 0;
+        display: grid;
+        list-style: none;
+      }
+
+      .sgc-trust-list li {
+        padding: 17px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .sgc-faq {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 76px;
+      }
+
+      .sgc-faq details {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .sgc-faq summary {
+        padding: 22px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        cursor: pointer;
+        list-style: none;
+        font-size: 18px;
+        font-weight: 750;
+      }
+
+      .sgc-faq summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .sgc-faq summary::after {
+        content: "+";
+        color: var(--blue);
+        font-size: 26px;
+        font-weight: 500;
+      }
+
+      .sgc-faq details[open] summary::after {
+        content: "–";
+      }
+
+      .sgc-faq details p {
+        margin: -4px 0 24px;
+        color: var(--muted);
+      }
+
+      .sgc-final {
+        padding: 76px 0;
+        background: linear-gradient(120deg, var(--navy), var(--navy-2));
+      }
+
+      .sgc-final-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+      }
+
+      @keyframes hero-rise {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @keyframes hero-zoom {
+        from {
+          opacity: 0.75;
+          transform: scale(1.025);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .site-nav {
+          display: none;
+        }
+
+        .menu-button {
+          display: block;
+        }
+
+        .sgc-hero {
+          min-height: auto;
+        }
+
+        .sgc-hero-inner {
+          padding: 48px 0 24px;
+          justify-content: flex-start;
+        }
+
+        .sgc-proof {
+          padding-top: 20px;
+        }
+
+        .sgc-cadences,
+        .sgc-address,
+        .sgc-price-grid,
+        .sgc-trust-grid,
+        .sgc-faq {
+          grid-template-columns: 1fr;
+        }
+
+        .sgc-choice label {
+          min-height: 0;
+          padding: 24px 72px 24px 24px;
+        }
+
+        .sgc-choice input:checked + label {
+          padding: 23px 71px 23px 23px;
+        }
+
+        .sgc-frequency {
+          margin-top: 8px;
+          font-size: 25px;
+        }
+
+        .sgc-address {
+          padding: 32px;
+          gap: 30px;
+        }
+
+        .sgc-steps {
+          grid-template-columns: 1fr;
+        }
+
+        .sgc-step {
+          padding: 0 0 26px;
+          display: grid;
+          grid-template-columns: 48px 1fr;
+          column-gap: 16px;
+        }
+
+        .sgc-step:not(:last-child)::after {
+          top: 44px;
+          right: auto;
+          bottom: 0;
+          left: 21px;
+          width: 1px;
+          height: auto;
+        }
+
+        .sgc-step h3 {
+          margin-top: 7px;
+        }
+
+        .sgc-step p {
+          grid-column: 2;
+        }
+
+        .sgc-final-inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .site-header {
+          min-height: 72px;
+          padding: 8px 16px;
+        }
+
+        .site-header img {
+          width: 118px;
+          height: 52px;
+        }
+
+        .sgc-wrap,
+        .sgc-hero-inner {
+          width: calc(100% - 32px);
+        }
+
+        .sgc-hero {
+          min-height: auto;
+        }
+
+        .sgc-hero > img {
+          object-position: 66% center;
+        }
+
+        .sgc-hero::before {
+          background: linear-gradient(
+            90deg,
+            rgba(4, 29, 57, 0.96),
+            rgba(4, 34, 66, 0.84) 52%,
+            rgba(4, 34, 66, 0.2)
+          );
+        }
+
+        .sgc-hero-inner {
+          padding: 40px 0 20px;
+          justify-content: flex-start;
+        }
+
+        .sgc-hero-copy {
+          max-width: 94%;
+        }
+
+        .sgc-eyebrow {
+          margin-bottom: 13px;
+          font-size: 12px;
+        }
+
+        .sgc-hero h1 {
+          max-width: 360px;
+          font-size: clamp(40px, 12vw, 56px);
+        }
+
+        .sgc-hero-lede {
+          max-width: 340px;
+          margin: 18px 0 22px;
+          font-size: 17px;
+        }
+
+        .sgc-actions,
+        .sgc-field {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .sgc-btn {
+          width: 100%;
+        }
+
+        .sgc-proof {
+          padding-top: 18px;
+          gap: 10px 16px;
+          font-size: 13px;
+        }
+
+        .sgc-section {
+          padding: 68px 0;
+        }
+
+        .sgc-title {
+          font-size: 36px;
+        }
+
+        .sgc-address {
+          margin-top: 24px;
+          padding: 26px 20px;
+        }
+
+        .sgc-zero {
+          font-size: 58px;
+        }
+
+        .sgc-trust,
+        .sgc-final {
+          padding: 64px 0;
+        }
+
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          scroll-behavior: auto !important;
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="/" aria-label="Handy Homes home">
+        <img
+          src="https://media.handyhomes.com/handy_homes_logo_3d2387136e-480x.avif"
+          alt="Handy Homes"
+        />
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/services">Services</a>
+        <a href="/annual-plans">Annual Plans</a>
+        <a href="/about">Why Handy Homes</a>
+        <a href="/resources">Resources</a>
+        <a class="site-phone" href="tel:+18668372050">(866) 837-2050</a>
+        <a class="sgc-btn sgc-btn-primary" href="#sgc-plan">See my GutterCare price</a>
+      </nav>
+      <button class="menu-button" type="button" aria-label="Open menu">☰</button>
+    </header>
+
+    <!-- The Payload htmlEmbed component begins here. -->
+    <main class="sgc-shell" id="scheduled-gutter-cleaning">
+      <section class="sgc-hero" aria-labelledby="sgc-title">
+        <img
+        src="./scheduled-gutter-cleaning-hero.webp"
+          alt="White home with clean gutters and downspouts"
+          width="1920"
+          height="1080"
+          fetchpriority="high"
+        />
+        <div class="sgc-hero-inner">
+          <div class="sgc-hero-copy">
+            <p class="sgc-eyebrow">Free GutterCare enrollment</p>
+            <h1 id="sgc-title">Gutter cleaning, already handled.</h1>
+            <p class="sgc-hero-lede">
+              Choose 2, 4, or 6 cleanings a year. $0 to enroll. Pay only after each completed
+              visit.
+            </p>
+            <div class="sgc-actions">
+              <a class="sgc-btn sgc-btn-primary" href="#sgc-plan">See my GutterCare price</a>
+              <a class="sgc-btn sgc-btn-secondary" href="#sgc-how">How GutterCare works</a>
+            </div>
+          </div>
+          <div class="sgc-proof" aria-label="GutterCare benefits">
+            <span><i class="sgc-check" aria-hidden="true">✓</i>Pay as you go</span>
+            <span><i class="sgc-check" aria-hidden="true">✓</i>Skip or cancel</span>
+            <span><i class="sgc-check" aria-hidden="true">✓</i>Advance reminders</span>
+          </div>
+        </div>
+      </section>
+
+      <form action="/preview/guttercare/enroll" method="get">
+        <section class="sgc-section" id="sgc-plan">
+          <div class="sgc-wrap">
+            <p class="sgc-kicker">Your schedule</p>
+            <h2 class="sgc-title">Choose the schedule that fits your home.</h2>
+            <p class="sgc-copy">
+              Start with the coverage that matches your trees and seasonal buildup. We will
+              confirm the gutter details before your first cleaning.
+            </p>
+            <fieldset class="sgc-cadences">
+              <legend class="visually-hidden">Choose cleaning frequency</legend>
+              <div class="sgc-choice">
+                <input type="radio" id="sgc-2" name="cadence" value="2" checked />
+                <label for="sgc-2">
+                  <span class="sgc-popular">Most popular</span>
+                  <strong class="sgc-frequency">2 cleanings</strong>
+                  <span class="sgc-cadence-name">Seasonal coverage</span>
+                  <span class="sgc-cadence-note">Best for most homes</span>
+                </label>
+              </div>
+              <div class="sgc-choice">
+                <input type="radio" id="sgc-4" name="cadence" value="4" />
+                <label for="sgc-4">
+                  <strong class="sgc-frequency">4 cleanings</strong>
+                  <span class="sgc-cadence-name">More tree coverage</span>
+                  <span class="sgc-cadence-note">For homes near mature trees</span>
+                </label>
+              </div>
+              <div class="sgc-choice">
+                <input type="radio" id="sgc-6" name="cadence" value="6" />
+                <label for="sgc-6">
+                  <strong class="sgc-frequency">6 cleanings</strong>
+                  <span class="sgc-cadence-name">High-debris protection</span>
+                  <span class="sgc-cadence-note">For wooded lots or frequent buildup</span>
+                </label>
+              </div>
+            </fieldset>
+            <div class="sgc-address">
+              <div>
+                <h3>See the GutterCare plan for your home.</h3>
+                <p>
+                  Enter your address to see your covered structures and estimated price per
+                  cleaning.
+                </p>
+              </div>
+              <div class="sgc-field">
+                <label class="visually-hidden" for="sgc-address">Service address</label>
+                <input
+                  id="sgc-address"
+                  name="serviceAddress"
+                  autocomplete="street-address"
+                  placeholder="Enter your service address"
+                  required
+                />
+                <button class="sgc-btn sgc-btn-primary" type="submit">Find my address</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+
+      <section class="sgc-section">
+        <div class="sgc-wrap sgc-price-grid">
+          <div>
+            <p class="sgc-kicker">Simple billing</p>
+            <div class="sgc-zero">$0 due today</div>
+            <p class="sgc-zero-note">
+              Enrollment is free. We charge only after a completed gutter cleaning.
+            </p>
+          </div>
+          <div class="sgc-definitions">
+            <div class="sgc-definition">
+              <span class="sgc-definition-icon" aria-hidden="true">i</span>
+              <div>
+                <h3>Your estimated price</h3>
+                <p>We use your home details to show an estimated price per cleaning.</p>
+              </div>
+            </div>
+            <div class="sgc-definition">
+              <span class="sgc-definition-icon" aria-hidden="true">✓</span>
+              <div>
+                <h3>Your confirmed price</h3>
+                <p>
+                  Once your gutter assets are verified, we show the price you will be charged
+                  after completed service.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sgc-section sgc-how" id="sgc-how">
+        <div class="sgc-wrap">
+          <p class="sgc-kicker">One less thing to remember</p>
+          <h2 class="sgc-title">How GutterCare works.</h2>
+          <ol class="sgc-steps">
+            <li class="sgc-step">
+              <span class="sgc-step-num" aria-hidden="true"></span>
+              <h3>Choose your schedule</h3>
+              <p>Pick 2, 4, or 6 cleanings a year.</p>
+            </li>
+            <li class="sgc-step">
+              <span class="sgc-step-num" aria-hidden="true"></span>
+              <h3>Get reminders</h3>
+              <p>We notify you before each scheduled visit.</p>
+            </li>
+            <li class="sgc-step">
+              <span class="sgc-step-num" aria-hidden="true"></span>
+              <h3>We clean your gutters</h3>
+              <p>A local HandyPro completes the work and shares service updates.</p>
+            </li>
+            <li class="sgc-step">
+              <span class="sgc-step-num" aria-hidden="true"></span>
+              <h3>Pay after service</h3>
+              <p>Your saved card is charged only after the cleaning is completed.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="sgc-trust">
+        <div class="sgc-wrap sgc-trust-grid">
+          <div>
+            <p class="sgc-kicker" style="color: #74b7ff">Handy Homes</p>
+            <h2>Professional home care, without the guesswork.</h2>
+            <p>
+              GutterCare combines reliable scheduling with the same clear communication and
+              professional service Handy Homes brings to every home.
+            </p>
+          </div>
+          <ul class="sgc-trust-list">
+            <li><i class="sgc-check" aria-hidden="true">✓</i>Licensed and insured</li>
+            <li>
+              <i class="sgc-check" aria-hidden="true">✓</i>Local, background-checked HandyPros
+            </li>
+            <li><i class="sgc-check" aria-hidden="true">✓</i>Clear pricing before service</li>
+            <li>
+              <i class="sgc-check" aria-hidden="true">✓</i>Skip or cancel before your next visit
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sgc-section">
+        <div class="sgc-wrap sgc-faq">
+          <div>
+            <p class="sgc-kicker">Questions</p>
+            <h2 class="sgc-title">Good to know before you enroll.</h2>
+          </div>
+          <div>
+            <details>
+              <summary>Is gutter cleaning free?</summary>
+              <p>No. Enrollment costs $0. You pay the stated price after each completed cleaning.</p>
+            </details>
+            <details>
+              <summary>How do I choose between 2, 4, or 6 cleanings?</summary>
+              <p>
+                Two cleanings fit most homes. More frequent service may be helpful for properties
+                near mature trees, wooded lots, or gutters with frequent buildup.
+              </p>
+            </details>
+            <details>
+              <summary>Can I skip or cancel a visit?</summary>
+              <p>
+                Yes. Contact Handy Homes before the next scheduled visit to skip, reschedule, or
+                cancel future service.
+              </p>
+            </details>
+            <details>
+              <summary>When does an estimated price become confirmed?</summary>
+              <p>
+                Your price becomes confirmed after Handy Homes verifies the gutter assets and
+                structures included in the service.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="sgc-final">
+        <div class="sgc-wrap sgc-final-inner">
+          <div>
+            <h2>Ready to stop scheduling gutter cleanings?</h2>
+            <p>Choose your frequency and see the plan prepared for your home.</p>
+          </div>
+          <a class="sgc-btn sgc-btn-primary" href="#sgc-plan">See my GutterCare price</a>
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>
