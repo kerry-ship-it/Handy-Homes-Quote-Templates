@@ -11,6 +11,10 @@ Shared customer-facing quote templates for Handy Homes.
   - customer-facing handyman proposal template
 - `gutter-cleaning/`
   - gutter quote flow pages
+- `guttercare/landing/`
+  - responsive scheduled GutterCare marketing and enrollment landing page
+- `guttercare/quote/`
+  - responsive React quote flow with plan review, payment setup, deferred-payment enrollment, and confirmation
 - `painting/`
   - placeholder for painting quote template work
 

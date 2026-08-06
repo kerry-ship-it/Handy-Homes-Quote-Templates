@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Garage</title>
+  <path
+    d="M7 56V27L32 13L57 27V56"
+    stroke="#1E57A5"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M15 56V34H49V56"
+    stroke="#1E57A5"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M15 42H49M15 49H49"
+    stroke="#1E57A5"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+</svg>
